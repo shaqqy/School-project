@@ -1,6 +1,6 @@
 # School-project
 
-Ideas:
+## Ideas:
 
 - Slither.io clone: https://github.com/phocode/slither.io/tree/master
 - Doodle Jump clone: https://github.com/leaf-open/Cpp_Game_Doodle_Jump
