@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/images">
+        <file>images/play_menu.png</file>
+        <file>images/default_background_menu.png</file>
+    </qresource>
+</RCC>

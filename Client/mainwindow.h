@@ -2,20 +2,31 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <QString>
+#include <QLoggingCategory>
+#include <QBitmap>
+
+#include "network.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
 QT_END_NAMESPACE
 
-class MainWindow : public QMainWindow
+class SchoolSkipperClient : public QMainWindow
 {
     Q_OBJECT
 
 public:
-    MainWindow(QWidget *parent = nullptr);
-    ~MainWindow();
+    SchoolSkipperClient(QWidget *parent = nullptr);
+    ~SchoolSkipperClient();
 
 private:
     Ui::MainWindow *ui;
+    Network* server;
+    Network* client;
+
+    bool setBackground(QString path);
+    bool initMainMenu();
 };
+
 #endif // MAINWINDOW_H
