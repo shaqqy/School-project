@@ -10,6 +10,7 @@
 #include <QTcpServer>
 #include <QUdpSocket>
 #include <QNetworkDatagram>
+#include <vector>
 
 
 
@@ -24,25 +25,29 @@ public:
     void operator=(const Server&) = delete;
     Server(Server &other) = delete;
     static Server* GetInstance();
+    QUdpSocket *socket;
 
 public slots:
   void acceptConnection();
   void startRead();
-  void passMessage(QByteArray msg, QUdpSocket *target);
+  void passMessage(QByteArray msg, QUdpSocket *target = nullptr);
+  void decideMessage(QByteArray msg, QHostAddress &sender, quint16 &port);
+  void readMoves();
 
 protected:
   QHostAddress player1;
-    QHostAddress player2;
-  QUdpSocket *socket;
-  static Server* server_;
+  QHostAddress player2;
+  QHostAddress multicastGroup;
+  QUdpSocket *multicast;
 
 private:
+  std::vector<std::tuple<QHostAddress, quint16>> connectedPlayers;
+  void addPlayerToMulticast(QHostAddress player);
   Server(QObject * parent = 0);
-  QTcpServer *server;
-  QTcpSocket* client;
+    static Server* server_;
 };
 
-Server* Server::server_ = nullptr;
+//Server* Server::server_ = nullptr;
 //Server* Server::GetInstance(){
 //  if(server_ == nullptr){
 //      server_ = new Server();
