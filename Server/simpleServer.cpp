@@ -1,11 +1,17 @@
 #include "simpleServer.h"
 #include <QDateTime>
+#include <QTcpSocket>
 
 
 Server::Server(QObject* parent): QObject(parent)
 {
+    QTcpSocket Socket;
+    Socket.connectToHost(QHostAddress("8.8.8.8"),53);
+    if(Socket.waitForConnected(2000)){
+        qDebug() << Socket.localAddress().toString();
+    }
     socket = new QUdpSocket();
-    socket->bind(QHostAddress("10.10.197.31"), 30001);
+    socket->bind(QHostAddress(Socket.localAddress().toString()), 30001);
     connect(socket, &QAbstractSocket::readyRead, this, &Server::startRead);
     multicastGroup = QHostAddress(QStringLiteral("239.255.43.21"));
     multicast = new QUdpSocket(this);
@@ -14,12 +20,12 @@ Server::Server(QObject* parent): QObject(parent)
     connect(multicast, &QAbstractSocket::readyRead, this, &Server::readMoves);
     qDebug() << socket->localAddress();
     qDebug() << multicast->localAddress();
-    QString tmp = "Sup?";
-    QByteArray t = tmp.toUtf8();
-    QHostAddress adrian = QHostAddress("10.10.182.11");
-    quint16 port = 1234;
-    QNetworkDatagram tt = QNetworkDatagram(t, adrian, port);
-    socket->writeDatagram(tt);
+//    QString tmp = "Sup?";
+//    QByteArray t = tmp.toUtf8();
+//    QHostAddress adrian = QHostAddress("10.10.182.11");
+//    quint16 port = 1234;
+//    QNetworkDatagram tt = QNetworkDatagram(t, adrian, port);
+//    socket->writeDatagram(tt);
 }
 
 Server::~Server()
@@ -62,7 +68,7 @@ void Server::decideMessage(QByteArray msg, QHostAddress &sender, quint16 &port)
         auto it = std::find_if(connectedPlayers.begin(), connectedPlayers.end(), [sender](const std::tuple<QHostAddress,quint16>& e) {return std::get<QHostAddress>(e) == sender;});
         if (it != connectedPlayers.end()) {
             //Someone with that IP is already playing
-            qDebug() << "Found";
+            qDebug() << "Someone already playing with that IP";
         }else{
             //Add the player
             connectedPlayers.push_back(std::make_tuple(sender,port));
@@ -74,9 +80,6 @@ void Server::decideMessage(QByteArray msg, QHostAddress &sender, quint16 &port)
             QNetworkDatagram toSend = QNetworkDatagram(writeBuffer,sender,port);
             socket->writeDatagram(toSend);
         }
-    }
-    if(pos_move == 0){
-        //Save the move the player made to the list of made moves or whatever
     }
     if(pos_dead == 0){
         //Player who didnt send the message has won

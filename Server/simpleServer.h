@@ -42,6 +42,7 @@ protected:
 
 private:
   std::vector<std::tuple<QHostAddress, quint16>> connectedPlayers;
+    QList<QList<QString>> movesByPlayer;
   void addPlayerToMulticast(QHostAddress player);
   Server(QObject * parent = 0);
     static Server* server_;
