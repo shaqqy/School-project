@@ -14,9 +14,10 @@ public:
     QUdpSocket *receiver;
     explicit Stub_Client(QObject *parent = nullptr);
     bool sendDataGram(QHostAddress address, quint16 port, QString payload);
+
 public slots:
     void receiveDatagram();
-
+    void multicastAccepting();
 signals:
 
 };

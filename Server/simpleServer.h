@@ -11,6 +11,7 @@
 #include <QUdpSocket>
 #include <QNetworkDatagram>
 #include <vector>
+#include <QFile>
 
 
 
@@ -33,19 +34,26 @@ public slots:
   void passMessage(QByteArray msg, QUdpSocket *target = nullptr);
   void decideMessage(QByteArray msg, QHostAddress &sender, quint16 &port);
   void readMoves();
+  void startGame();
+  void handleMessage();
 
 protected:
   QHostAddress player1;
   QHostAddress player2;
   QHostAddress multicastGroup;
   QUdpSocket *multicast;
+  QTcpServer *msg_server;
+  bool running = false;
+  QFile *log;
+
 
 private:
   std::vector<std::tuple<QHostAddress, quint16>> connectedPlayers;
-    QList<QList<QString>> movesByPlayer;
+  QList<QList<QString>> movesByPlayer;
+  QList<QTcpSocket*> messengers;
   void addPlayerToMulticast(QHostAddress player);
   Server(QObject * parent = 0);
-    static Server* server_;
+  static Server* server_;
 };
 
 //Server* Server::server_ = nullptr;

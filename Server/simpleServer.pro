@@ -29,4 +29,4 @@ RESOURCES += \
     img.qrc
 
 DISTFILES += \
-    .gitignore
+    server.qmodel

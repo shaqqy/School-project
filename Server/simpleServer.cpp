@@ -11,7 +11,11 @@ Server::Server(QObject* parent): QObject(parent)
         qDebug() << Socket.localAddress().toString();
     }
     socket = new QUdpSocket();
-    socket->bind(QHostAddress(Socket.localAddress().toString()), 30001);
+    socket->bind(QHostAddress(Socket.localAddress().toString()) /*"192.168.184.217")*/, 30001);
+    qDebug() << socket->localAddress().toString();
+//    connect(msg_server, &QTcpServer::newConnection, this, &Server::acceptConnection);
+//    msg_server->listen(Socket.localAddress(),30002);
+    Socket.disconnectFromHost();
     connect(socket, &QAbstractSocket::readyRead, this, &Server::startRead);
     multicastGroup = QHostAddress(QStringLiteral("239.255.43.21"));
     multicast = new QUdpSocket(this);
@@ -20,12 +24,12 @@ Server::Server(QObject* parent): QObject(parent)
     connect(multicast, &QAbstractSocket::readyRead, this, &Server::readMoves);
     qDebug() << socket->localAddress();
     qDebug() << multicast->localAddress();
-//    QString tmp = "Sup?";
-//    QByteArray t = tmp.toUtf8();
-//    QHostAddress adrian = QHostAddress("10.10.182.11");
-//    quint16 port = 1234;
-//    QNetworkDatagram tt = QNetworkDatagram(t, adrian, port);
-//    socket->writeDatagram(tt);
+    QString tmp = "Sup?";
+    QByteArray t = tmp.toUtf8();
+    QHostAddress adrian = QHostAddress("192.168.184.84");
+    quint16 port = 1234;
+    QNetworkDatagram tt = QNetworkDatagram(t, adrian, port);
+    socket->writeDatagram(tt);
 }
 
 Server::~Server()
@@ -35,7 +39,8 @@ Server::~Server()
 
 void Server::acceptConnection()
 {
-//    qDebug()
+    messengers.append(msg_server->nextPendingConnection());
+    connect(messengers.last(), &QTcpSocket::readyRead, this, &Server::handleMessage);
 }
 
 void Server::startRead()
@@ -61,7 +66,7 @@ void Server::decideMessage(QByteArray msg, QHostAddress &sender, quint16 &port)
 {
     std::string msg_as_string = msg.toStdString();
     size_t pos_connected = msg_as_string.find("Connect");
-    size_t pos_move = msg_as_string.find("Move");
+    size_t pos_msg = msg_as_string.find("Message");
     size_t pos_dead = msg_as_string.find("Dead");
     if(pos_connected == 0){
         //Add the player to the multicast group and add it to the vector of known players
@@ -81,6 +86,10 @@ void Server::decideMessage(QByteArray msg, QHostAddress &sender, quint16 &port)
             socket->writeDatagram(toSend);
         }
     }
+    if(pos_msg == 0){
+        //Player message to send to the other players
+
+    }
     if(pos_dead == 0){
         //Player who didnt send the message has won
     }
@@ -97,6 +106,26 @@ void Server::readMoves()
     qDebug() << "Sender Address: " << sender;
     qDebug() << "Sender Port: " << senderPort;
     qDebug() << "Message: " << buffer;
+    if(running){
+
+    }
+}
+
+void Server::startGame()
+{
+
+    running = true;
+    QString tmp = "Start";
+    QByteArray buffer;
+    buffer = tmp.toUtf8();
+    QNetworkDatagram datagram = QNetworkDatagram(buffer,multicastGroup,30000);
+    socket->writeDatagram(datagram);
+}
+
+void Server::handleMessage()
+{
+    QByteArray buffer;
+
 }
 
 Server* Server::GetInstance(){

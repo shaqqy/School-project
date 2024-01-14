@@ -1,0 +1,203 @@
+\doxysection{Server Class Reference}
+\hypertarget{class_server}{}\label{class_server}\index{Server@{Server}}
+
+
+{\ttfamily \#include $<$simple\+Server.\+h$>$}
+
+Inheritance diagram for Server\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_server}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Slots}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_server_aa3a6667cccd7401040326aa9147ede32}{accept\+Connection}} ()
+\item 
+void \mbox{\hyperlink{class_server_a4054668080d50e32ba1651c4faea932f}{start\+Read}} ()
+\item 
+void \mbox{\hyperlink{class_server_a71417869c77aa9c558e94f9e9ff0d5b1}{pass\+Message}} (QByte\+Array msg, QUdp\+Socket \texorpdfstring{$\ast$}{*}target=nullptr)
+\item 
+void \mbox{\hyperlink{class_server_ac77459bf943ee03d0ca0370a97e28c1c}{decide\+Message}} (QByte\+Array msg, QHost\+Address \&sender, quint16 \&port)
+\item 
+void \mbox{\hyperlink{class_server_ad78838dd107f95c98b2eb3e2ec8590e5}{read\+Moves}} ()
+\item 
+void \mbox{\hyperlink{class_server_aa1574f3bedbb825909ce77fe986c87a8}{start\+Game}} ()
+\item 
+void \mbox{\hyperlink{class_server_ae0ebaeca61bbf8feddf51223e5924a27}{handle\+Message}} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_server_a4b3aa2579cb1c8cd1d069582c14d0fa6}{\texorpdfstring{$\sim$}{\string~}\+Server}} ()
+\item 
+void \mbox{\hyperlink{class_server_a94a3806d56e33c490edd381f2bbde812}{operator=}} (const \mbox{\hyperlink{class_server}{Server}} \&)=delete
+\item 
+\mbox{\hyperlink{class_server_af31cebdb603fe8fcf8600f919a39f788}{Server}} (\mbox{\hyperlink{class_server}{Server}} \&other)=delete
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{class_server}{Server}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_server_a299d70204dbb1ec873242d09ab596830}{Get\+Instance}} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+QString \mbox{\hyperlink{class_server_a9af79151836f03d5ff50db0921a43667}{test}}
+\item 
+QUdp\+Socket \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_server_a66b3bdb5780364b9b13ce3836d23d30b}{socket}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+QHost\+Address \mbox{\hyperlink{class_server_ad0245e024bb13efb9874859c6b0fb3c2}{player1}}
+\item 
+QHost\+Address \mbox{\hyperlink{class_server_a51935905aa363753027c57bc40a18ff2}{player2}}
+\item 
+QHost\+Address \mbox{\hyperlink{class_server_aa443a6b85796bec83ebb8a28124ab5ab}{multicast\+Group}}
+\item 
+QUdp\+Socket \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_server_a30f977a7208920f0f5c8650ac4e453e9}{multicast}}
+\item 
+QTcp\+Server \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_server_a653278688ea9a51b4592800e222b4baa}{msg\+\_\+server}}
+\item 
+bool \mbox{\hyperlink{class_server_a4db32e1a16e0423cf619d7914fa9b8c2}{running}} = false
+\item 
+QFile \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_server_a09935be94f502704d8fe744967fffb3a}{log}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_server_a4b3aa2579cb1c8cd1d069582c14d0fa6}\label{class_server_a4b3aa2579cb1c8cd1d069582c14d0fa6} 
+\index{Server@{Server}!````~Server@{\texorpdfstring{$\sim$}{\string~}Server}}
+\index{````~Server@{\texorpdfstring{$\sim$}{\string~}Server}!Server@{Server}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}Server()}{\string~Server()}}
+{\footnotesize\ttfamily Server\+::\texorpdfstring{$\sim$}{\string~}\+Server (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\Hypertarget{class_server_af31cebdb603fe8fcf8600f919a39f788}\label{class_server_af31cebdb603fe8fcf8600f919a39f788} 
+\index{Server@{Server}!Server@{Server}}
+\index{Server@{Server}!Server@{Server}}
+\doxysubsubsection{\texorpdfstring{Server()}{Server()}}
+{\footnotesize\ttfamily Server\+::\+Server (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_server}{Server}} \&}]{other }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [delete]}}
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_server_aa3a6667cccd7401040326aa9147ede32}\label{class_server_aa3a6667cccd7401040326aa9147ede32} 
+\index{Server@{Server}!acceptConnection@{acceptConnection}}
+\index{acceptConnection@{acceptConnection}!Server@{Server}}
+\doxysubsubsection{\texorpdfstring{acceptConnection}{acceptConnection}}
+{\footnotesize\ttfamily void Server\+::accept\+Connection (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [slot]}}
+
+\Hypertarget{class_server_ac77459bf943ee03d0ca0370a97e28c1c}\label{class_server_ac77459bf943ee03d0ca0370a97e28c1c} 
+\index{Server@{Server}!decideMessage@{decideMessage}}
+\index{decideMessage@{decideMessage}!Server@{Server}}
+\doxysubsubsection{\texorpdfstring{decideMessage}{decideMessage}}
+{\footnotesize\ttfamily void Server\+::decide\+Message (\begin{DoxyParamCaption}\item[{QByte\+Array}]{msg,  }\item[{QHost\+Address \&}]{sender,  }\item[{quint16 \&}]{port }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [slot]}}
+
+\Hypertarget{class_server_a299d70204dbb1ec873242d09ab596830}\label{class_server_a299d70204dbb1ec873242d09ab596830} 
+\index{Server@{Server}!GetInstance@{GetInstance}}
+\index{GetInstance@{GetInstance}!Server@{Server}}
+\doxysubsubsection{\texorpdfstring{GetInstance()}{GetInstance()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_server}{Server}} \texorpdfstring{$\ast$}{*} Server\+::\+Get\+Instance (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{class_server_ae0ebaeca61bbf8feddf51223e5924a27}\label{class_server_ae0ebaeca61bbf8feddf51223e5924a27} 
+\index{Server@{Server}!handleMessage@{handleMessage}}
+\index{handleMessage@{handleMessage}!Server@{Server}}
+\doxysubsubsection{\texorpdfstring{handleMessage}{handleMessage}}
+{\footnotesize\ttfamily void Server\+::handle\+Message (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [slot]}}
+
+\Hypertarget{class_server_a94a3806d56e33c490edd381f2bbde812}\label{class_server_a94a3806d56e33c490edd381f2bbde812} 
+\index{Server@{Server}!operator=@{operator=}}
+\index{operator=@{operator=}!Server@{Server}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}}
+{\footnotesize\ttfamily void Server\+::operator= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_server}{Server}} \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [delete]}}
+
+\Hypertarget{class_server_a71417869c77aa9c558e94f9e9ff0d5b1}\label{class_server_a71417869c77aa9c558e94f9e9ff0d5b1} 
+\index{Server@{Server}!passMessage@{passMessage}}
+\index{passMessage@{passMessage}!Server@{Server}}
+\doxysubsubsection{\texorpdfstring{passMessage}{passMessage}}
+{\footnotesize\ttfamily void Server\+::pass\+Message (\begin{DoxyParamCaption}\item[{QByte\+Array}]{msg,  }\item[{QUdp\+Socket \texorpdfstring{$\ast$}{*}}]{target = {\ttfamily nullptr} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [slot]}}
+
+\Hypertarget{class_server_ad78838dd107f95c98b2eb3e2ec8590e5}\label{class_server_ad78838dd107f95c98b2eb3e2ec8590e5} 
+\index{Server@{Server}!readMoves@{readMoves}}
+\index{readMoves@{readMoves}!Server@{Server}}
+\doxysubsubsection{\texorpdfstring{readMoves}{readMoves}}
+{\footnotesize\ttfamily void Server\+::read\+Moves (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [slot]}}
+
+\Hypertarget{class_server_aa1574f3bedbb825909ce77fe986c87a8}\label{class_server_aa1574f3bedbb825909ce77fe986c87a8} 
+\index{Server@{Server}!startGame@{startGame}}
+\index{startGame@{startGame}!Server@{Server}}
+\doxysubsubsection{\texorpdfstring{startGame}{startGame}}
+{\footnotesize\ttfamily void Server\+::start\+Game (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [slot]}}
+
+\Hypertarget{class_server_a4054668080d50e32ba1651c4faea932f}\label{class_server_a4054668080d50e32ba1651c4faea932f} 
+\index{Server@{Server}!startRead@{startRead}}
+\index{startRead@{startRead}!Server@{Server}}
+\doxysubsubsection{\texorpdfstring{startRead}{startRead}}
+{\footnotesize\ttfamily void Server\+::start\+Read (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [slot]}}
+
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{class_server_a09935be94f502704d8fe744967fffb3a}\label{class_server_a09935be94f502704d8fe744967fffb3a} 
+\index{Server@{Server}!log@{log}}
+\index{log@{log}!Server@{Server}}
+\doxysubsubsection{\texorpdfstring{log}{log}}
+{\footnotesize\ttfamily QFile\texorpdfstring{$\ast$}{*} Server\+::log\hspace{0.3cm}{\ttfamily [protected]}}
+
+\Hypertarget{class_server_a653278688ea9a51b4592800e222b4baa}\label{class_server_a653278688ea9a51b4592800e222b4baa} 
+\index{Server@{Server}!msg\_server@{msg\_server}}
+\index{msg\_server@{msg\_server}!Server@{Server}}
+\doxysubsubsection{\texorpdfstring{msg\_server}{msg\_server}}
+{\footnotesize\ttfamily QTcp\+Server\texorpdfstring{$\ast$}{*} Server\+::msg\+\_\+server\hspace{0.3cm}{\ttfamily [protected]}}
+
+\Hypertarget{class_server_a30f977a7208920f0f5c8650ac4e453e9}\label{class_server_a30f977a7208920f0f5c8650ac4e453e9} 
+\index{Server@{Server}!multicast@{multicast}}
+\index{multicast@{multicast}!Server@{Server}}
+\doxysubsubsection{\texorpdfstring{multicast}{multicast}}
+{\footnotesize\ttfamily QUdp\+Socket\texorpdfstring{$\ast$}{*} Server\+::multicast\hspace{0.3cm}{\ttfamily [protected]}}
+
+\Hypertarget{class_server_aa443a6b85796bec83ebb8a28124ab5ab}\label{class_server_aa443a6b85796bec83ebb8a28124ab5ab} 
+\index{Server@{Server}!multicastGroup@{multicastGroup}}
+\index{multicastGroup@{multicastGroup}!Server@{Server}}
+\doxysubsubsection{\texorpdfstring{multicastGroup}{multicastGroup}}
+{\footnotesize\ttfamily QHost\+Address Server\+::multicast\+Group\hspace{0.3cm}{\ttfamily [protected]}}
+
+\Hypertarget{class_server_ad0245e024bb13efb9874859c6b0fb3c2}\label{class_server_ad0245e024bb13efb9874859c6b0fb3c2} 
+\index{Server@{Server}!player1@{player1}}
+\index{player1@{player1}!Server@{Server}}
+\doxysubsubsection{\texorpdfstring{player1}{player1}}
+{\footnotesize\ttfamily QHost\+Address Server\+::player1\hspace{0.3cm}{\ttfamily [protected]}}
+
+\Hypertarget{class_server_a51935905aa363753027c57bc40a18ff2}\label{class_server_a51935905aa363753027c57bc40a18ff2} 
+\index{Server@{Server}!player2@{player2}}
+\index{player2@{player2}!Server@{Server}}
+\doxysubsubsection{\texorpdfstring{player2}{player2}}
+{\footnotesize\ttfamily QHost\+Address Server\+::player2\hspace{0.3cm}{\ttfamily [protected]}}
+
+\Hypertarget{class_server_a4db32e1a16e0423cf619d7914fa9b8c2}\label{class_server_a4db32e1a16e0423cf619d7914fa9b8c2} 
+\index{Server@{Server}!running@{running}}
+\index{running@{running}!Server@{Server}}
+\doxysubsubsection{\texorpdfstring{running}{running}}
+{\footnotesize\ttfamily bool Server\+::running = false\hspace{0.3cm}{\ttfamily [protected]}}
+
+\Hypertarget{class_server_a66b3bdb5780364b9b13ce3836d23d30b}\label{class_server_a66b3bdb5780364b9b13ce3836d23d30b} 
+\index{Server@{Server}!socket@{socket}}
+\index{socket@{socket}!Server@{Server}}
+\doxysubsubsection{\texorpdfstring{socket}{socket}}
+{\footnotesize\ttfamily QUdp\+Socket\texorpdfstring{$\ast$}{*} Server\+::socket}
+
+\Hypertarget{class_server_a9af79151836f03d5ff50db0921a43667}\label{class_server_a9af79151836f03d5ff50db0921a43667} 
+\index{Server@{Server}!test@{test}}
+\index{test@{test}!Server@{Server}}
+\doxysubsubsection{\texorpdfstring{test}{test}}
+{\footnotesize\ttfamily QString Server\+::test}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+D\+:/\+Berufsschule/school\+\_\+skipper/\+School-\/project/\+Server/\mbox{\hyperlink{simple_server_8h}{simple\+Server.\+h}}\item 
+D\+:/\+Berufsschule/school\+\_\+skipper/\+School-\/project/\+Server/\mbox{\hyperlink{main_8cpp}{main.\+cpp}}\item 
+D\+:/\+Berufsschule/school\+\_\+skipper/\+School-\/project/\+Server/\mbox{\hyperlink{simple_server_8cpp}{simple\+Server.\+cpp}}\end{DoxyCompactItemize}

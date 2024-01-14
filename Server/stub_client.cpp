@@ -47,3 +47,8 @@ void Stub_Client::receiveDatagram(){
     receiver->readDatagram(buffer.data(), buffer.size(), &sender, &senderPort);
     qDebug() << buffer;
 }
+
+void Stub_Client::multicastAccepting()
+{
+
+}
