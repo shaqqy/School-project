@@ -8,12 +8,17 @@ SchoolSkipperClient::SchoolSkipperClient(QWidget *parent)
     ui->setupUi(this);
 
     setWindowTitle("School Skipper");
-    setBackground(":/images/images/default_background_menu.png");
+    setMinimumSize(QSize(329, 494));
+    resize(QSize(900, 700));
+
+    background = QPixmap(":/images/images/default_background_menu.png");
+
     initMainMenu();
+    initChatWindow();
 
     client = new Network(this);
-    client->initSocket(1234);
-    client->sendMessage(QByteArray("Connect"));
+    //client->initUdpSocket(1234);
+    //client->sendMessage(QByteArray("Connect"));
 }
 
 SchoolSkipperClient::~SchoolSkipperClient()
@@ -21,32 +26,56 @@ SchoolSkipperClient::~SchoolSkipperClient()
     delete ui;
 }
 
-bool SchoolSkipperClient::setBackground(QString path) {
-    try {
-        QPixmap background = QPixmap(path);
-        background = background.scaled(size(), Qt::KeepAspectRatio);
+bool SchoolSkipperClient::initMainMenu() {
+    QPixmap playButtonPixmap = QPixmap(":/images/images/play_menu.png");
 
-        QPalette palette;
-        palette.setBrush(QPalette::Window, background);
-        this->setPalette(palette);
-    } catch (...) {
-        qDebug() << "[SYS] Failed to set background";
-        return false;
-    }
+    playButton = new CustomButton(playButtonPixmap, this);
+    playButton->show();
 
     return true;
 }
 
-bool SchoolSkipperClient::initMainMenu() {
-    QPixmap playButtonPixmap = QPixmap(":/images/images/play_menu.png");
-    QIcon playButtonIcon = QIcon(playButtonPixmap);
+void SchoolSkipperClient::initChatWindow() {
+    chatWindow = new QTextBrowser(this);
+    chatWindow->setStyleSheet("background-color: black; border: 3px solid grey; border-radius: 10px;");
+    chatWindow->setTextColor(Qt::white);
+    chatWindow->setText("[09:38] Test!!");
+}
 
-    ui->playButton->resize(playButtonPixmap.size());
+void SchoolSkipperClient::paintEvent(QPaintEvent*) {
+    const int width = ui->centralwidget->width();
+    const int height = ui->centralwidget->height();
 
-    ui->playButton->setMask(playButtonPixmap.mask());
+    /*
+     *  Position and size calculation for the game background
+     */
+    QPainter painter(this);
+    QPixmap tmpBackground = QPixmap(background.scaled(width, height, Qt::KeepAspectRatio));
 
-    ui->playButton->setIcon(playButtonIcon);
-    ui->playButton->setIconSize(playButtonPixmap.size());
+    gameBackgroundSize = tmpBackground.size();
 
-    return true;
+    const int startBackground = (width / 2) - (tmpBackground.width() / 2);
+
+    painter.drawPixmap(startBackground, 0, tmpBackground);
+
+    /*
+     *  Position and size calculation for the chat window
+     */
+    if ((width - (startBackground + tmpBackground.width())) > 60) {
+        chatWindow->resize(width - (startBackground + tmpBackground.width() + 4), height - 50);
+        chatWindow->move(QPoint(startBackground + tmpBackground.width() + 2, 0));
+        chatWindow->show();
+    } else {
+        chatWindow->hide();
+    }
+
+    /*
+     *  Position calculation for the play button.
+     *  Size calculation is inside the buttons paintEvent function.
+     */
+    playButton->move(QPoint(startBackground + tmpBackground.width() / 3, tmpBackground.height() / 2));
+}
+
+QSize SchoolSkipperClient::getGameBackgroundSize() {
+    return gameBackgroundSize;
 }
