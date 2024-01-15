@@ -2,7 +2,10 @@
 #include <QDateTime>
 #include <QTcpSocket>
 
-
+/*!
+    \brief Will create the an instance of our server class, will create a multicast socket and a tcp socket for reliable messaging.
+            This is a private function and will be called only by GetInstance if the variable server_ is a nullpointer.
+ */
 Server::Server(QObject* parent): QObject(parent)
 {
     QTcpSocket Socket;
@@ -10,26 +13,17 @@ Server::Server(QObject* parent): QObject(parent)
     if(Socket.waitForConnected(2000)){
         qDebug() << Socket.localAddress().toString();
     }
-    socket = new QUdpSocket();
-    socket->bind(QHostAddress(Socket.localAddress().toString()) /*"192.168.184.217")*/, 30001);
-    qDebug() << socket->localAddress().toString();
-//    connect(msg_server, &QTcpServer::newConnection, this, &Server::acceptConnection);
-//    msg_server->listen(Socket.localAddress(),30002);
+    msg_server = new QTcpServer();
+//    msg_server->bind(QHostAddress(msg_server.localAddress().toString()) /*"192.168.184.217")*/, 30001);
+    connect(msg_server, &QTcpServer::newConnection, this, &Server::acceptConnection);
+    msg_server->listen(Socket.localAddress(),30001);
     Socket.disconnectFromHost();
-    connect(socket, &QAbstractSocket::readyRead, this, &Server::startRead);
     multicastGroup = QHostAddress(QStringLiteral("239.255.43.21"));
     multicast = new QUdpSocket(this);
     multicast->bind(QHostAddress::AnyIPv4, 30000, QUdpSocket::ShareAddress);
     multicast->joinMulticastGroup(multicastGroup);
     connect(multicast, &QAbstractSocket::readyRead, this, &Server::readMoves);
-    qDebug() << socket->localAddress();
     qDebug() << multicast->localAddress();
-    QString tmp = "Sup?";
-    QByteArray t = tmp.toUtf8();
-    QHostAddress adrian = QHostAddress("192.168.184.84");
-    quint16 port = 1234;
-    QNetworkDatagram tt = QNetworkDatagram(t, adrian, port);
-    socket->writeDatagram(tt);
 }
 
 Server::~Server()
@@ -39,18 +33,20 @@ Server::~Server()
 
 void Server::acceptConnection()
 {
-    messengers.append(msg_server->nextPendingConnection());
-    connect(messengers.last(), &QTcpSocket::readyRead, this, &Server::handleMessage);
+    QTcpSocket *socket = msg_server->nextPendingConnection();
+    messengers.append(socket);
+    connect(socket, &QTcpSocket::readyRead, this, &Server::handleMessage);
+    qDebug() << "Connected player with IP " << messengers.last()->localAddress();
 }
 
 void Server::startRead()
 {
     QByteArray buffer;
-    buffer.resize(socket->pendingDatagramSize());
+    buffer.resize(multicast->pendingDatagramSize());
 //    qDebug() << buffer.size();
     QHostAddress sender;
     quint16 senderPort;
-    socket->readDatagram(buffer.data(),buffer.size(),&sender,&senderPort);
+    multicast->readDatagram(buffer.data(),buffer.size(),&sender,&senderPort);
     qDebug() << "Sender Address: " << sender;
     qDebug() << "Sender Port: " << senderPort;
     qDebug() << "Message: " << buffer;
@@ -83,7 +79,7 @@ void Server::decideMessage(QByteArray msg, QHostAddress &sender, quint16 &port)
             QString multicastAddress = multicastGroup.toString();
             QByteArray writeBuffer = multicastAddress.toUtf8();
             QNetworkDatagram toSend = QNetworkDatagram(writeBuffer,sender,port);
-            socket->writeDatagram(toSend);
+            multicast->writeDatagram(toSend);
         }
     }
     if(pos_msg == 0){
@@ -119,13 +115,27 @@ void Server::startGame()
     QByteArray buffer;
     buffer = tmp.toUtf8();
     QNetworkDatagram datagram = QNetworkDatagram(buffer,multicastGroup,30000);
-    socket->writeDatagram(datagram);
+    multicast->writeDatagram(datagram);
 }
 
 void Server::handleMessage()
 {
     QByteArray buffer;
-
+    QTcpSocket *sender = (QTcpSocket*) QObject::sender();
+    buffer.resize(sender->readBufferSize());
+    buffer = sender->read(buffer.size());
+    qDebug() << buffer;
+    QString msg  = QString(buffer);
+    if(msg.startsWith("Dead")){
+        qDebug() << "Player with IP " << sender->localAddress() << " died";
+    }else if(msg.startsWith("Message")){
+        qDebug() << msg;
+        foreach (auto const &mg, messengers) {
+            if(mg != sender){
+                mg->write(buffer);
+            }
+        }
+    }
 }
 
 Server* Server::GetInstance(){

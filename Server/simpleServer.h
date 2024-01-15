@@ -22,11 +22,10 @@ class Server: public QObject
 Q_OBJECT
 public:
   ~Server();
-    QString test;
     void operator=(const Server&) = delete;
     Server(Server &other) = delete;
     static Server* GetInstance();
-    QUdpSocket *socket;
+
 
 public slots:
   void acceptConnection();
@@ -38,8 +37,6 @@ public slots:
   void handleMessage();
 
 protected:
-  QHostAddress player1;
-  QHostAddress player2;
   QHostAddress multicastGroup;
   QUdpSocket *multicast;
   QTcpServer *msg_server;
@@ -55,12 +52,4 @@ private:
   Server(QObject * parent = 0);
   static Server* server_;
 };
-
-//Server* Server::server_ = nullptr;
-//Server* Server::GetInstance(){
-//  if(server_ == nullptr){
-//      server_ = new Server();
-//  }
-//  return server_;
-//}
 #endif // SIMPLESERVER_H

@@ -10,10 +10,7 @@ int main(int argc, char *argv[])
 
     QCoreApplication a(argc, argv);
     Server *test = Server::GetInstance();
-    test->test = "WOW";
-    qDebug() << test->socket->socketDescriptor();
-    qDebug() << test->socket->peerPort();
-    Stub_Client *st_cl = new Stub_Client();
+//    Stub_Client *st_cl = new Stub_Client();
 //    test->test = "WOW";
 //    test = Server::GetInstance();
 //    qDebug() << test->test;
