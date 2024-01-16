@@ -1,16 +1,17 @@
 #include <QCoreApplication>
 #include "simpleServer.h"
-#include "simpleClient.h"
+//#include "simpleServer.cpp"
+Server* Server::server_ = NULL;
+
 
 int main(int argc, char *argv[])
 {
+
     QCoreApplication a(argc, argv);
-//    Server server;
-//    Client client;
-//    client.start("127.0.0.1",8888);
     Server *test = Server::GetInstance();
-    test->test = "WOW";
-    test = Server::GetInstance();
-    qDebug() << test->test;
+//    Stub_Client *st_cl = new Stub_Client();
+//    test->test = "WOW";
+//    test = Server::GetInstance();
+//    qDebug() << test->test;
     return a.exec();
 }
