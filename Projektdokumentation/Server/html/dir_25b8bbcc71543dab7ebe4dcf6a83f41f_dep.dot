@@ -10,11 +10,7 @@ digraph "D:/Berufsschule/school_skipper"
   subgraph clusterdir_25b8bbcc71543dab7ebe4dcf6a83f41f {
     graph [ bgcolor="#edf0f7", pencolor="grey25", label="", fontname=Helvetica,fontsize=10 style="filled,bold", URL="dir_25b8bbcc71543dab7ebe4dcf6a83f41f.html",tooltip=""]
     dir_25b8bbcc71543dab7ebe4dcf6a83f41f [shape=plaintext, label="school_skipper"];
-  subgraph clusterdir_26698e27b62c20696465596e27ab726f {
-    graph [ bgcolor="#dfe5f1", pencolor="grey25", label="", fontname=Helvetica,fontsize=10 style="filled", URL="dir_26698e27b62c20696465596e27ab726f.html",tooltip=""]
-    dir_26698e27b62c20696465596e27ab726f [shape=plaintext, label="School-project"];
-  dir_5414d0cc80566289bf8c7ec614d387d8 [label="Server", fillcolor="#d0d9ea", color="grey25", style="filled", URL="dir_5414d0cc80566289bf8c7ec614d387d8.html",tooltip=""];
-  }
+  dir_26698e27b62c20696465596e27ab726f [label="School-project", fillcolor="#a2b4d6", color="grey25", style="filled", URL="dir_26698e27b62c20696465596e27ab726f.html",tooltip=""];
   }
   }
 }
