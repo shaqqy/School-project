@@ -1,0 +1,28 @@
+\doxysection{simple\+Client.\+h}
+\hypertarget{simple_client_8h_source}{}\label{simple_client_8h_source}\index{D:/Berufsschule/school\_skipper/School-\/project/Server/simpleClient.h@{D:/Berufsschule/school\_skipper/School-\/project/Server/simpleClient.h}}
+\mbox{\hyperlink{simple_client_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ SIMPLECLIENT\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ SIMPLECLIENT\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <QString>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <QTcpSocket>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <QHostAddress>}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_client}{Client}}:\ \textcolor{keyword}{public}\ QObject}
+\DoxyCodeLine{00009\ \{}
+\DoxyCodeLine{00010\ \ \ \ \ Q\_OBJECT}
+\DoxyCodeLine{00011\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00012\ \ \ \ \ \ \ \mbox{\hyperlink{class_client_a7832757f3fa37f564a21cb2b79b2baad}{Client}}(QObject*\ parent\ =\ 0);}
+\DoxyCodeLine{00013\ \ \ \ \ \ \ \mbox{\hyperlink{class_client_a840e519ca781888cbd54181572ebe3a7}{\string~Client}}();}
+\DoxyCodeLine{00014\ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_client_a07079b51da04c39fb0d85d30cd289e07}{start}}(\ QString\ address,\ quint16\ port\ );}
+\DoxyCodeLine{00015\ \ \ \ \ \textcolor{keyword}{public}\ slots:}
+\DoxyCodeLine{00016\ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_client_ae848a864b6dcde47c9d7eab7db41f3ba}{startTransfer}}();}
+\DoxyCodeLine{00017\ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_client_abb6e87c652c46026a341d17bacc9649f}{startRead}}();}
+\DoxyCodeLine{00018\ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00019\ \ \ \ \ \ \ QTcpSocket\ *client;}
+\DoxyCodeLine{00020\ \};}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00022\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ SIMPLECLIENT\_H}}
+
+\end{DoxyCode}
