@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['receiver_0',['receiver',['../class_stub___client.html#ae3f39bafa58a4f7ca1c29977d9870d6f',1,'Stub_Client']]],
-  ['running_1',['running',['../class_server.html#a4db32e1a16e0423cf619d7914fa9b8c2',1,'Server']]]
+  ['server_5f_0',['server_',['../class_server.html#aed2d3732571f48b8a5d31ee0b60463af',1,'Server']]]
 ];

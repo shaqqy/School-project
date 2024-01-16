@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['passmessage_0',['passMessage',['../class_server.html#a71417869c77aa9c558e94f9e9ff0d5b1',1,'Server']]]
+  ['readmoves_0',['readMoves',['../class_server.html#ad78838dd107f95c98b2eb3e2ec8590e5',1,'Server']]]
 ];

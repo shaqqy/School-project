@@ -1,6 +1,6 @@
 \doxysection{stub\+\_\+client.\+h}
 \hypertarget{stub__client_8h_source}{}\label{stub__client_8h_source}\index{D:/Berufsschule/school\_skipper/School-\/project/Server/stub\_client.h@{D:/Berufsschule/school\_skipper/School-\/project/Server/stub\_client.h}}
-\mbox{\hyperlink{stub__client_8h}{Go to the documentation of this file.}}
+
 \begin{DoxyCode}{0}
 \DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ STUB\_CLIENT\_H}}
 \DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ STUB\_CLIENT\_H}}
@@ -14,14 +14,14 @@
 \DoxyCodeLine{00010\ \{}
 \DoxyCodeLine{00011\ \ \ \ \ Q\_OBJECT}
 \DoxyCodeLine{00012\ \textcolor{keyword}{public}:}
-\DoxyCodeLine{00013\ \ \ \ \ QUdpSocket\ *\mbox{\hyperlink{class_stub___client_a93a774ed3cb0d81502b986311323e585}{sender}};}
-\DoxyCodeLine{00014\ \ \ \ \ QUdpSocket\ *\mbox{\hyperlink{class_stub___client_ae3f39bafa58a4f7ca1c29977d9870d6f}{receiver}};}
-\DoxyCodeLine{00015\ \ \ \ \ \textcolor{keyword}{explicit}\ \mbox{\hyperlink{class_stub___client_a4439f1407afcdc1c58b24e5ec6ce305a}{Stub\_Client}}(QObject\ *parent\ =\ \textcolor{keyword}{nullptr});}
-\DoxyCodeLine{00016\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_stub___client_acdd9c61b04f6af06c38864378da09a8a}{sendDataGram}}(QHostAddress\ address,\ quint16\ port,\ QString\ payload);}
+\DoxyCodeLine{00013\ \ \ \ \ QUdpSocket\ *sender;}
+\DoxyCodeLine{00014\ \ \ \ \ QUdpSocket\ *receiver;}
+\DoxyCodeLine{00015\ \ \ \ \ \textcolor{keyword}{explicit}\ \mbox{\hyperlink{class_stub___client}{Stub\_Client}}(QObject\ *parent\ =\ \textcolor{keyword}{nullptr});}
+\DoxyCodeLine{00016\ \ \ \ \ \textcolor{keywordtype}{bool}\ sendDataGram(QHostAddress\ address,\ quint16\ port,\ QString\ payload);}
 \DoxyCodeLine{00017\ }
 \DoxyCodeLine{00018\ \textcolor{keyword}{public}\ slots:}
-\DoxyCodeLine{00019\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_stub___client_a30b197c17ed8c76725b513a2f1e689e3}{receiveDatagram}}();}
-\DoxyCodeLine{00020\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_stub___client_a9d6a5560153dd5ce726170af4990f266}{multicastAccepting}}();}
+\DoxyCodeLine{00019\ \ \ \ \ \textcolor{keywordtype}{void}\ receiveDatagram();}
+\DoxyCodeLine{00020\ \ \ \ \ \textcolor{keywordtype}{void}\ multicastAccepting();}
 \DoxyCodeLine{00021\ signals:}
 \DoxyCodeLine{00022\ }
 \DoxyCodeLine{00023\ \};}

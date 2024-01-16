@@ -44,7 +44,7 @@
                         <DObject>
                          <base-DElement>
                           <DElement>
-                           <uid>{757db02f-4426-4de6-bad4-4187e4869d8f}</uid>
+                           <uid>{c9917911-5b1b-4d92-8770-ecd034105f9d}</uid>
                           </DElement>
                          </base-DElement>
                          <object>{d9dd4639-dea4-4108-bb77-5249182c025d}</object>
@@ -55,10 +55,10 @@
                          </stereotypes>
                          <context>Server</context>
                          <name>Server</name>
-                         <pos>x:145;y:110</pos>
-                         <rect>x:-40;y:-40;w:80;h:80</rect>
+                         <pos>x:-260;y:-475</pos>
+                         <rect>x:-210;y:-220;w:420;h:440</rect>
+                         <auto-sized>false</auto-sized>
                          <visual-role>0</visual-role>
-                         <stereotype-display>1</stereotype-display>
                         </DObject>
                        </base-DObject>
                        <show-all-members>true</show-all-members>
@@ -67,8 +67,8 @@
                     </item>
                    </qlist>
                   </elements>
-                  <last-modified>1705059895490</last-modified>
-                  <toolbarid>Classes</toolbarid>
+                  <last-modified>1705391863773</last-modified>
+                  <toolbarid>General</toolbarid>
                  </MDiagram>
                 </base-MDiagram>
                </MCanvasDiagram>
@@ -117,6 +117,155 @@
                              <name>Server</name>
                             </MObject>
                            </base-MObject>
+                           <members>
+                            <qlist>
+                             <item>
+                              <MClassMember>
+                               <uid>{07750d71-df2d-420d-b7d4-e4de112311c5}</uid>
+                               <type>1</type>
+                               <declaration>Q_OBJECT</declaration>
+                              </MClassMember>
+                             </item>
+                             <item>
+                              <MClassMember>
+                               <uid>{62c837be-ce25-4488-a873-a8c3a531c160}</uid>
+                               <visibility>1</visibility>
+                               <type>2</type>
+                               <declaration>void operator=(const Server&amp;)</declaration>
+                              </MClassMember>
+                             </item>
+                             <item>
+                              <MClassMember>
+                               <uid>{ec3785de-e870-40a5-afba-c2746c3efaae}</uid>
+                               <visibility>1</visibility>
+                               <type>2</type>
+                               <declaration>Server(Server &amp;other)</declaration>
+                              </MClassMember>
+                             </item>
+                             <item>
+                              <MClassMember>
+                               <uid>{4dcf6e74-b370-4ec4-b1cf-2b4959276bda}</uid>
+                               <visibility>1</visibility>
+                               <type>2</type>
+                               <properties>64</properties>
+                               <declaration>Server* GetInstance()</declaration>
+                              </MClassMember>
+                             </item>
+                             <item>
+                              <MClassMember>
+                               <uid>{42726f9f-4300-4072-b7b5-02e3cffa6011}</uid>
+                               <visibility>7</visibility>
+                               <type>2</type>
+                               <declaration>void acceptConnection()</declaration>
+                              </MClassMember>
+                             </item>
+                             <item>
+                              <MClassMember>
+                               <uid>{0a43d488-062b-4da5-ad32-b59c7c8bdb16}</uid>
+                               <visibility>7</visibility>
+                               <type>2</type>
+                               <declaration>void startRead()</declaration>
+                              </MClassMember>
+                             </item>
+                             <item>
+                              <MClassMember>
+                               <uid>{eac2fc6c-e471-48cb-8bf2-f7364f366726}</uid>
+                               <visibility>7</visibility>
+                               <type>2</type>
+                               <declaration>void startGame()</declaration>
+                              </MClassMember>
+                             </item>
+                             <item>
+                              <MClassMember>
+                               <uid>{e805f368-f4d4-46dd-86cd-618fee222230}</uid>
+                               <visibility>7</visibility>
+                               <type>2</type>
+                               <declaration>void handleMessage()</declaration>
+                              </MClassMember>
+                             </item>
+                             <item>
+                              <MClassMember>
+                               <uid>{72f4659a-a169-46f1-b29c-97fc700d8404}</uid>
+                               <visibility>7</visibility>
+                               <type>2</type>
+                               <declaration>void handleDisconnect()</declaration>
+                              </MClassMember>
+                             </item>
+                             <item>
+                              <MClassMember>
+                               <uid>{21faa6e4-2bb3-4199-b7a3-d779cbf2a33a}</uid>
+                               <visibility>2</visibility>
+                               <type>1</type>
+                               <declaration>QHostAddress multicastGroup</declaration>
+                              </MClassMember>
+                             </item>
+                             <item>
+                              <MClassMember>
+                               <uid>{f7588d1e-a18a-4ac0-b8b3-c51eee74cedb}</uid>
+                               <visibility>2</visibility>
+                               <type>1</type>
+                               <declaration>QUdpSocket *multicast</declaration>
+                              </MClassMember>
+                             </item>
+                             <item>
+                              <MClassMember>
+                               <uid>{849c216a-e885-47f8-b315-6911e708ad84}</uid>
+                               <visibility>2</visibility>
+                               <type>1</type>
+                               <declaration>QTcpServer *msg_server</declaration>
+                              </MClassMember>
+                             </item>
+                             <item>
+                              <MClassMember>
+                               <uid>{4dd49ae3-4ab1-45da-a4af-24085037a0a7}</uid>
+                               <visibility>2</visibility>
+                               <type>1</type>
+                               <declaration>bool running</declaration>
+                              </MClassMember>
+                             </item>
+                             <item>
+                              <MClassMember>
+                               <uid>{b73dad0c-0ea0-49ec-8e28-b03db988c91d}</uid>
+                               <visibility>3</visibility>
+                               <type>1</type>
+                               <declaration>std::vector&lt;bool&gt; player_alive</declaration>
+                              </MClassMember>
+                             </item>
+                             <item>
+                              <MClassMember>
+                               <uid>{d20f321f-5fba-458b-b1af-11bddf386be8}</uid>
+                               <visibility>3</visibility>
+                               <type>1</type>
+                               <declaration>QList&lt;QTcpSocket*&gt; messengers</declaration>
+                              </MClassMember>
+                             </item>
+                             <item>
+                              <MClassMember>
+                               <uid>{4b7112da-ada1-4650-b3c2-a287f18dba09}</uid>
+                               <visibility>3</visibility>
+                               <type>2</type>
+                               <declaration>Server(QObject * parent = 0)</declaration>
+                              </MClassMember>
+                             </item>
+                             <item>
+                              <MClassMember>
+                               <uid>{44cf4e9a-ad7c-430d-a8ae-e480b4ef4464}</uid>
+                               <visibility>3</visibility>
+                               <type>2</type>
+                               <declaration>~Server()</declaration>
+                              </MClassMember>
+                             </item>
+                             <item>
+                              <MClassMember>
+                               <uid>{f7bf3dd0-8aa1-4547-8034-690dd7233e97}</uid>
+                               <visibility>3</visibility>
+                               <type>1</type>
+                               <properties>64</properties>
+                               <declaration>Server* server_</declaration>
+                              </MClassMember>
+                             </item>
+                            </qlist>
+                           </members>
                           </MClass>
                          </instance>
                         </target>

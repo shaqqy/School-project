@@ -1,7 +1,6 @@
 #include <QCoreApplication>
 #include "simpleServer.h"
 //#include "simpleServer.cpp"
-#include "stub_client.h"
 Server* Server::server_ = NULL;
 
 

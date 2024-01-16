@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['operator_3d_0',['operator=',['../class_server.html#a94a3806d56e33c490edd381f2bbde812',1,'Server']]]
+  ['_7eserver_0',['~Server',['../class_server.html#a4b3aa2579cb1c8cd1d069582c14d0fa6',1,'Server']]]
 ];

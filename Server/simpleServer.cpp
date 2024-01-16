@@ -3,8 +3,12 @@
 #include <QTcpSocket>
 
 /*!
-    \brief Will create the an instance of our server class, will create a multicast socket and a tcp socket for reliable messaging.
-            This is a private function and will be called only by GetInstance if the variable server_ is a nullpointer.
+ *  \brief Will create the an instance of our server class
+ *
+ *  Will create a multicast socket and a tcp socket for reliable messaging.
+ *  This is a private function and will be called only by GetInstance if the variable server_ is a nullpointer.
+ *  Furthermore we setup the signals and slots of our tcp server for incoming connections
+ *  Accepts an QObject as parent for Garbage collection purposes, but that is optional
  */
 Server::Server(QObject* parent): QObject(parent)
 {
@@ -14,7 +18,6 @@ Server::Server(QObject* parent): QObject(parent)
         qDebug() << Socket.localAddress().toString();
     }
     msg_server = new QTcpServer();
-//    msg_server->bind(QHostAddress(msg_server.localAddress().toString()) /*"192.168.184.217")*/, 30001);
     connect(msg_server, &QTcpServer::newConnection, this, &Server::acceptConnection);
     msg_server->listen(Socket.localAddress(),30001);
     Socket.disconnectFromHost();
@@ -22,23 +25,43 @@ Server::Server(QObject* parent): QObject(parent)
     multicast = new QUdpSocket(this);
     multicast->bind(QHostAddress::AnyIPv4, 30000, QUdpSocket::ShareAddress);
     multicast->joinMulticastGroup(multicastGroup);
-    connect(multicast, &QAbstractSocket::readyRead, this, &Server::readMoves);
+    connect(multicast, &QAbstractSocket::readyRead, this, &Server::startRead);
     qDebug() << multicast->localAddress();
 }
-
+/*!
+ * \brief Server::~Server Destructor
+ *
+ * Not really necessary to override anything here as QT will delete automatically everything in relation to an object,
+ * if the parent is deleted
+ */
 Server::~Server()
 {
 
 }
 
+/*!
+ * \brief Server::acceptConnection accepts incoming tcp connection requests
+ *
+ *  Will accept an incoming connection and connect the readyRead signal to our message handling
+    slot. Further we connect the disconnected signal to our handleDisconnect slot.
+ *  Will also add the socket to the messengers list and add an entry to the player_alive vector
+ */
 void Server::acceptConnection()
 {
     QTcpSocket *socket = msg_server->nextPendingConnection();
     messengers.append(socket);
-    connect(socket, &QTcpSocket::readyRead, this, &Server::handleMessage);
-    qDebug() << "Connected player with IP " << messengers.last()->localAddress();
-}
 
+    connect(socket, &QTcpSocket::readyRead, this, &Server::handleMessage);
+    connect(socket, &QTcpSocket::disconnected, this, &Server::handleDisconnect);
+    qDebug() << "Connected player with IP " << messengers.last()->localAddress().toString();
+    player_alive.push_back(false);
+}
+/*!
+ * \brief Server::startRead
+ *
+ * Will read incoming Datagrams and will print them to the console with sender information
+ * Used for debugging purposes
+ */
 void Server::startRead()
 {
     QByteArray buffer;
@@ -50,66 +73,24 @@ void Server::startRead()
     qDebug() << "Sender Address: " << sender;
     qDebug() << "Sender Port: " << senderPort;
     qDebug() << "Message: " << buffer;
-    decideMessage(buffer, sender, senderPort);
 }
 
-void Server::passMessage(QByteArray msg, QUdpSocket *target)
-{
-    target = nullptr;
-}
-
-void Server::decideMessage(QByteArray msg, QHostAddress &sender, quint16 &port)
-{
-    std::string msg_as_string = msg.toStdString();
-    size_t pos_connected = msg_as_string.find("Connect");
-    size_t pos_msg = msg_as_string.find("Message");
-    size_t pos_dead = msg_as_string.find("Dead");
-    if(pos_connected == 0){
-        //Add the player to the multicast group and add it to the vector of known players
-        auto it = std::find_if(connectedPlayers.begin(), connectedPlayers.end(), [sender](const std::tuple<QHostAddress,quint16>& e) {return std::get<QHostAddress>(e) == sender;});
-        if (it != connectedPlayers.end()) {
-            //Someone with that IP is already playing
-            qDebug() << "Someone already playing with that IP";
-        }else{
-            //Add the player
-            connectedPlayers.push_back(std::make_tuple(sender,port));
-            qDebug() << "Added the sender " << sender << " to the connectedPlayers";
-            //Send back a multicast address which is to be used for the other players AND the server
-            // TODO
-            QString multicastAddress = multicastGroup.toString();
-            QByteArray writeBuffer = multicastAddress.toUtf8();
-            QNetworkDatagram toSend = QNetworkDatagram(writeBuffer,sender,port);
-            multicast->writeDatagram(toSend);
-        }
-    }
-    if(pos_msg == 0){
-        //Player message to send to the other players
-
-    }
-    if(pos_dead == 0){
-        //Player who didnt send the message has won
-    }
-}
-
-void Server::readMoves()
-{
-    QByteArray buffer;
-    buffer.resize(multicast->pendingDatagramSize());
-    //    qDebug() << buffer.size();
-    QHostAddress sender;
-    quint16 senderPort;
-    multicast->readDatagram(buffer.data(),buffer.size(),&sender,&senderPort);
-    qDebug() << "Sender Address: " << sender;
-    qDebug() << "Sender Port: " << senderPort;
-    qDebug() << "Message: " << buffer;
-    if(running){
-
-    }
-}
-
+/*!
+ * \brief Server::startGame will start the game once all players are ready
+ *
+ * Is called always when a player sends a ready message, if all players are ready
+ * it'll start the game by setting running to true and sending the players the start message
+ */
 void Server::startGame()
 {
-
+    for(int i = 0; i < messengers.length(); i++)
+    {
+        if(player_alive[i] == false)
+        {
+            return;
+        }
+    }
+    qDebug() << "Started Game";
     running = true;
     QString tmp = "Start";
     QByteArray buffer;
@@ -117,27 +98,68 @@ void Server::startGame()
     QNetworkDatagram datagram = QNetworkDatagram(buffer,multicastGroup,30000);
     multicast->writeDatagram(datagram);
 }
-
+/*!
+ * \brief Server::handleMessage Checks for keywords and acts accordingly
+ *
+ * Checks for the Dead, Message and Ready Keywords, will mark a player as dead, will send
+ * the message to the other player or will check if we can start the game
+ */
 void Server::handleMessage()
 {
     QByteArray buffer;
     QTcpSocket *sender = (QTcpSocket*) QObject::sender();
-    buffer.resize(sender->readBufferSize());
-    buffer = sender->read(buffer.size());
+//    buffer.resize(sender->readBufferSize());
+    buffer = sender->readAll();
     qDebug() << buffer;
     QString msg  = QString(buffer);
-    if(msg.startsWith("Dead")){
+    if(msg.startsWith("Dead"))
+    {
         qDebug() << "Player with IP " << sender->localAddress() << " died";
-    }else if(msg.startsWith("Message")){
-        qDebug() << msg;
+    }
+    else if(msg.startsWith("Message"))
+    {
         foreach (auto const &mg, messengers) {
             if(mg != sender){
                 mg->write(buffer);
             }
         }
     }
+    else if (msg.startsWith("Ready"))
+    {
+        int idx = messengers.indexOf(sender);
+        player_alive[idx] = true;
+        startGame();
+    }
 }
-
+/*!
+ * \brief Server::handleDisconnect tells the other player he's won
+ *
+ * If the stable tcp connection between player and server disconnects, we assume the player
+ * lost internet connection or something like that and end the game deciding the other player
+ * won
+ */
+void Server::handleDisconnect()
+{
+    QTcpSocket *socket = (QTcpSocket*) QObject::sender();
+    if(running){
+        for(int i = 0; i < messengers.length(); i++){
+            if(messengers.at(i) != socket){
+                messengers.at(i)->write("You won!");
+            }
+        }
+    }
+    if(messengers.contains(socket)){
+        int i = messengers.indexOf(socket);
+        messengers.removeAt(i);
+    }
+    qDebug() << "Player with IP " << socket->peerAddress() << " disconencted";
+}
+/*!
+ * \brief Server::GetInstance Is the function to be used instead of a constructor
+ *
+ * Will return a pointer to the instance of our server a.k.a Singleton Design Pattern
+ * \return Server*
+ */
 Server* Server::GetInstance(){
     if(server_ == nullptr){
         server_ = new Server();
