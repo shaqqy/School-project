@@ -7,7 +7,7 @@
 #include <QBitmap>
 
 #include "network.h"
-#include "assets/CustomButton.h"
+#include "assets/customframe.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -21,21 +21,19 @@ public:
     SchoolSkipperClient(QWidget *parent = nullptr);
     ~SchoolSkipperClient();
 
-    QSize getGameBackgroundSize();
-
 private:
     Ui::MainWindow *ui;
-    QPixmap background;
+
+    CustomFrame* mainFrame;
+    CustomFrame* opponentFrame;
 
     Network* server;
     Network* client;
 
-    QSize gameBackgroundSize;
-
     QTextBrowser* chatWindow;
     CustomButton* playButton;
 
-    bool initMainMenu();
+    void initGameFrames();
     void initChatWindow();
 
 protected:

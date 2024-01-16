@@ -10,12 +10,15 @@ CONFIG += c++17
 
 SOURCES += \
     assets/CustomButton.cpp \
+    assets/customframe.cpp \
     main.cpp \
     mainwindow.cpp \
     network.cpp
 
 HEADERS += \
     assets/CustomButton.h \
+    assets/customframe.h \
+    enums.h \
     mainwindow.h \
     network.h
 

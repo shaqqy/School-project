@@ -2,5 +2,7 @@
     <qresource prefix="/images">
         <file>images/play_menu.png</file>
         <file>images/default_background_menu.png</file>
+        <file>images/default_background.png</file>
+        <file>images/multiplayer.png</file>
     </qresource>
 </RCC>
