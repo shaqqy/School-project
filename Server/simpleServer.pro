@@ -2,6 +2,7 @@ QT += network
 QT -= gui
 
 CONFIG += c++11 console
+CONFIG += c++17
 CONFIG -= app_bundle
 
 # You can make your code fail to compile if it uses deprecated APIs.
@@ -10,7 +11,6 @@ CONFIG -= app_bundle
 
 SOURCES += \
         main.cpp \
-        simpleClient.cpp \
         simpleServer.cpp
 
 # Default rules for deployment.
@@ -19,5 +19,10 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
 HEADERS += \
-    simpleClient.h \
     simpleServer.h
+
+RESOURCES += \
+    img.qrc
+
+DISTFILES += \
+    server.qmodel
