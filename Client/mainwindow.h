@@ -10,6 +10,7 @@
 #include <QRect>
 #include <QGraphicsPixmapItem>
 #include <QLineEdit>
+#include <QTime>
 
 #include "network.h"
 #include "assets/customframe.h"
@@ -25,6 +26,12 @@ class SchoolSkipperClient : public QMainWindow
 public:
     SchoolSkipperClient(QWidget *parent = nullptr);
     ~SchoolSkipperClient();
+
+public slots:
+    void messageReadySlot();
+
+signals:
+    QByteArray messageReadySignal(QByteArray message);
 
 private:
     Ui::MainWindow *ui;

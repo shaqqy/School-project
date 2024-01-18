@@ -13,8 +13,9 @@ class Network : public QObject
 
 public:
     Network(QObject* parent);
+
     void initUdpSocket(int port);
-    void sendUdpMessage(QByteArray message);
+    void initTcpSocket(int port);
 
 private:
     QUdpSocket* udpSocket;
@@ -22,6 +23,10 @@ private:
 
 public slots:
     void readNewUdpData();
+    void readNewTcpData();
+
+    void sendUdpMessage(QByteArray message);
+    void sendTcpMessage(QByteArray message);
 };
 
 #endif // NETWORK_H

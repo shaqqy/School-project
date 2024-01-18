@@ -9,18 +9,17 @@ SchoolSkipperClient::SchoolSkipperClient(QWidget *parent)
 
     setWindowTitle("School Skipper");
     setWindowIcon(QIcon(":/images/images/icon.png"));
-    resize(QSize(900, 600));
+    resize(QSize(900, 700));
 
     sendButton = nullptr;
     chatBox = nullptr;
 
+    client = new Network(this);
+    client->initTcpSocket(30001);
+
     initGameFrames();
     initChatWindow();
     initGraphicsViewAndScene();
-
-    client = new Network(this);
-    //client->initUdpSocket(1234);
-    //client->sendMessage(QByteArray("Connect"));
 }
 
 SchoolSkipperClient::~SchoolSkipperClient()
@@ -54,6 +53,10 @@ void SchoolSkipperClient::initChatWindow() {
     chatBox->setPlaceholderText("Type Message ...");
     chatBox->setTextMargins(QMargins(5, 0, 0, 0));
     chatBox->setStyleSheet("background-color: dark-grey; color: white; border: none; border-top: 1px solid white; border-bottom: 3px solid grey; border-left: 3px solid grey;");
+
+    connect(chatBox, &QLineEdit::returnPressed, this, &SchoolSkipperClient::messageReadySlot);
+    connect(this, &SchoolSkipperClient::messageReadySignal, client, &Network::sendTcpMessage);
+
     chatBox->show();
 }
 
@@ -82,6 +85,15 @@ void SchoolSkipperClient::initGraphicsViewAndScene() {
     graphicsViewOpponentFrame->show();
 }
 
+void SchoolSkipperClient::messageReadySlot() {
+    QString message = chatBox->text();
+
+    emit messageReadySignal(QByteArray::fromStdString(message.toStdString()));
+
+    chatBox->setText("");
+    chatWindow->setText("[" + QTime::currentTime().toString() + "](You): " + message);
+}
+
 void SchoolSkipperClient::paintEvent(QPaintEvent*) {
     const int width = ui->centralwidget->width();
     const int height = ui->centralwidget->height();
@@ -89,7 +101,7 @@ void SchoolSkipperClient::paintEvent(QPaintEvent*) {
     const int gameFramesEndCoordinates = mainFrame->width() + opponentFrame->width();
 
     setMinimumWidth(gameFramesEndCoordinates + 5);
-    setMaximumWidth(gameFramesEndCoordinates + 60);
+    setMaximumWidth(gameFramesEndCoordinates + 300);
 
     /*
      *  Position calculation for main and opponent frame

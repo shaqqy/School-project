@@ -8,4 +8,7 @@
         <file>images/frozen_right_player.png</file>
         <file>images/blue-lik-right@2x.png</file>
     </qresource>
+    <qresource prefix="/sounds">
+        <file>sounds/button_click.mp3</file>
+    </qresource>
 </RCC>

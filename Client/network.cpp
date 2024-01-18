@@ -32,15 +32,44 @@ void Network::readNewUdpData() {
 
         QHostAddress sender;
         quint16 senderPort;
+
         udpSocket->readDatagram(buffer.data(), buffer.size(), &sender, &senderPort);
 
-        qDebug() << "[NET] Message from " << sender.toString() << ":" << senderPort;
-        qDebug() << "[NET] Message: " << buffer;
+        qDebug() << "[NET] UDP message from " << sender.toString() << ":" << senderPort;
+        qDebug() << "[NET] UDP message: " << buffer;
     }
 }
 
 void Network::sendUdpMessage(QByteArray message) {
     udpSocket->writeDatagram(message, QHostAddress("10.10.197.12"), 30001);
 
-    qDebug() << "[NET] Sent message: " << message;
+    qDebug() << "[NET] Sent message (UDP): " << message;
+}
+
+void Network::initTcpSocket(int port) {
+    connect(tcpSocket, &QTcpSocket::readyRead, this, &Network::readNewTcpData);
+
+    tcpSocket->connectToHost(QHostAddress("10.10.201.2"), port);
+
+    if (tcpSocket->waitForConnected(2000)) {
+        qDebug() << "[NET] Connected with (TCP): " << tcpSocket->peerAddress();
+    }
+}
+
+void Network::readNewTcpData() {
+    QByteArray buffer;
+    buffer.resize(tcpSocket->readBufferSize());
+
+    tcpSocket->read(buffer.data(), buffer.size());
+
+    qDebug() << "[NET] TCP message from " << tcpSocket->peerAddress() << ":" << tcpSocket->peerPort();
+    qDebug() << "[NET] TCP message: " << buffer;
+}
+
+void Network::sendTcpMessage(QByteArray message) {
+    QByteArray messageWithPrefix = QByteArray("Message " + message);
+
+    tcpSocket->write(messageWithPrefix, message.length());
+
+    qDebug() << "[NET] Sent message (TCP): " << message;
 }
