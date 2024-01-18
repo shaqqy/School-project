@@ -6,5 +6,6 @@
         <file>images/multiplayer.png</file>
         <file>images/icon.png</file>
         <file>images/frozen_right_player.png</file>
+        <file>images/blue-lik-right@2x.png</file>
     </qresource>
 </RCC>
