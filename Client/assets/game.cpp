@@ -1,5 +1,10 @@
 #include "game.h"
-
+/*!
+ * \brief Game::Game
+ * \param parent
+ * will create a new player and timer
+ * will connect the timer timeout signal with the game move slot
+ */
 Game::Game(QObject *parent)
     : QObject{parent}
 {
@@ -7,13 +12,21 @@ Game::Game(QObject *parent)
     timer = new QTimer(this);
     connect(timer, &QTimer::timeout, this, &Game::move);
 }
-
+/*!
+ * \brief Game::startGame
+ *
+ * Starts the QTimer with an Interval of 25ms
+ */
 void Game::startGame()
 {
     timer->setInterval(25);
     timer->start();
 }
-
+/*!
+ * \brief Game::move
+ *
+ * Handles movement of ingame entities
+ */
 void Game::move()
 {
     //Start by calculating the score
@@ -45,17 +58,24 @@ void Game::move()
         }
     }
 }
-
-void Game::movePlayer()
-{
-
-}
-
+/*!
+ * \brief Game::moveNPCs
+ *
+ * Will simply move enemies along one axis depending on the enemy
+ * if it's no longer visible, reverse the direction of movement ->
+ * TODO: figure out a way to delete the "older" npcs meaning a certain y distance
+ * between them and the player
+ */
 void Game::moveNPCs()
 {
     //Check if the enemy has speed Values set for it's horizontal and vertical speeds and move it accordingly
     foreach (auto const npc, npcs) {
         npc->moveBy(npc->getSpeedH(), npc->getSpeedV());
+        if(!npc->isVisible())
+        {
+            npc->setSpeedH(npc->getSpeedH()*-1);
+            npc->setSpeedV(npc->getSpeedV()*-1);
+        }
     }
 }
 /*!
@@ -76,22 +96,34 @@ void Game::moveEnemy(QPointF target)
     animation->setDuration(25);
     animation->start(QAbstractAnimation::DeleteWhenStopped);
 }
-
+/*!
+ * \brief Game::getView
+ * \return const value of view
+ */
 QGraphicsView *Game::getView() const
 {
     return view;
 }
-
+/*!
+ * \brief Game::setView
+ * \param newView
+ */
 void Game::setView(QGraphicsView *newView)
 {
     view = newView;
 }
-
+/*!
+ * \brief Game::getScene
+ * \return const value of scene
+ */
 QGraphicsScene *Game::getScene() const
 {
     return scene;
 }
-
+/*!
+ * \brief Game::setScene
+ * \param newScene
+ */
 void Game::setScene(QGraphicsScene *newScene)
 {
     scene = newScene;

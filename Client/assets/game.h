@@ -26,7 +26,6 @@ public:
 
 public slots:
     void move();
-    void movePlayer();
     void moveNPCs();
     void moveEnemy(QPointF target);
 
