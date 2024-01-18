@@ -4,5 +4,6 @@
         <file>images/default_background_menu.png</file>
         <file>images/default_background.png</file>
         <file>images/multiplayer.png</file>
+        <file>images/blue-lik-right@2x.png</file>
     </qresource>
 </RCC>
