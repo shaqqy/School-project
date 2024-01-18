@@ -14,7 +14,7 @@ class Network : public QObject
 public:
     Network(QObject* parent);
     void initUdpSocket(int port);
-    void sendMessage(QByteArray message);
+    void sendUdpMessage(QByteArray message);
 
 private:
     QUdpSocket* udpSocket;

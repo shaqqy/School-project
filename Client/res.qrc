@@ -4,5 +4,7 @@
         <file>images/default_background_menu.png</file>
         <file>images/default_background.png</file>
         <file>images/multiplayer.png</file>
+        <file>images/icon.png</file>
+        <file>images/frozen_right_player.png</file>
     </qresource>
 </RCC>

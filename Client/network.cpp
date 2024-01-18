@@ -39,7 +39,7 @@ void Network::readNewUdpData() {
     }
 }
 
-void Network::sendMessage(QByteArray message) {
+void Network::sendUdpMessage(QByteArray message) {
     udpSocket->writeDatagram(message, QHostAddress("10.10.197.12"), 30001);
 
     qDebug() << "[NET] Sent message: " << message;

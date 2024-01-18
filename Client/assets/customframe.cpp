@@ -20,11 +20,11 @@ void CustomFrame::paintEvent(QPaintEvent*) {
      *  Position menu buttons when there initialized
      */
     if (playButton != nullptr && multiplayerButton != nullptr) {
-        playButton->move(QPoint((width() / 2) + width() / 6, height() / 2));
-        multiplayerButton->move(QPoint(width() / 6, height() / 2));
+        playButton->move(QPoint((width() / 2) + (multiplayerButton->width() / 2), height() / 2));
+        multiplayerButton->move(QPoint(multiplayerButton->width() / 2, height() / 2));
     }
 
-    painter.drawPixmap(3, 3, tmpBackground.width() - 3, tmpBackground.height() - 5, tmpBackground);
+    painter.drawPixmap(3, 3, tmpBackground.width() - 3, tmpBackground.height() - 6, tmpBackground);
 }
 
 void CustomFrame::openMainMenu() {
