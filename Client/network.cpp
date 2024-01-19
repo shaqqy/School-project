@@ -49,7 +49,7 @@ void Network::sendUdpMessage(QByteArray message) {
 void Network::initTcpSocket(int port) {
     connect(tcpSocket, &QTcpSocket::readyRead, this, &Network::readNewTcpData);
 
-    tcpSocket->connectToHost(QHostAddress("10.10.201.2"), port);
+    tcpSocket->connectToHost(QHostAddress("10.132.190.120"), port);
 
     if (tcpSocket->waitForConnected(2000)) {
         qDebug() << "[NET] Connected with (TCP): " << tcpSocket->peerAddress();

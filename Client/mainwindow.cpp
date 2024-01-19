@@ -91,7 +91,12 @@ void SchoolSkipperClient::messageReadySlot() {
     emit messageReadySignal(QByteArray::fromStdString(message.toStdString()));
 
     chatBox->setText("");
-    chatWindow->setText("[" + QTime::currentTime().toString() + "](You): " + message);
+
+    if (chatWindow->toPlainText() != "") {
+        chatWindow->setText(chatWindow->toPlainText() + "\n[" + QTime::currentTime().toString() + "](You): " + message);
+    } else {
+        chatWindow->setText("[" + QTime::currentTime().toString() + "](You): " + message);
+    }
 }
 
 void SchoolSkipperClient::paintEvent(QPaintEvent*) {
