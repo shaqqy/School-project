@@ -106,7 +106,6 @@ void SchoolSkipperClient::paintEvent(QPaintEvent*) {
     const int gameFramesEndCoordinates = mainFrame->width() + opponentFrame->width();
 
     setMinimumWidth(gameFramesEndCoordinates + 5);
-    setMaximumWidth(gameFramesEndCoordinates + 300);
 
     /*
      *  Position calculation for main and opponent frame
