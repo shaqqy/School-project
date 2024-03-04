@@ -10,6 +10,7 @@ Platform::Platform(QObject *parent, QPixmap *pix)
 {
     this->setParent(parent);
     setPixmap(*pix);
+    setData(404,"platform");
 }
 
 QRectF Platform::boundingRect() const

@@ -19,7 +19,7 @@ Server::Server(QObject* parent): QObject(parent)
     }
     msg_server = new QTcpServer();
     connect(msg_server, &QTcpServer::newConnection, this, &Server::acceptConnection);
-    msg_server->listen(Socket.localAddress(),30001);
+    msg_server->listen(/*Socket.localAddress()*/QHostAddress("192.168.0.2"), 30001);
     Socket.disconnectFromHost();
     multicastGroup = QHostAddress(QStringLiteral("239.255.43.21"));
     multicast = new QUdpSocket(this);
@@ -53,7 +53,7 @@ void Server::acceptConnection()
 
     connect(socket, &QTcpSocket::readyRead, this, &Server::handleMessage);
     connect(socket, &QTcpSocket::disconnected, this, &Server::handleDisconnect);
-    qDebug() << "Connected player with IP " << messengers.last()->localAddress().toString();
+    qDebug() << "Connected player with IP " << messengers.last()->peerAddress().toString();
     player_alive.push_back(false);
 }
 /*!
@@ -108,7 +108,7 @@ void Server::handleMessage()
 {
     QByteArray buffer;
     QTcpSocket *sender = (QTcpSocket*) QObject::sender();
-//    buffer.resize(sender->readBufferSize());
+    buffer.resize(sender->readBufferSize());
     buffer = sender->readAll();
     qDebug() << buffer;
     QString msg  = QString(buffer);

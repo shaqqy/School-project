@@ -78,7 +78,32 @@ void Actor::move(QPointF point)
 
 void Actor::keyPressEvent(QKeyEvent *event)
 {
-
+    switch(event->key()){
+    case Qt::Key_Right:
+        if(event->isAutoRepeat())
+        {
+            speedH = 20;
+        }
+        else
+        {
+            speedH = 20;
+            setPixmap(QPixmap(":/images/images/blue-lik-right@2x.png"));
+        }
+        break;
+    case Qt::Key_Left:
+        if(event->isAutoRepeat())
+        {
+            speedH = -20;
+        }
+        else
+        {
+            speedH = -20;
+            setPixmap(QPixmap());
+        }
+        break;
+    case Qt::Key_Space:
+        break;
+    }
 }
 
 double Actor::getSpeedH() const

@@ -1,4 +1,5 @@
 #include "game.h"
+#include <QDebug>
 /*!
  * \brief Game::Game
  * \param parent
@@ -11,17 +12,20 @@ Game::Game(QObject *parent)
     player = new Actor(this);
     timer = new QTimer(this);
     connect(timer, &QTimer::timeout, this, &Game::move);
+
 }
 /*!
- * \brief Game::startGame
- *
- * Starts the QTimer with an Interval of 25ms
+ * \brief Game::calculateDistance
+ * \param item1
+ * \param item2
+ * \return
  */
-void Game::startGame()
+double Game::calculateDistance(QPointF item1, QPointF item2)
 {
-    timer->setInterval(25);
-    timer->start();
+    double result = std::sqrt(std::pow(item2.x()-item1.x(),2)+std::pow(item2.y()-item1.y(),2));
+    return result;
 }
+
 /*!
  * \brief Game::move
  *
@@ -33,7 +37,7 @@ void Game::move()
     score = 150*std::abs(max);
     //Move the doodler by it's speed
     player->moveBy(player->getSpeedH(), player->getSpeedV());
-    if(player->getY() > std::abs(max))
+    if(player->getY() < std::abs(max))
         max = player->getY();
     //Add gravity to the speed
     player->setSpeedV(player->getSpeedV()+gravity);
@@ -42,6 +46,9 @@ void Game::move()
     {
         //Player "fell down"
     }
+    if(player->pos().ry() < 250){
+        view->scroll(0,300);
+    }
     //Check for collisions with npcs and platforms
     auto const collisions = scene->collidingItems(player);
     foreach (auto const &collision, collisions)
@@ -49,8 +56,7 @@ void Game::move()
         if(collision->data(404) == "platform"){
             if(player->getSpeedV() < 0)
             {
-                player->setSpeedV(0);
-                player->setSpeedH(0);
+                player->setSpeedV(55);
             }
         }
         else if(collision->data(404) == "npc"){
@@ -76,6 +82,7 @@ void Game::moveNPCs()
             npc->setSpeedH(npc->getSpeedH()*-1);
             npc->setSpeedV(npc->getSpeedV()*-1);
         }
+
     }
 }
 /*!
@@ -95,6 +102,47 @@ void Game::moveEnemy(QPointF target)
     animation->setEndValue(QRectF(target.x(), target.y(), enemyBoundingRect.width(), enemyBoundingRect.height()));
     animation->setDuration(25);
     animation->start(QAbstractAnimation::DeleteWhenStopped);
+}
+/*!
+ * \brief Game::startSlot
+ * \param _mode
+ *
+ * _mode defines whether we need to start in multiplayer mode or singleplayer
+ * timer will be started with an interval of 25ms
+ */
+void Game::startSlot(SchoolSkipper _mode)
+{
+    mode = _mode;
+    initPlatforms();
+    timer->setInterval(25);
+    timer->start();
+}
+/*!
+ * \brief Game::getEnemyView
+ * \return pointer to enemyView
+ */
+QGraphicsView *Game::getEnemyView() const
+{
+    return enemyView;
+}
+/*!
+ * \brief Game::setEnemyView
+ * \param newEnemyView
+ */
+void Game::setEnemyView(QGraphicsView *newEnemyView)
+{
+    enemyView = newEnemyView;
+}
+
+void Game::initPlatforms()
+{
+    QPixmap *plat = new QPixmap(":/images/C:/Users/mihi273307/Pictures/doodle_platform.png");
+    for(int i = 0; i < 50; i++){
+        Platform* tmp = new Platform(scene, plat);
+        scene->addItem(tmp);
+        tmp->mapToScene(300+i*120,300);
+        tmp->show();
+    }
 }
 /*!
  * \brief Game::getView

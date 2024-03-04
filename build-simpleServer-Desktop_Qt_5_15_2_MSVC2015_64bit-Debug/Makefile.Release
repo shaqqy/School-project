@@ -362,7 +362,9 @@ release\main.obj: ..\Server\main.cpp C:\Qt\Berufsschule\5.15.2\msvc2015_64\inclu
 		C:\Qt\Berufsschule\5.15.2\msvc2015_64\include\QtNetwork\qnetworkdatagram.h \
 		C:\Qt\Berufsschule\5.15.2\msvc2015_64\include\QtCore\QFile \
 		C:\Qt\Berufsschule\5.15.2\msvc2015_64\include\QtCore\qfile.h \
-		C:\Qt\Berufsschule\5.15.2\msvc2015_64\include\QtCore\qfiledevice.h
+		C:\Qt\Berufsschule\5.15.2\msvc2015_64\include\QtCore\qfiledevice.h \
+		C:\Qt\Berufsschule\5.15.2\msvc2015_64\include\QtNetwork\QTcpSocket \
+		C:\Qt\Berufsschule\5.15.2\msvc2015_64\include\QtNetwork\qtcpsocket.h
 
 release\simpleServer.obj: ..\Server\simpleServer.cpp ..\Server\simpleServer.h \
 		C:\Qt\Berufsschule\5.15.2\msvc2015_64\include\QtCore\QObject \

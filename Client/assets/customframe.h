@@ -13,6 +13,12 @@ class CustomFrame : public QFrame
 public:
     CustomFrame(QPixmap background, QWidget* parent);
 
+    CustomButton *getMultiplayerButton() const;
+    void setMultiplayerButton(CustomButton *newMultiplayerButton);
+
+    CustomButton *getPlayButton() const;
+    void setPlayButton(CustomButton *newPlayButton);
+
 private:
     QWidget* parent;
     QPixmap background;

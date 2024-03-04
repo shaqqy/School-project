@@ -17,8 +17,17 @@ SchoolSkipperClient::SchoolSkipperClient(QWidget *parent)
     initGameFrames();
     initChatWindow();
     initGraphicsViewAndScene();
-
+    _mode = SchoolSkipper::Gamemode_Singleplayer;
     client = new Network(this);
+    game = new Game(this);
+    game->setScene(graphicsScene);
+    game->setView(graphicsViewMainFrame);
+    opponentFrame->openMainMenu();
+    isMenuActive = true;
+    connect(this, &SchoolSkipperClient::propagate, game, &Game::startSlot);
+    connect(opponentFrame->getPlayButton(), &QAbstractButton::pressed, this, &SchoolSkipperClient::qt_loves_being_stupid_shit);
+    game->initPlatforms();
+
     //client->initUdpSocket(1234);
     //client->sendMessage(QByteArray("Connect"));
 }
@@ -28,6 +37,17 @@ SchoolSkipperClient::~SchoolSkipperClient()
     delete ui;
 }
 
+void SchoolSkipperClient::qt_loves_being_stupid_shit()
+{
+    qDebug() << "Propagation works";
+    if(QObject::sender()->objectName() == "Singleplayer"){
+        emit propagate(SchoolSkipper::Gamemode_Singleplayer);
+    }
+    else{
+        emit propagate(SchoolSkipper::Gamemode_Multiplayer);
+    }
+}
+
 void SchoolSkipperClient::initGameFrames() {
     mainFrame = new CustomFrame(QPixmap(":/images/images/default_background_menu.png"), this);
     mainFrame->setStyleSheet("border-top: 3px solid grey; border-bottom: 3px solid grey; border-left: 3px solid grey;");
@@ -35,8 +55,9 @@ void SchoolSkipperClient::initGameFrames() {
 
     opponentFrame = new CustomFrame(QPixmap(":/images/images/default_background.png"), this);
     opponentFrame->setStyleSheet("border-top: 3px solid grey; border-bottom: 3px solid grey; border-left: 3px solid grey;");
-    opponentFrame->openMainMenu();
-    isMenuActive = true;
+//    opponentFrame->openMainMenu();
+//    connect(this, &SchoolSkipperClient::propagate, game, &Game::startSlot);
+//    isMenuActive = true;
     opponentFrame->show();
 }
 
@@ -89,7 +110,7 @@ void SchoolSkipperClient::paintEvent(QPaintEvent*) {
     const int gameFramesEndCoordinates = mainFrame->width() + opponentFrame->width();
 
     setMinimumWidth(gameFramesEndCoordinates + 5);
-    setMaximumWidth(gameFramesEndCoordinates + 60);
+    setMaximumWidth(gameFramesEndCoordinates + 250);
 
     /*
      *  Position calculation for main and opponent frame

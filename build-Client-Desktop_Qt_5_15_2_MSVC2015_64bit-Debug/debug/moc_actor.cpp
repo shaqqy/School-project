@@ -21,28 +21,28 @@
 QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
-struct qt_meta_stringdata_actor_t {
+struct qt_meta_stringdata_Actor_t {
     QByteArrayData data[4];
     char stringdata0[18];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
-    qptrdiff(offsetof(qt_meta_stringdata_actor_t, stringdata0) + ofs \
+    qptrdiff(offsetof(qt_meta_stringdata_Actor_t, stringdata0) + ofs \
         - idx * sizeof(QByteArrayData)) \
     )
-static const qt_meta_stringdata_actor_t qt_meta_stringdata_actor = {
+static const qt_meta_stringdata_Actor_t qt_meta_stringdata_Actor = {
     {
-QT_MOC_LITERAL(0, 0, 5), // "actor"
+QT_MOC_LITERAL(0, 0, 5), // "Actor"
 QT_MOC_LITERAL(1, 6, 4), // "move"
 QT_MOC_LITERAL(2, 11, 0), // ""
 QT_MOC_LITERAL(3, 12, 5) // "point"
 
     },
-    "actor\0move\0\0point"
+    "Actor\0move\0\0point"
 };
 #undef QT_MOC_LITERAL
 
-static const uint qt_meta_data_actor[] = {
+static const uint qt_meta_data_Actor[] = {
 
  // content:
        8,       // revision
@@ -64,10 +64,10 @@ static const uint qt_meta_data_actor[] = {
        0        // eod
 };
 
-void actor::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
+void Actor::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
 {
     if (_c == QMetaObject::InvokeMetaMethod) {
-        auto *_t = static_cast<actor *>(_o);
+        auto *_t = static_cast<Actor *>(_o);
         Q_UNUSED(_t)
         switch (_id) {
         case 0: _t->move((*reinterpret_cast< QPointF(*)>(_a[1]))); break;
@@ -76,32 +76,32 @@ void actor::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void 
     }
 }
 
-QT_INIT_METAOBJECT const QMetaObject actor::staticMetaObject = { {
+QT_INIT_METAOBJECT const QMetaObject Actor::staticMetaObject = { {
     QMetaObject::SuperData::link<QObject::staticMetaObject>(),
-    qt_meta_stringdata_actor.data,
-    qt_meta_data_actor,
+    qt_meta_stringdata_Actor.data,
+    qt_meta_data_Actor,
     qt_static_metacall,
     nullptr,
     nullptr
 } };
 
 
-const QMetaObject *actor::metaObject() const
+const QMetaObject *Actor::metaObject() const
 {
     return QObject::d_ptr->metaObject ? QObject::d_ptr->dynamicMetaObject() : &staticMetaObject;
 }
 
-void *actor::qt_metacast(const char *_clname)
+void *Actor::qt_metacast(const char *_clname)
 {
     if (!_clname) return nullptr;
-    if (!strcmp(_clname, qt_meta_stringdata_actor.stringdata0))
+    if (!strcmp(_clname, qt_meta_stringdata_Actor.stringdata0))
         return static_cast<void*>(this);
     if (!strcmp(_clname, "QGraphicsPixmapItem"))
         return static_cast< QGraphicsPixmapItem*>(this);
     return QObject::qt_metacast(_clname);
 }
 
-int actor::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
+int Actor::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
 {
     _id = QObject::qt_metacall(_c, _id, _a);
     if (_id < 0)

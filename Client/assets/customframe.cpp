@@ -4,14 +4,33 @@ CustomFrame::CustomFrame(QPixmap background, QWidget* parent) : QFrame(parent)
 {
     this->parent = parent;
     this->background = background;
-
+    setBaseSize(background.size());
     multiplayerButton = nullptr;
     playButton = nullptr;
 }
 
+CustomButton *CustomFrame::getMultiplayerButton() const
+{
+    return multiplayerButton;
+}
+
+void CustomFrame::setMultiplayerButton(CustomButton *newMultiplayerButton)
+{
+    multiplayerButton = newMultiplayerButton;
+}
+
+CustomButton *CustomFrame::getPlayButton() const
+{
+    return playButton;
+}
+
+void CustomFrame::setPlayButton(CustomButton *newPlayButton)
+{
+    playButton = newPlayButton;
+}
+
 void CustomFrame::paintEvent(QPaintEvent*) {
     QPainter painter = QPainter(this);
-
     QPixmap tmpBackground = background.scaled(parent->width(), parent->height(), Qt::KeepAspectRatio);
 
     resize(QSize(tmpBackground.width(), parent->height()));
