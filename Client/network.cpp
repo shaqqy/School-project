@@ -70,6 +70,16 @@ void Network::initTcpSocket(int port) {
     }
 }
 
+QPointF *Network::getReceivedCoords() const
+{
+    return receivedCoords;
+}
+
+void Network::setReceivedCoords(QPointF *newReceivedCoords)
+{
+    receivedCoords = newReceivedCoords;
+}
+
 void Network::readNewTcpData() {
     QByteArray buffer;
     buffer.resize(tcpSocket->readBufferSize());

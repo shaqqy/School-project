@@ -14,23 +14,38 @@ Game::Game(QObject *parent)
     QPixmap *enemy_test = new QPixmap(":/images/images/bug_1_2x.png");
     pixmaps.push_back(enemy_test);
     connect(timer, &QTimer::timeout, this, &Game::move);
+    connect(timer, &QTimer::timeout, this, &Game::moveNPCs);
 }
-
+/*!
+ * \brief Game::getL_O_P
+ * \return
+ */
 QPointF *Game::getL_O_P() const
 {
     return L_O_P;
 }
-
+/*!
+ * \brief Game::setL_O_P
+ * \param newL_O_P
+ */
 void Game::setL_O_P(QPointF *newL_O_P)
 {
     L_O_P = newL_O_P;
 }
-
+/*!
+ * \brief Game::getNetwork
+ * convenience function
+ * \return
+ */
 Network *Game::getNetwork() const
 {
     return network;
 }
-
+/*!
+ * \brief Game::setNetwork
+ * convenience function
+ * \param newNetwork
+ */
 void Game::setNetwork(Network *newNetwork)
 {
     network = newNetwork;
@@ -71,11 +86,6 @@ void Game::move()
             network->sendTcpMessage("",2);
             //TODO: Show end score and game over
         }
-    }
-    //Move the opponent to the last coordinate we received at the time we process this
-    if(mode == SchoolSkipper::Gamemode_Multiplayer)
-    {
-
     }
     //Move the doodler by it's speed
     player->moveBy(player->getSpeedH(), player->getSpeedV());
@@ -132,14 +142,15 @@ void Game::moveNPCs()
  * Whenever we receive a position update we'll add a property animation for the enemy player
  * The enemy player will send his position which we'll have to transpose by the size of our frame
  */
-void Game::moveEnemy(QPointF target)
+void Game::moveEnemy()
 {
-    QPropertyAnimation *animation = new QPropertyAnimation(enemy, "Geometry");
-    auto enemyBoundingRect = enemy->boundingRect();
+    L_O_P = network->getReceivedCoords();
+    QPropertyAnimation *animation = new QPropertyAnimation(opponent, "Geometry");
+    auto enemyBoundingRect = opponent->boundingRect();
     animation->setStartValue(enemyBoundingRect);
 
     //Transpose the value
-    animation->setEndValue(QRectF(target.x(), target.y(), enemyBoundingRect.width(), enemyBoundingRect.height()));
+    animation->setEndValue(QRectF(L_O_P->x(), L_O_P->y(), enemyBoundingRect.width(), enemyBoundingRect.height()));
     animation->setDuration(25);
     animation->start(QAbstractAnimation::DeleteWhenStopped);
 }
@@ -153,6 +164,10 @@ void Game::moveEnemy(QPointF target)
 void Game::startSlot(SchoolSkipper _mode)
 {
     mode = _mode;
+    if(mode == SchoolSkipper::Gamemode_Multiplayer)
+    {
+        connect(timer, &QTimer::timeout, this, &Game::moveEnemy);
+    }
     initPlatforms();
     timer->setInterval(25);
     timer->start();

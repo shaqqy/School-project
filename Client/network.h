@@ -17,6 +17,9 @@ public:
     void initUdpSocket(int port);
     void initTcpSocket(int port);
 
+    QPointF *getReceivedCoords() const;
+    void setReceivedCoords(QPointF *newReceivedCoords);
+
 private:
     QUdpSocket* udpSocket;
     QTcpSocket* tcpSocket;

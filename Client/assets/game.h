@@ -18,7 +18,7 @@ class Game : public QObject
 public:
     explicit Game(QObject *parent = nullptr);
     Actor* player;
-    Actor* enemy;
+    Actor* opponent;
     QPointF *L_O_P;
     std::vector<QPixmap*> pixmaps;
     std::vector<Actor*> npcs;
@@ -48,7 +48,7 @@ public slots:
     void initPlatforms();
     void move();
     void moveNPCs();
-    void moveEnemy(QPointF target);
+    void moveEnemy();
     void startSlot(SchoolSkipper _mode);
 
 protected:
