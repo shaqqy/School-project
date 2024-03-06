@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['operator_3d_0',['operator=',['../class_server.html#a94a3806d56e33c490edd381f2bbde812',1,'Server']]]
+  ['dafuq_0',['dafuq',['../class_client__test.html#af882c3171ba1a0aa9d250d870eb42a63',1,'Client_test']]]
 ];

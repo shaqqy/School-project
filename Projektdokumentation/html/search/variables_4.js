@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['receiver_0',['receiver',['../class_stub___client.html#ae3f39bafa58a4f7ca1c29977d9870d6f',1,'Stub_Client']]],
-  ['running_1',['running',['../class_server.html#a4db32e1a16e0423cf619d7914fa9b8c2',1,'Server']]]
+  ['enemy_0',['enemy',['../class_game.html#ae8d01e861597f7341615adf34aa86068',1,'Game']]],
+  ['enemyview_1',['enemyView',['../class_game.html#a80109769de3959e69c9f4e9491781010',1,'Game']]]
 ];

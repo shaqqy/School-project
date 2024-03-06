@@ -53,6 +53,7 @@ void Server::acceptConnection()
 
     connect(socket, &QTcpSocket::readyRead, this, &Server::handleMessage);
     connect(socket, &QTcpSocket::disconnected, this, &Server::handleDisconnect);
+    qDebug() << socket->peerAddress().toString() + ":"+socket->localAddress().toString();
     qDebug() << "Connected player with IP " << messengers.last()->peerAddress().toString();
     player_alive.push_back(false);
 }
@@ -98,6 +99,7 @@ void Server::startGame()
     QNetworkDatagram datagram = QNetworkDatagram(buffer,multicastGroup,30000);
     multicast->writeDatagram(datagram);
 }
+
 /*!
  * \brief Server::handleMessage Checks for keywords and acts accordingly
  *
@@ -110,8 +112,17 @@ void Server::handleMessage()
     QTcpSocket *sender = (QTcpSocket*) QObject::sender();
     buffer.resize(sender->readBufferSize());
     buffer = sender->readAll();
+//    buffer = sender->read(sender->readBufferSize());
     qDebug() << buffer;
     QString msg  = QString(buffer);
+//    for(int i = 0; i < messengers.length(); i++)
+//    {
+//        if(messengers[i]->peerAddress() != sender->peerAddress()){
+//            serverSender(messengers[i], msg);
+//            qDebug() << "Sent message";
+//        }
+//    }
+//    qDebug() << msg;
     if(msg.startsWith("Dead"))
     {
         qDebug() << "Player with IP " << sender->localAddress() << " died";
@@ -120,7 +131,8 @@ void Server::handleMessage()
     {
         foreach (auto const &mg, messengers) {
             if(mg != sender){
-                mg->write(buffer);
+                qDebug() << "Inside the loop message: " + buffer;
+                mg->write(buffer, buffer.length());
             }
         }
     }
@@ -153,6 +165,7 @@ void Server::handleDisconnect()
         messengers.removeAt(i);
     }
     qDebug() << "Player with IP " << socket->peerAddress() << " disconencted";
+    socket->deleteLater();
 }
 /*!
  * \brief Server::GetInstance Is the function to be used instead of a constructor

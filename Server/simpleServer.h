@@ -7,7 +7,7 @@
 #include <QNetworkDatagram>
 #include <vector>
 #include <QFile>
-
+#include <QDataStream>
 
 
 #define MAXCLIENT 2
@@ -19,7 +19,6 @@ public:
     void operator=(const Server&) = delete;
     Server(Server &other) = delete;
     static Server* GetInstance();
-
 public slots:
   void acceptConnection();
   void startRead();
