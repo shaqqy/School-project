@@ -11,8 +11,29 @@ Game::Game(QObject *parent)
 {
     player = new Actor(this);
     timer = new QTimer(this);
+    QPixmap *enemy_test = new QPixmap(":/images/images/bug_1_2x.png");
+    pixmaps.push_back(enemy_test);
     connect(timer, &QTimer::timeout, this, &Game::move);
+}
 
+QPointF *Game::getL_O_P() const
+{
+    return L_O_P;
+}
+
+void Game::setL_O_P(QPointF *newL_O_P)
+{
+    L_O_P = newL_O_P;
+}
+
+Network *Game::getNetwork() const
+{
+    return network;
+}
+
+void Game::setNetwork(Network *newNetwork)
+{
+    network = newNetwork;
 }
 /*!
  * \brief Game::calculateDistance
@@ -35,20 +56,6 @@ void Game::move()
 {
     //Start by calculating the score
     score = 150*std::abs(max);
-    //Move the doodler by it's speed
-    player->moveBy(player->getSpeedH(), player->getSpeedV());
-    if(player->getY() < std::abs(max))
-        max = player->getY();
-    //Add gravity to the speed
-    player->setSpeedV(player->getSpeedV()+gravity);
-    //Check if the doodler went too low (loose condition)
-    if(player->pos().ry() > 400)
-    {
-        //Player "fell down"
-    }
-    if(player->pos().ry() < 250){
-        view->scroll(0,300);
-    }
     //Check for collisions with npcs and platforms
     auto const collisions = scene->collidingItems(player);
     foreach (auto const &collision, collisions)
@@ -61,7 +68,40 @@ void Game::move()
         }
         else if(collision->data(404) == "npc"){
             //Player dead
+            network->sendTcpMessage("",2);
+            //TODO: Show end score and game over
         }
+    }
+    //Move the opponent to the last coordinate we received at the time we process this
+    if(mode == SchoolSkipper::Gamemode_Multiplayer)
+    {
+
+    }
+    //Move the doodler by it's speed
+    player->moveBy(player->getSpeedH(), player->getSpeedV());
+    if(player->getY() < std::abs(max))
+        max = player->getY();
+    //Add gravity to the speed
+    player->setSpeedV(player->getSpeedV()+gravity);
+    //Check if the doodler went too low (loose condition)
+    if(player->pos().ry() > 400)
+    {
+        if(this->mode == SchoolSkipper::Gamemode_Singleplayer)
+        {
+            //Player fell down
+            //TODO: Show end score and game over
+        }
+        else
+        {
+            //Player "fell down"
+            network->sendTcpMessage("",2);
+            //TODO: Show end score and game over
+        }
+
+    }
+    //Scroll higher if the player reached over a certain point in the screen
+    if(player->pos().ry() < 250){
+        view->scroll(0,300);
     }
 }
 /*!
@@ -126,6 +166,17 @@ QGraphicsView *Game::getEnemyView() const
     return enemyView;
 }
 /*!
+ * \brief Game::initEnemies
+ */
+void Game::initEnemies()
+{
+    int rnd = QRandomGenerator::global()->bounded(1,3);
+    for(int i = 0; i < rnd; i++){
+        Actor *enemy = new Actor(pixmaps.front(), false);
+        npcs.push_back(enemy);
+    }
+}
+/*!
  * \brief Game::setEnemyView
  * \param newEnemyView
  */
@@ -133,7 +184,9 @@ void Game::setEnemyView(QGraphicsView *newEnemyView)
 {
     enemyView = newEnemyView;
 }
-
+/*!
+ * \brief Game::initPlatforms sets up a "test level" with platforms
+ */
 void Game::initPlatforms()
 {
     QPixmap *plat = new QPixmap(":/images/C:/Users/mihi273307/Pictures/doodle_platform.png");

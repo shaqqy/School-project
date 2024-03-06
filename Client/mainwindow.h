@@ -10,8 +10,10 @@
 #include <QRect>
 #include <QGraphicsPixmapItem>
 #include <QLineEdit>
-#include "assets/game.h"
-#include "enums.h"
+#include <QTime>
+
+#include <assets/game.h>
+
 #include "network.h"
 #include "assets/customframe.h"
 
@@ -26,10 +28,13 @@ class SchoolSkipperClient : public QMainWindow
 public:
     SchoolSkipperClient(QWidget *parent = nullptr);
     ~SchoolSkipperClient();
+
 public slots:
-    void qt_loves_being_stupid_shit();
+    void messageReadySlot();
+
 signals:
-    void propagate(SchoolSkipper mode);
+    QByteArray messageReadySignal(QByteArray message);
+
 private:
     Ui::MainWindow *ui;
 
@@ -47,9 +52,6 @@ private:
     Network* server;
     Network* client;
 
-    Game* game;
-
-    SchoolSkipper _mode;
     QTextBrowser* chatWindow;
     QPushButton* sendButton;
     QLineEdit* chatBox;
@@ -59,6 +61,8 @@ private:
     void initGameFrames();
     void initChatWindow();
     void initGraphicsViewAndScene();
+    Game *game;
+
 protected:
     virtual void paintEvent(QPaintEvent* paint) override;
 };

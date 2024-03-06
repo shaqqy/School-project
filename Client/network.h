@@ -13,15 +13,22 @@ class Network : public QObject
 
 public:
     Network(QObject* parent);
+
     void initUdpSocket(int port);
-    void sendUdpMessage(QByteArray message);
+    void initTcpSocket(int port);
 
 private:
     QUdpSocket* udpSocket;
     QTcpSocket* tcpSocket;
+    QPointF *receivedCoords;
 
 public slots:
     void readNewUdpData();
+    void readNewTcpData();
+
+    void sendUdpMessage(QByteArray message);
+    void sendTcpMessage(QByteArray message);
+    void sendTcpMessage(QString message, int _type);
 };
 
 #endif // NETWORK_H

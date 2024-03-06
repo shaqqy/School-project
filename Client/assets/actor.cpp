@@ -44,7 +44,7 @@ QPainterPath Actor::shape() const
     if(_isPlayer)
     {
         QPainterPath path;
-        path.addRect(X+15,Y+49,20,1); //real size of the collider to be used
+        path.addRect(X+15,Y+49,boundingRect().width(),boundingRect().height()); //real size of the collider to be used
         return path;
     }
     else
@@ -102,6 +102,7 @@ void Actor::keyPressEvent(QKeyEvent *event)
         }
         break;
     case Qt::Key_Space:
+        //TODO: implement shooting
         break;
     }
 }
