@@ -11,7 +11,6 @@ CONFIG += c++17
 SOURCES += \
     assets/CustomButton.cpp \
     assets/actor.cpp \
-    assets/customframe.cpp \
     assets/game.cpp \
     assets/platform.cpp \
     main.cpp \
@@ -21,7 +20,6 @@ SOURCES += \
 HEADERS += \
     assets/CustomButton.h \
     assets/actor.h \
-    assets/customframe.h \
     assets/game.h \
     assets/platform.h \
     enums.h \

@@ -13,9 +13,13 @@
 #include <QTime>
 #include <QLabel>
 #include <QScrollBar>
+#include <QPushButton>
+#include <QList>
+#include <QGridLayout>
 
+#include "enums.h"
 #include "network.h"
-#include "assets/customframe.h"
+
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -32,7 +36,7 @@ public:
 public slots:
     void messageReadyToSendSlot();
     void chatMessageReadySlot(QString message);
-    void chatConnectionStatusSlot(bool connected);
+    void chatConnectedStatusSlot(bool connected);
 
 signals:
     QByteArray messageReadyToSendSignal(QByteArray message);
@@ -40,36 +44,37 @@ signals:
 private:
     Ui::MainWindow *ui;
 
-    CustomFrame* mainFrame;
-    CustomFrame* opponentFrame;
-
-    QGraphicsView* graphicsViewMainFrame;
+    QFrame* graphicsViewsGridFrame;
+    QGridLayout* graphicsViewsGrid;
     QGraphicsScene* graphicsScene;
     QGraphicsPixmapItem* graphicsSceneBackground;
-
-    QGraphicsView* graphicsViewOpponentFrame;
-    QGraphicsScene* graphicsSceneOpponentFrame;
-    QGraphicsPixmapItem* graphicsSceneBackgroundOpponentFrame;
+    QList<QGraphicsView*> graphicsViewsList;
 
     Network* server;
     Network* networker;
 
-    QPushButton* chatButton;
+    QPushButton* chatExpandButton;
+    QPushButton* chatMinimizeButton;
     QTextBrowser* chatWindow;
     QLineEdit* chatBox;
 
     QPushButton* sendButton;
     QPushButton* reconnectButton;
-    QLabel* chatConnectionStatus;
+    QLabel* chatConnectedStatus;
 
-    bool isMenuActive;
+    bool isChatWindowInitialized;
     bool isChatVisible;
+    bool isChatConnected;
 
-    void initGameFrames();
+    bool isGraphicsViewsInitialized;
+
+    int numberOfPlayers;
+
     void initChatWindow();
-    void initGraphicsViewAndScene();
+    void initGraphicsViews();
 
     void handleVisibilityOfChat();
+    void scrollToEnd(QScrollBar* scrollBar);
 
 protected:
     virtual void paintEvent(QPaintEvent* paint) override;

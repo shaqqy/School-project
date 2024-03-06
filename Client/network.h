@@ -33,7 +33,7 @@ public slots:
 
 signals:
     void chatMessageReadySignal(QString message);
-    void chatConnectionStatusSignal(bool connected);
+    void chatConnectedStatusSignal(bool connected);
 };
 
 #endif // NETWORK_H

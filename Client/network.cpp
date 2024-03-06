@@ -59,6 +59,8 @@ void Network::initTcpSocket() {
             qDebug() << "[NET] Connected with (TCP): " << tcpSocket->peerAddress();
         } else {
             qDebug() << "[NET] Server not reachable (TCP)";
+
+            emit chatConnectedStatusSignal(false);
         }
     } else {
         qDebug() << "[NET] Already connected via (TCP) to: " << tcpSocket->peerAddress();
@@ -66,13 +68,13 @@ void Network::initTcpSocket() {
 }
 
 void Network::tcpConnected() {
-    emit chatConnectionStatusSignal(true);
+    emit chatConnectedStatusSignal(true);
 }
 
 void Network::tcpDisconnected() {
     qDebug() << "[NET] Disconnected from Server (TCP)";
 
-    emit chatConnectionStatusSignal(false);
+    emit chatConnectedStatusSignal(false);
 }
 
 void Network::readNewTcpData() {
@@ -84,10 +86,10 @@ void Network::readNewTcpData() {
     QString message = QString::fromStdString(buffer.toStdString());
     message = message.split(" ").at(1);
 
-    emit chatMessageReadySignal(message);
-
     qDebug() << "[NET] TCP message from " << tcpSocket->peerAddress() << ":" << tcpSocket->peerPort();
     qDebug() << "[NET] TCP message: " << message;
+
+    emit chatMessageReadySignal(message);
 }
 
 void Network::sendTcpMessage(QByteArray message) {
