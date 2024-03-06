@@ -15,7 +15,7 @@ public:
     Network(QObject* parent);
 
     void initUdpSocket(int port);
-    void initTcpSocket(int port);
+    void initTcpSocket();
 
 private:
     QUdpSocket* udpSocket;
@@ -27,6 +27,13 @@ public slots:
 
     void sendUdpMessage(QByteArray message);
     void sendTcpMessage(QByteArray message);
+
+    void tcpDisconnected();
+    void tcpConnected();
+
+signals:
+    void chatMessageReadySignal(QString message);
+    void chatConnectionStatusSignal(bool connected);
 };
 
 #endif // NETWORK_H

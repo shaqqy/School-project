@@ -11,6 +11,8 @@
 #include <QGraphicsPixmapItem>
 #include <QLineEdit>
 #include <QTime>
+#include <QLabel>
+#include <QScrollBar>
 
 #include "network.h"
 #include "assets/customframe.h"
@@ -28,10 +30,12 @@ public:
     ~SchoolSkipperClient();
 
 public slots:
-    void messageReadySlot();
+    void messageReadyToSendSlot();
+    void chatMessageReadySlot(QString message);
+    void chatConnectionStatusSlot(bool connected);
 
 signals:
-    QByteArray messageReadySignal(QByteArray message);
+    QByteArray messageReadyToSendSignal(QByteArray message);
 
 private:
     Ui::MainWindow *ui;
@@ -48,17 +52,24 @@ private:
     QGraphicsPixmapItem* graphicsSceneBackgroundOpponentFrame;
 
     Network* server;
-    Network* client;
+    Network* networker;
 
+    QPushButton* chatButton;
     QTextBrowser* chatWindow;
-    QPushButton* sendButton;
     QLineEdit* chatBox;
 
+    QPushButton* sendButton;
+    QPushButton* reconnectButton;
+    QLabel* chatConnectionStatus;
+
     bool isMenuActive;
+    bool isChatVisible;
 
     void initGameFrames();
     void initChatWindow();
     void initGraphicsViewAndScene();
+
+    void handleVisibilityOfChat();
 
 protected:
     virtual void paintEvent(QPaintEvent* paint) override;

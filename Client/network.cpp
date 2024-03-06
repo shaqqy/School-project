@@ -4,6 +4,9 @@ Network::Network(QObject* parent) : QObject(parent)
 {
     udpSocket = new QUdpSocket(this);
     tcpSocket = new QTcpSocket(this);
+
+    connect(tcpSocket, &QTcpSocket::connected, this, &Network::tcpConnected);
+    connect(tcpSocket, &QTcpSocket::disconnected, this, &Network::tcpDisconnected);
 }
 
 void Network::initUdpSocket(int port) {
@@ -46,24 +49,45 @@ void Network::sendUdpMessage(QByteArray message) {
     qDebug() << "[NET] Sent message (UDP): " << message;
 }
 
-void Network::initTcpSocket(int port) {
-    connect(tcpSocket, &QTcpSocket::readyRead, this, &Network::readNewTcpData);
+void Network::initTcpSocket() {
+    if (tcpSocket->state() != QTcpSocket::ConnectedState && tcpSocket->state() != QTcpSocket::BoundState) {
+        connect(tcpSocket, &QTcpSocket::readyRead, this, &Network::readNewTcpData);
 
-    tcpSocket->connectToHost(QHostAddress("192.168.0.2"), port);
+        tcpSocket->connectToHost(QHostAddress("192.168.0.2"), 30001);
 
-    if (tcpSocket->waitForConnected(2000)) {
-        qDebug() << "[NET] Connected with (TCP): " << tcpSocket->peerAddress();
+        if (tcpSocket->waitForConnected(2000)) {
+            qDebug() << "[NET] Connected with (TCP): " << tcpSocket->peerAddress();
+        } else {
+            qDebug() << "[NET] Server not reachable (TCP)";
+        }
+    } else {
+        qDebug() << "[NET] Already connected via (TCP) to: " << tcpSocket->peerAddress();
     }
+}
+
+void Network::tcpConnected() {
+    emit chatConnectionStatusSignal(true);
+}
+
+void Network::tcpDisconnected() {
+    qDebug() << "[NET] Disconnected from Server (TCP)";
+
+    emit chatConnectionStatusSignal(false);
 }
 
 void Network::readNewTcpData() {
     QByteArray buffer;
     buffer.resize(tcpSocket->readBufferSize());
 
-    tcpSocket->read(buffer.data(), buffer.size());
+    buffer = tcpSocket->readAll();
+
+    QString message = QString::fromStdString(buffer.toStdString());
+    message = message.split(" ").at(1);
+
+    emit chatMessageReadySignal(message);
 
     qDebug() << "[NET] TCP message from " << tcpSocket->peerAddress() << ":" << tcpSocket->peerPort();
-    qDebug() << "[NET] TCP message: " << buffer;
+    qDebug() << "[NET] TCP message: " << message;
 }
 
 void Network::sendTcpMessage(QByteArray message) {
