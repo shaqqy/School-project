@@ -9,6 +9,7 @@
         <file>images/blue-lik-right@2x.png</file>
         <file>images/chat.png</file>
         <file>images/chat-close.png</file>
+        <file>images/chat_message_new.png</file>
     </qresource>
     <qresource prefix="/sounds">
         <file>sounds/button_click.mp3</file>

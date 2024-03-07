@@ -5,9 +5,11 @@ SchoolSkipperClient::SchoolSkipperClient(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
 {
+    isMenuBarInitialized = false;
     isChatWindowInitialized = false;
-    isChatVisible = false;
     isGraphicsViewsInitialized = false;
+    isChatVisible = false;
+    isNewChatMessageAvailable = false;
 
     numberOfPlayers = 3;
 
@@ -15,8 +17,8 @@ SchoolSkipperClient::SchoolSkipperClient(QWidget *parent)
 
     setWindowTitle("School Skipper");
     setWindowIcon(QIcon(":/images/images/icon.png"));
-    setStyleSheet("background-color: black;");
-    resize(QSize(900, 700));
+    setStyleSheet("background-color: white;");
+    resize(QSize(350 * numberOfPlayers, 700));
 
     networker = new Network(this);
     networker->initTcpSocket();
@@ -24,6 +26,7 @@ SchoolSkipperClient::SchoolSkipperClient(QWidget *parent)
     /*
      *  Initialization of application components. Chat window needs to be initialized first!
      */
+    initMenuBar();
     initChatWindow();
     initGraphicsViews();
 }
@@ -33,26 +36,43 @@ SchoolSkipperClient::~SchoolSkipperClient()
     delete ui;
 }
 
+void SchoolSkipperClient::initMenuBar() {
+    qDebug() << "[SYS] Initializing menu bar ...";
+
+    menuBarFrame = new QFrame(this);
+    menuBarFrame->move(QPoint(0, 0));
+    menuBarFrame->setStyleSheet("background-color: black; border-top: 3px solid grey; border-left: 3px solid grey; border-top-left-radius: 10px;");
+
+    isMenuBarInitialized = true;
+
+    qDebug() << "[SYS] Initialized menu bar";
+}
+
 void SchoolSkipperClient::initGraphicsViews() {
     qDebug() << "[SYS] Initializing graphics views ...";
 
     graphicsViewsGridFrame = new QFrame(this);
-    graphicsViewsGridFrame->setStyleSheet("border-top-left-radius: 10px; border-bottom-left-radius: 10px; border: 3px solid grey;");
+    graphicsViewsGridFrame->move(QPoint(0, (int) SchoolSkipper::CUSTOM_MENU_BAR_HEIGHT));
+    graphicsViewsGridFrame->setStyleSheet("background-color: black; border-bottom-left-radius: 10px; border: 3px solid grey; border-top: 1px solid white;");
     graphicsViewsGridFrame->stackUnder(chatExpandButton);
 
     graphicsViewsGrid = new QGridLayout(graphicsViewsGridFrame);
 
     graphicsScene = new QGraphicsScene();
 
-    for (int column = 0; column < numberOfPlayers / 2; column++) {
-        for (int row = 0; row < 2; row++) {
-            QGraphicsView* currentGraphicsView = new QGraphicsView(graphicsScene, graphicsViewsGridFrame);
-            currentGraphicsView->setStyleSheet("border: 1px solid white;");
+    QPixmap background = QPixmap(":/images/images/default_background.png").scaled(350, 700);
 
-            graphicsViewsGrid->addWidget(currentGraphicsView, row, column);
+    for (int column = 0; column < numberOfPlayers; column++) {
+        QGraphicsView* currentGraphicsView = new QGraphicsView(graphicsScene, graphicsViewsGridFrame);
+        currentGraphicsView->setStyleSheet("border: 3px solid white; border-radius: 0px;");
+        currentGraphicsView->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+        currentGraphicsView->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
 
-            graphicsViewsList.append(currentGraphicsView);
-        }
+        graphicsViewsGrid->addWidget(currentGraphicsView, 0, column);
+
+        currentGraphicsView->setBackgroundBrush(QBrush(background));
+
+        graphicsViewsList.append(currentGraphicsView);
     }
 
     isGraphicsViewsInitialized = true;
@@ -82,7 +102,6 @@ void SchoolSkipperClient::initChatWindow() {
     chatExpandButton = new QPushButton(this);
     chatExpandButton->resize(QSize(40, 40));
     chatExpandButton->setStyleSheet("background: white; border-left: 3px solid grey; border-top: 3px solid grey; border-bottom: 3px solid grey; border-top-left-radius: 20px; border-bottom-left-radius: 20px;");
-    chatExpandButton->setIcon(QIcon(":/images/images/chat.png"));
 
     chatMinimizeButton = new QPushButton(this);
     chatMinimizeButton->setStyleSheet("background: black; border-top: 3px solid grey; border-left: 3px solid grey; border-top-left-radius: 10px;");
@@ -116,6 +135,12 @@ void SchoolSkipperClient::initChatWindow() {
      */
     connect(chatExpandButton, &QPushButton::clicked, this, &SchoolSkipperClient::handleVisibilityOfChat);
     connect(chatMinimizeButton, &QPushButton::clicked, this, &SchoolSkipperClient::handleVisibilityOfChat);
+
+    /*
+     *  create and connect short cut for accessing the chat window
+     */
+    QShortcut* openChatShortCut = new QShortcut(QKeySequence(Qt::CTRL + Qt::Key_C), this);
+    connect(openChatShortCut, &QShortcut::activated, this, &SchoolSkipperClient::handleVisibilityOfChat);
 
     isChatWindowInitialized = true;
 
@@ -157,6 +182,14 @@ void SchoolSkipperClient::messageReadyToSendSlot() {
 }
 
 void SchoolSkipperClient::chatMessageReadySlot(QString message) {
+    if (chatWindow == nullptr) {
+        qDebug() << "[ERR] No initialized chat window to display message";
+
+        return;
+    }
+
+    isNewChatMessageAvailable = true;
+
     QScrollBar* scrollBar = chatWindow->verticalScrollBar();
     bool scrollBarAtEnd = scrollBar->maximum() - scrollBar->value() <= 10;
 
@@ -176,28 +209,33 @@ void SchoolSkipperClient::paintEvent(QPaintEvent*) {
     const int width = ui->centralwidget->width();
     const int height = ui->centralwidget->height();
 
+
     /*
      *  Position and size calculation for the chat window items
      */
     if (isChatWindowInitialized) {
+        const int chatMenuHeight = (int) SchoolSkipper::CUSTOM_MENU_BAR_HEIGHT;
+
         if (isChatVisible) {
             const int x = width - (int) SchoolSkipper::CHAT_WINDOW_WIDTH;
 
+            isNewChatMessageAvailable = false;
+
             if (isChatConnected) {
-                chatConnectedStatus->setStyleSheet("background-color: black; border-top: 3px solid grey; border-right: 1px solid white; color: green;");
+                chatConnectedStatus->setStyleSheet(chatConnectedStatus->styleSheet() + "color: green;");
                 chatConnectedStatus->setText("Connected");
             } else {
-                chatConnectedStatus->setStyleSheet("background-color: black; border-top: 3px solid grey; border-right: 1px solid white; color: red;");
+                chatConnectedStatus->setStyleSheet(chatConnectedStatus->styleSheet() + "color: red;");
                 chatConnectedStatus->setText("Disconnected");
             }
 
             chatWindow->resize((int) SchoolSkipper::CHAT_WINDOW_WIDTH, height - 70);
-            chatWindow->move(QPoint(x, 30));
+            chatWindow->move(QPoint(x, chatMenuHeight));
 
-            chatConnectedStatus->resize(QSize(chatWindow->width() / 3 + 9, 30));
+            chatConnectedStatus->resize(QSize(chatWindow->width() / 3 + 9, chatMenuHeight));
             chatConnectedStatus->move(QPoint(x, 0));
 
-            reconnectButton->resize(QSize(chatWindow->width() / 3, 30));
+            reconnectButton->resize(QSize(chatWindow->width() / 3, chatMenuHeight));
             reconnectButton->move(QPoint(x + (chatWindow->width() - chatWindow->width() / 3), 0));
 
             chatMinimizeButton->resize(QSize(chatWindow->width() / 3, 30));
@@ -218,7 +256,13 @@ void SchoolSkipperClient::paintEvent(QPaintEvent*) {
             chatBox->show();
             chatWindow->show();
         } else {
-            chatExpandButton->move(QPoint(width - chatExpandButton->width() + 3, 40));
+            if (isNewChatMessageAvailable) {
+                chatExpandButton->setIcon(QIcon(":/images/images/chat_message_new.png"));
+            } else {
+                chatExpandButton->setIcon(QIcon(":/images/images/chat.png"));
+            }
+
+            chatExpandButton->move(QPoint(width - chatExpandButton->width() + 3, chatMenuHeight + 30));
             chatExpandButton->show();
 
             chatWindow->hide();
@@ -231,17 +275,32 @@ void SchoolSkipperClient::paintEvent(QPaintEvent*) {
     }
 
     /*
-     *  Size calculation for graphics view grid
+     *  Size calculation and style manipulation for graphics view grid and graphics scene backgrounds
      */
     if (isGraphicsViewsInitialized) {
         if (isChatVisible) {
-            graphicsViewsGridFrame->resize(QSize(width - (int) SchoolSkipper::CHAT_WINDOW_WIDTH, height));
-            graphicsViewsGridFrame->setStyleSheet("border-top-left-radius: 10px; border-bottom-left-radius: 10px; border: 3px solid grey;");
+            graphicsViewsGridFrame->resize(QSize(width - (int) SchoolSkipper::CHAT_WINDOW_WIDTH, height - (int) SchoolSkipper::CUSTOM_MENU_BAR_HEIGHT));
+            graphicsViewsGridFrame->setStyleSheet(graphicsViewsGridFrame->styleSheet() + "border-right: 1px solid white; border-bottom-right-radius: 0px;");
         } else {
-            graphicsViewsGridFrame->resize(QSize(width, height));
-            graphicsViewsGridFrame->setStyleSheet("border-radius: 10px; border: 3px solid grey;");
+            graphicsViewsGridFrame->resize(QSize(width, height - (int) SchoolSkipper::CUSTOM_MENU_BAR_HEIGHT));
+            graphicsViewsGridFrame->setStyleSheet(graphicsViewsGridFrame->styleSheet() + "border-right: 3px solid grey; border-bottom-right-radius: 10px;");
         }
 
         graphicsViewsGridFrame->show();
+    }
+
+    /*
+     *  Size calculation and style manipulation for menu bar
+     */
+    if (isMenuBarInitialized) {
+        if (isChatVisible) {
+            menuBarFrame->resize(QSize(width - (int) SchoolSkipper::CHAT_WINDOW_WIDTH, (int) SchoolSkipper::CUSTOM_MENU_BAR_HEIGHT));
+            menuBarFrame->setStyleSheet(menuBarFrame->styleSheet() + "border-top-right-radius: 0px; border-right: 1px solid white;");
+        } else {
+            menuBarFrame->resize(QSize(width, (int) SchoolSkipper::CUSTOM_MENU_BAR_HEIGHT));
+            menuBarFrame->setStyleSheet(menuBarFrame->styleSheet() + "border-top-right-radius: 10px; border-right: 3px solid grey;");
+        }
+
+        menuBarFrame->show();
     }
 }

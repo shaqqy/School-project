@@ -16,6 +16,7 @@
 #include <QPushButton>
 #include <QList>
 #include <QGridLayout>
+#include <QShortcut>
 
 #include "enums.h"
 #include "network.h"
@@ -44,14 +45,16 @@ signals:
 private:
     Ui::MainWindow *ui;
 
+    Network* server;
+    Network* networker;
+
     QFrame* graphicsViewsGridFrame;
     QGridLayout* graphicsViewsGrid;
     QGraphicsScene* graphicsScene;
-    QGraphicsPixmapItem* graphicsSceneBackground;
+    QList<QGraphicsPixmapItem*> graphicsSceneBackgroundsList;
     QList<QGraphicsView*> graphicsViewsList;
 
-    Network* server;
-    Network* networker;
+    QFrame* menuBarFrame;
 
     QPushButton* chatExpandButton;
     QPushButton* chatMinimizeButton;
@@ -62,14 +65,17 @@ private:
     QPushButton* reconnectButton;
     QLabel* chatConnectedStatus;
 
-    bool isChatWindowInitialized;
     bool isChatVisible;
     bool isChatConnected;
+    bool isNewChatMessageAvailable;
 
     bool isGraphicsViewsInitialized;
+    bool isChatWindowInitialized;
+    bool isMenuBarInitialized;
 
     int numberOfPlayers;
 
+    void initMenuBar();
     void initChatWindow();
     void initGraphicsViews();
 
