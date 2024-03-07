@@ -1,12 +1,12 @@
 #include "network.h"
 
-#include <QRegularExpression>
-
 Network::Network(QObject* parent) : QObject(parent)
 {
     udpSocket = new QUdpSocket(this);
     tcpSocket = new QTcpSocket(this);
-    receivedCoords = new QPointF();
+
+    connect(tcpSocket, &QTcpSocket::connected, this, &Network::tcpConnected);
+    connect(tcpSocket, &QTcpSocket::disconnected, this, &Network::tcpDisconnected);
 }
 
 void Network::initUdpSocket(int port) {
@@ -29,10 +29,6 @@ void Network::initUdpSocket(int port) {
 }
 
 void Network::readNewUdpData() {
-    QString p1, p2;
-    QRegularExpression regex = QRegularExpression();
-    regex.setPattern("\\d+x\\d+");
-    QRegularExpressionMatch match;
     while (udpSocket->hasPendingDatagrams()) {
         QByteArray buffer;
         buffer.resize(udpSocket->pendingDatagramSize());
@@ -44,13 +40,7 @@ void Network::readNewUdpData() {
 
         qDebug() << "[NET] UDP message from " << sender.toString() << ":" << senderPort;
         qDebug() << "[NET] UDP message: " << buffer;
-        match = regex.match(QString::fromUtf8(buffer));
-        if(match.hasMatch()){
-            p1 = QString::fromUtf8(buffer).split("x")[0];
-            p2 = QString::fromUtf8(buffer).split("x")[1];
-            receivedCoords->setX(p1.toDouble());
-            receivedCoords->setY(p2.toDouble());
-        }
+        saveLastOpponentPosition(QString(buffer));
     }
 }
 
@@ -60,24 +50,32 @@ void Network::sendUdpMessage(QByteArray message) {
     qDebug() << "[NET] Sent message (UDP): " << message;
 }
 
-void Network::initTcpSocket(int port) {
-    connect(tcpSocket, &QTcpSocket::readyRead, this, &Network::readNewTcpData);
+void Network::initTcpSocket() {
+    if (tcpSocket->state() != QTcpSocket::ConnectedState && tcpSocket->state() != QTcpSocket::BoundState) {
+        connect(tcpSocket, &QTcpSocket::readyRead, this, &Network::readNewTcpData);
 
-    tcpSocket->connectToHost(QHostAddress("192.168.0.2"), port);
+        tcpSocket->connectToHost(QHostAddress("192.168.0.2"), 30001);
 
-    if (tcpSocket->waitForConnected(2000)) {
-        qDebug() << "[NET] Connected with (TCP): " << tcpSocket->peerAddress();
+        if (tcpSocket->waitForConnected(2000)) {
+            qDebug() << "[NET] Connected with (TCP): " << tcpSocket->peerAddress();
+        } else {
+            qDebug() << "[NET] Server not reachable (TCP)";
+
+            emit chatConnectedStatusSignal(false);
+        }
+    } else {
+        qDebug() << "[NET] Already connected via (TCP) to: " << tcpSocket->peerAddress();
     }
 }
 
-QPointF *Network::getReceivedCoords() const
-{
-    return receivedCoords;
+void Network::tcpConnected() {
+    emit chatConnectedStatusSignal(true);
 }
 
-void Network::setReceivedCoords(QPointF *newReceivedCoords)
-{
-    receivedCoords = newReceivedCoords;
+void Network::tcpDisconnected() {
+    qDebug() << "[NET] Disconnected from Server (TCP)";
+
+    emit chatConnectedStatusSignal(false);
 }
 
 void Network::readNewTcpData() {
@@ -86,28 +84,43 @@ void Network::readNewTcpData() {
 
     buffer = tcpSocket->readAll();
 
+    QString message = QString::fromStdString(buffer.toStdString());
+    message = message.split(" ").at(1);
+
     qDebug() << "[NET] TCP message from " << tcpSocket->peerAddress() << ":" << tcpSocket->peerPort();
-    qDebug() << "[NET] TCP message: " << buffer;
+    qDebug() << "[NET] TCP message: " << message;
+
+    emit chatMessageReadySignal(message);
 }
 
 void Network::sendTcpMessage(QByteArray message) {
-    QByteArray messageWithPrefix = QByteArray("Message " + message);
-
-    tcpSocket->write(messageWithPrefix, messageWithPrefix.length());
+    tcpSocket->write(message, message.length());
 
     qDebug() << "[NET] Sent message (TCP): " << message;
 }
 
-void Network::sendTcpMessage(QString message, int _type)
+void Network::saveLastOpponentPosition(QString message)
 {
-    QByteArray buffer;
-    QDataStream stream = QDataStream(buffer);
-    if(_type == 0){
-        stream << "Message "+message;
-    }else if(_type == 1){
-        stream << "Ready "+message;
-    }else{
-        stream << "Dead";
+    QRegularExpression regex = QRegularExpression();
+    regex.setPattern("^\\d*[x]\\d*$");
+    QRegularExpressionMatch match = regex.match(message);
+    if(match.hasMatch())
+    {
+        auto opponentPosition = L_O_P.front();
+        opponentPosition->setX(message.split("x")[0].toFloat());
+        opponentPosition->setY(message.split("x")[1].toFloat());
     }
-    tcpSocket->write(buffer);
+    else
+    {
+        regex.setPattern("^\\d[:]\\d*[x]\\d*$");
+        match = regex.match(message);
+        if(match.hasMatch())
+        {
+            int idx = message.split(":")[0].toInt();
+            auto withoutIdx = message.split(":")[1];
+            auto opponentPosition = L_O_P.at(idx);
+            opponentPosition->setX(withoutIdx.split("x")[0].toFloat());
+            opponentPosition->setY(withoutIdx.split("x")[1].toFloat());
+        }
+    }
 }

@@ -11,11 +11,15 @@
 #include <QGraphicsPixmapItem>
 #include <QLineEdit>
 #include <QTime>
-
-#include <assets/game.h>
-
+#include <QLabel>
+#include <QScrollBar>
+#include <QPushButton>
+#include <QList>
+#include <QGridLayout>
+#include "assets/game.h"
+#include "enums.h"
 #include "network.h"
-#include "assets/customframe.h"
+#include <QtMath>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -30,38 +34,47 @@ public:
     ~SchoolSkipperClient();
 
 public slots:
-    void messageReadySlot();
+    void messageReadyToSendSlot();
+    void chatMessageReadySlot(QString message);
+    void chatConnectedStatusSlot(bool connected);
 
 signals:
-    QByteArray messageReadySignal(QByteArray message);
+    QByteArray messageReadyToSendSignal(QByteArray message);
 
 private:
     Ui::MainWindow *ui;
 
-    CustomFrame* mainFrame;
-    CustomFrame* opponentFrame;
-
-    QGraphicsView* graphicsViewMainFrame;
+    QFrame* graphicsViewsGridFrame;
+    QGridLayout* graphicsViewsGrid;
     QGraphicsScene* graphicsScene;
     QGraphicsPixmapItem* graphicsSceneBackground;
-
-    QGraphicsView* graphicsViewOpponentFrame;
-    QGraphicsScene* graphicsSceneOpponentFrame;
-    QGraphicsPixmapItem* graphicsSceneBackgroundOpponentFrame;
+    QList<QGraphicsView*> graphicsViewsList;
 
     Network* server;
-    Network* client;
-
+    Network* networker;
+    Game* game;
+    QPushButton* chatExpandButton;
+    QPushButton* chatMinimizeButton;
     QTextBrowser* chatWindow;
-    QPushButton* sendButton;
     QLineEdit* chatBox;
 
-    bool isMenuActive;
+    QPushButton* sendButton;
+    QPushButton* reconnectButton;
+    QLabel* chatConnectedStatus;
 
-    void initGameFrames();
+    bool isChatWindowInitialized;
+    bool isChatVisible;
+    bool isChatConnected;
+
+    bool isGraphicsViewsInitialized;
+
+    int numberOfPlayers;
+
     void initChatWindow();
-    void initGraphicsViewAndScene();
-    Game *game;
+    void initGraphicsViews();
+
+    void handleVisibilityOfChat();
+    void scrollToEnd(QScrollBar* scrollBar);
 
 protected:
     virtual void paintEvent(QPaintEvent* paint) override;

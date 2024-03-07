@@ -16,22 +16,7 @@ Game::Game(QObject *parent)
     connect(timer, &QTimer::timeout, this, &Game::move);
     connect(timer, &QTimer::timeout, this, &Game::moveNPCs);
 }
-/*!
- * \brief Game::getL_O_P
- * \return
- */
-QPointF *Game::getL_O_P() const
-{
-    return L_O_P;
-}
-/*!
- * \brief Game::setL_O_P
- * \param newL_O_P
- */
-void Game::setL_O_P(QPointF *newL_O_P)
-{
-    L_O_P = newL_O_P;
-}
+
 /*!
  * \brief Game::getNetwork
  * convenience function
@@ -83,7 +68,7 @@ void Game::move()
         }
         else if(collision->data(404) == "npc"){
             //Player dead
-            network->sendTcpMessage("",2);
+            network->sendTcpMessage("Dead");
             //TODO: Show end score and game over
         }
     }
@@ -104,7 +89,7 @@ void Game::move()
         else
         {
             //Player "fell down"
-            network->sendTcpMessage("",2);
+            network->sendTcpMessage("Dead");
             //TODO: Show end score and game over
         }
 
@@ -144,15 +129,17 @@ void Game::moveNPCs()
  */
 void Game::moveEnemy()
 {
-    L_O_P = network->getReceivedCoords();
-    QPropertyAnimation *animation = new QPropertyAnimation(opponent, "Geometry");
-    auto enemyBoundingRect = opponent->boundingRect();
-    animation->setStartValue(enemyBoundingRect);
+    for(int i = 0; i < opponents.size(); i++)
+    {
+        QPropertyAnimation *animation = new QPropertyAnimation(opponents.at(i), "Geometry");
+        auto enemyBoundingRect = opponents.at(i)->boundingRect();
+        animation->setStartValue(enemyBoundingRect);
 
-    //Transpose the value
-    animation->setEndValue(QRectF(L_O_P->x(), L_O_P->y(), enemyBoundingRect.width(), enemyBoundingRect.height()));
-    animation->setDuration(25);
-    animation->start(QAbstractAnimation::DeleteWhenStopped);
+        //Transpose the value
+        animation->setEndValue(QRectF(L_O_P.at(i)->x(), L_O_P.at(i)->y(), enemyBoundingRect.width(), enemyBoundingRect.height()));
+        animation->setDuration(25);
+        animation->start(QAbstractAnimation::DeleteWhenStopped);
+    }
 }
 /*!
  * \brief Game::startSlot
@@ -164,11 +151,19 @@ void Game::moveEnemy()
 void Game::startSlot(SchoolSkipper _mode)
 {
     mode = _mode;
+    player->setPos(50,50);
+    player->setZValue(100);
+    scene->addItem(player);
+    player->show();
     if(mode == SchoolSkipper::Gamemode_Multiplayer)
     {
+        for(int i = 0; i < network->L_O_P.size(); i++){
+            L_O_P.push_back(network->L_O_P.at(i));
+        }
         connect(timer, &QTimer::timeout, this, &Game::moveEnemy);
     }
     initPlatforms();
+
     timer->setInterval(25);
     timer->start();
 }
@@ -204,11 +199,12 @@ void Game::setEnemyView(QGraphicsView *newEnemyView)
  */
 void Game::initPlatforms()
 {
-    QPixmap *plat = new QPixmap(":/images/C:/Users/mihi273307/Pictures/doodle_platform.png");
-    for(int i = 0; i < 50; i++){
+    QPixmap *plat = new QPixmap(":/images/images/platform_standard.png");
+    for(int i = 0; i < 20; i++){
         Platform* tmp = new Platform(scene, plat);
         scene->addItem(tmp);
-        tmp->mapToScene(300+i*120,300);
+//        tmp->mapToScene(300+i*10,300);
+        tmp->setPos(QPointF(i*10,i*10));
         tmp->show();
     }
 }

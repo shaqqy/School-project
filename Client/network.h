@@ -6,6 +6,7 @@
 #include <QtNetwork/QNetworkDatagram>
 #include <QTextBrowser>
 #include <QHostInfo>
+#include <QRegularExpression>
 
 class Network : public QObject
 {
@@ -15,15 +16,13 @@ public:
     Network(QObject* parent);
 
     void initUdpSocket(int port);
-    void initTcpSocket(int port);
-
-    QPointF *getReceivedCoords() const;
-    void setReceivedCoords(QPointF *newReceivedCoords);
-
+    void initTcpSocket();
+    std::vector<QPointF*> L_O_P;
+    void saveLastOpponentPosition(QString message);
 private:
     QUdpSocket* udpSocket;
     QTcpSocket* tcpSocket;
-    QPointF *receivedCoords;
+
 
 public slots:
     void readNewUdpData();
@@ -31,7 +30,13 @@ public slots:
 
     void sendUdpMessage(QByteArray message);
     void sendTcpMessage(QByteArray message);
-    void sendTcpMessage(QString message, int _type);
+
+    void tcpDisconnected();
+    void tcpConnected();
+
+signals:
+    void chatMessageReadySignal(QString message);
+    void chatConnectedStatusSignal(bool connected);
 };
 
 #endif // NETWORK_H

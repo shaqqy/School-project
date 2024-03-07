@@ -7,8 +7,12 @@
         <file>images/icon.png</file>
         <file>images/frozen_right_player.png</file>
         <file>images/blue-lik-right@2x.png</file>
-        <file>C:/Users/mihi273307/Pictures/doodle_platform.png</file>
-        <file>images/blue-lik-left@2x.png</file>
+        <file>images/chat.png</file>
+        <file>images/chat-close.png</file>
         <file>images/bug_1_2x.png</file>
+        <file>images/platform_standard.png</file>
+    </qresource>
+    <qresource prefix="/sounds">
+        <file>sounds/button_click.mp3</file>
     </qresource>
 </RCC>

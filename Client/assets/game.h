@@ -18,8 +18,8 @@ class Game : public QObject
 public:
     explicit Game(QObject *parent = nullptr);
     Actor* player;
-    Actor* opponent;
-    QPointF *L_O_P;
+    std::vector<QPointF*> L_O_P;
+    std::vector<Actor*> opponents;
     std::vector<QPixmap*> pixmaps;
     std::vector<Actor*> npcs;
     std::vector<Platform*> platforms;
@@ -39,9 +39,6 @@ public:
     Network *getNetwork() const;
     void setNetwork(Network *newNetwork);
 
-
-    QPointF *getL_O_P() const;
-    void setL_O_P(QPointF *newL_O_P);
 
 public slots:
     void initEnemies();
