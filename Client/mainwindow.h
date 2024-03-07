@@ -20,6 +20,7 @@
 
 #include "enums.h"
 #include "network.h"
+#include "chatframe.h"
 
 
 QT_BEGIN_NAMESPACE
@@ -33,14 +34,6 @@ class SchoolSkipperClient : public QMainWindow
 public:
     SchoolSkipperClient(QWidget *parent = nullptr);
     ~SchoolSkipperClient();
-
-public slots:
-    void messageReadyToSendSlot();
-    void chatMessageReadySlot(QString message);
-    void chatConnectedStatusSlot(bool connected);
-
-signals:
-    QByteArray messageReadyToSendSignal(QByteArray message);
 
 private:
     Ui::MainWindow *ui;
@@ -56,21 +49,9 @@ private:
 
     QFrame* menuBarFrame;
 
-    QPushButton* chatExpandButton;
-    QPushButton* chatMinimizeButton;
-    QTextBrowser* chatWindow;
-    QLineEdit* chatBox;
-
-    QPushButton* sendButton;
-    QPushButton* reconnectButton;
-    QLabel* chatConnectedStatus;
-
-    bool isChatVisible;
-    bool isChatConnected;
-    bool isNewChatMessageAvailable;
+    ChatFrame* chatFrame;
 
     bool isGraphicsViewsInitialized;
-    bool isChatWindowInitialized;
     bool isMenuBarInitialized;
 
     int numberOfPlayers;
