@@ -9,7 +9,7 @@ SchoolSkipperClient::SchoolSkipperClient(QWidget *parent)
     isChatVisible = false;
     isGraphicsViewsInitialized = false;
 
-    numberOfPlayers = 4;
+    numberOfPlayers = 3;
 
     ui->setupUi(this);
 
@@ -47,7 +47,7 @@ void SchoolSkipperClient::initGraphicsViews() {
     for (int column = 0; column < numberOfPlayers / 2; column++) {
         for (int row = 0; row < 2; row++) {
             QGraphicsView* currentGraphicsView = new QGraphicsView(graphicsScene, graphicsViewsGridFrame);
-            currentGraphicsView->setStyleSheet("border: none;");
+            currentGraphicsView->setStyleSheet("border: 1px solid white;");
 
             graphicsViewsGrid->addWidget(currentGraphicsView, row, column);
 
