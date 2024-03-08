@@ -22,6 +22,7 @@
 #include <QtMath>
 #include "chatframe.h"
 #include <QShortcut>
+#include "menuframe.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -45,8 +46,11 @@ signals:
 private:
     Ui::MainWindow *ui;
 
-    Network* server;
     Network* networker;
+    ChatFrame* chatFrame;
+    MenuFrame* menuFrame;
+
+    QPushButton* expandChatFrame;
 
     QFrame* graphicsViewsGridFrame;
     QGridLayout* graphicsViewsGrid;
@@ -54,21 +58,12 @@ private:
     QList<QGraphicsPixmapItem*> graphicsSceneBackgroundsList;
     QList<QGraphicsView*> graphicsViewsList;
 
-    QFrame* menuBarFrame;
-
-    ChatFrame* chatFrame;
-
     bool isGraphicsViewsInitialized;
     bool isMenuBarInitialized;
 
     int numberOfPlayers;
 
-    void initMenuBar();
-    void initChatWindow();
     void initGraphicsViews();
-
-    void handleVisibilityOfChat();
-    void scrollToEnd(QScrollBar* scrollBar);
 
 protected:
     virtual void paintEvent(QPaintEvent* paint) override;

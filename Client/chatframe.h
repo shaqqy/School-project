@@ -24,14 +24,16 @@ public:
     const QString CHAT_MINIMIZE_ICON = ":/images/images/chat-close.png";
 
 signals:
+    void minimizeChatFrame();
+
+    void newMessage(QString message, SchoolSkipper type);
     void sendMessageOverNetwork(QByteArray message);
 
 public slots:
-    void newMessage(QString message, SchoolSkipper type);
+    void handleNewMessage(QString message, SchoolSkipper type);
+    void sendMessagePressed();
 
 private:
-    QPushButton* expandButton;
-
     QLabel* connectedStatusLabel;
     QPushButton* minimizeButton;
     QPushButton* reconnectButton;

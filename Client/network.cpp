@@ -2,15 +2,18 @@
 
 Network::Network(QObject* parent) : QObject(parent)
 {
+    qDebug() << "[SYS] Initializing networker ...";
+
     udpSocket = new QUdpSocket(this);
     tcpSocket = new QTcpSocket(this);
 
-    connect(tcpSocket, &QTcpSocket::connected, this, &Network::tcpConnected);
     connect(tcpSocket, &QTcpSocket::disconnected, this, &Network::tcpDisconnected);
+
+    qDebug() << "[SYS] Initialized networker";
 }
 
-void Network::initUdpSocket(int port) {
-  connect(udpSocket, &QUdpSocket::readyRead, this, &Network::readNewUdpData);
+void Network::initUdpSocket() {
+    connect(udpSocket, &QUdpSocket::readyRead, this, &Network::readNewUdpData);
 
   /*
    *  Using TCP socket to get the right network interface with IPv4 address
@@ -22,11 +25,11 @@ void Network::initUdpSocket(int port) {
              << tcpSocket->localAddress().toString();
   }
 
-  /*
-   *  Binding the UDP socket to the right network interface
-   */
-  udpSocket->bind(tcpSocket->localAddress(), port);
-  tcpSocket->close();
+    /*
+     *  Binding the UDP socket to the right network interface
+     */
+    udpSocket->bind(tcpSocket->localAddress(), 30000);
+    tcpSocket->close();
 }
 
 void Network::readNewUdpData() {
@@ -59,8 +62,13 @@ void Network::initTcpSocket() {
 
     tcpSocket->connectToHost(QHostAddress("192.168.0.2"), 30001);
 
-    if (tcpSocket->waitForConnected(2000)) {
-      qDebug() << "[NET] Connected with (TCP): " << tcpSocket->peerAddress();
+        if (tcpSocket->waitForConnected(2000)) {
+            qDebug() << "[NET] Connected with (TCP): " << tcpSocket->peerAddress();
+        } else {
+            qDebug() << "[NET] Server not reachable (TCP)";
+
+            emit tcpConnectionStatus(false);
+        }
     } else {
       qDebug() << "[NET] Server not reachable (TCP)";
 
@@ -72,12 +80,10 @@ void Network::initTcpSocket() {
   }
 }
 
-void Network::tcpConnected() { emit chatConnectedStatusSignal(true); }
-
 void Network::tcpDisconnected() {
   qDebug() << "[NET] Disconnected from Server (TCP)";
 
-  emit chatConnectedStatusSignal(false);
+    emit tcpConnectionStatus(false);
 }
 
 void Network::readNewTcpData() {
@@ -93,32 +99,11 @@ void Network::readNewTcpData() {
            << tcpSocket->peerPort();
   qDebug() << "[NET] TCP message: " << message;
 
-  emit chatMessageReadySignal(message);
+    emit newChatMessage(message, SchoolSkipper::INCOMING_MESSAGE);
 }
 
 void Network::sendTcpMessage(QByteArray message) {
-  tcpSocket->write(message, message.length());
+    tcpSocket->write(message, message.length());
 
-  qDebug() << "[NET] Sent message (TCP): " << message;
-}
-
-void Network::saveLastOpponentPosition(QString message) {
-  QRegularExpression regex = QRegularExpression();
-  regex.setPattern("^\\d*[x]\\d*$");
-  QRegularExpressionMatch match = regex.match(message);
-  if (match.hasMatch()) {
-    auto opponentPosition = L_O_P.front();
-    opponentPosition->setX(message.split("x")[0].toFloat());
-    opponentPosition->setY(message.split("x")[1].toFloat());
-  } else {
-    regex.setPattern("^\\d[:]\\d*[x]\\d*$");
-    match = regex.match(message);
-    if (match.hasMatch()) {
-      int idx = message.split(":")[0].toInt();
-      auto withoutIdx = message.split(":")[1];
-      auto opponentPosition = L_O_P.at(idx);
-      opponentPosition->setX(withoutIdx.split("x")[0].toFloat());
-      opponentPosition->setY(withoutIdx.split("x")[1].toFloat());
-    }
-  }
+    qDebug() << "[NET] Sent message (TCP): " << message;
 }
