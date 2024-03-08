@@ -17,6 +17,11 @@ ChatFrame::ChatFrame(QWidget* parent) : QFrame(parent){
      */
     connect(this, &ChatFrame::newMessage, this, &ChatFrame::handleNewMessage);
 
+    /*
+     *  minimize chat window
+     */
+    connect(minimizeButton, &QPushButton::clicked, this, &ChatFrame::handleMinimizePressed);
+
     qDebug() << "[SYS] Initialized chat frame";
 }
 
@@ -38,6 +43,23 @@ void ChatFrame::handleNewMessage(QString message, SchoolSkipper type) {
     }
 
     textBox->setText(textBox->toPlainText() + "[" + QTime::currentTime().toString() + "](" + sender + "): " + message + "\n");
+    inputBox->setText("");
+}
+
+void ChatFrame::handleConnectionChange(bool connected) {
+    if (connected) {
+        connectedStatusLabel->setText("Connected");
+        connectedStatusLabel->setStyleSheet("color: green");
+
+        return;
+    }
+
+    connectedStatusLabel->setText("Disconnected");
+    connectedStatusLabel->setStyleSheet("color: red");
+}
+
+void ChatFrame::handleMinimizePressed() {
+    emit minimizeChatFrame();
 }
 
 void ChatFrame::sendMessagePressed() {
@@ -59,22 +81,18 @@ void ChatFrame::initWidgets() {
 }
 
 void ChatFrame::initWidgetsDefaultParams() {
-    //expandButton->resize(QSize(40, 40));
-
     inputBox->setPlaceholderText("Type Message ...");
     inputBox->setTextMargins(QMargins(5, 0, 0, 0));
 }
 
 void ChatFrame::initWidgetsStyles() {
-    //expandButton->setStyleSheet("background: white; border-left: 3px solid grey; border-top: 3px solid grey; border-bottom: 3px solid grey; border-top-left-radius: 20px; border-bottom-left-radius: 20px;");
-
-    connectedStatusLabel->setStyleSheet("background-color: black; border-top: 3px solid grey; border-right: 1px solid white;");
+    connectedStatusLabel->setStyleSheet("background-color: black; border-top: 3px solid grey; border-right: 3px solid grey;");
 
     reconnectButton->setStyleSheet("border-top: 3px solid grey; border-right: 3px solid grey; border-top-right-radius: 10px; background-color: black;");
     reconnectButton->setIcon(style()->standardIcon(QStyle::SP_BrowserReload));
 
     minimizeButton->setStyleSheet("background: black; border-top: 3px solid grey; border-left: 3px solid grey; border-top-left-radius: 10px;");
-    minimizeButton->setIcon(QIcon(CHAT_MINIMIZE_ICON));
+    minimizeButton->setIcon(CHAT_MINIMIZE_ICON);
 
     textBox->setStyleSheet("background-color: black; border-right: 3px solid grey; border-top: 1px solid white; color: white;");
 
@@ -92,7 +110,7 @@ void ChatFrame::paintEvent(QPaintEvent*) {
     const int inputBoxItemsWidth = width() / inputBoxItemsCount;
 
     connectedStatusLabel->move(0,0);
-    connectedStatusLabel->resize(statusBarItemsWidth, (int) SchoolSkipper::CUSTOM_MENU_BAR_HEIGHT);
+    connectedStatusLabel->resize(statusBarItemsWidth + 8, (int) SchoolSkipper::CUSTOM_MENU_BAR_HEIGHT);
 
     minimizeButton->move(statusBarItemsWidth, 0);
     minimizeButton->resize(statusBarItemsWidth, (int) SchoolSkipper::CUSTOM_MENU_BAR_HEIGHT);

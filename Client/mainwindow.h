@@ -33,6 +33,7 @@ class SchoolSkipperClient : public QMainWindow
     Q_OBJECT
 
 public:
+    Game* game;
     SchoolSkipperClient(QWidget *parent = nullptr);
     ~SchoolSkipperClient();
 

@@ -77,9 +77,9 @@ void Game::move() {
   player->setSpeedV(player->getSpeedV() + gravity);
   // Check if the doodler went too low (loose condition)
   QPointF viewport_pos = getView()->mapFromScene(player->pos());
-  qDebug() << "Viewpos" << viewport_pos;
-  qDebug() << "Scenepos" << player->pos();
-  if (player->pos().ry() > 560) {
+//  qDebug() << "Viewpos" << viewport_pos;
+//  qDebug() << "Scenepos" << player->pos();
+  if (viewport_pos.y() > 560) {
     if (this->mode == SchoolSkipper::Gamemode_Singleplayer) {
       // Player fell down
       // TODO: Show end score and game over
@@ -90,7 +90,7 @@ void Game::move() {
     }
   }
   // Scroll higher if the player reached over a certain point in the screen
-  if (player->pos().ry() < 250) {
+  if (viewport_pos.y() < 250) {
     view->scroll(0, 300);
   }
   //    qDebug() << player->pos();
@@ -132,7 +132,7 @@ void Game::moveEnemy() {
     animation->setStartValue(enemyBoundingRect);
 
     // Transpose the value
-    animation->setEndValue(QRectF(L_O_P.at(i)->x(), L_O_P.at(i)->y(),
+    animation->setEndValue(QRectF(LOP.at(i)->x(), LOP.at(i)->y(),
                                   enemyBoundingRect.width(),
                                   enemyBoundingRect.height()));
     animation->setDuration(25);
@@ -151,17 +151,17 @@ void Game::startSlot(SchoolSkipper _mode) {
   player->setPos(150, 0);
   player->setZValue(100);
   scene->addItem(player);
+  viewportSize = new QSize(view->size());
   player->show();
   player->setFocus(Qt::FocusReason::OtherFocusReason);
   player->setSpeedV(-20);
   if (mode == SchoolSkipper::Gamemode_Multiplayer) {
-    for (int i = 0; i < network->L_O_P.size(); i++) {
-      L_O_P.push_back(network->L_O_P.at(i));
+    for (int i = 0; i < network->LOP.size(); i++) {
+      LOP.push_back(network->LOP.at(i));
     }
     connect(timer, &QTimer::timeout, this, &Game::moveEnemy);
   }
   initPlatforms();
-
   timer->setInterval(20);
   timer->start();
 }
@@ -207,7 +207,12 @@ void Game::initPlatforms() {
           QPointF(i * QRandomGenerator::global()->bounded(1, 9) + 300, i * 15));
     }
     tmp->show();
+    platforms.push_back(tmp);
   }
+}
+void Game::generateLevelSlice(){
+    //Generate platforms and npcs above the view
+    //
 }
 /*!
  * \brief Game::getView

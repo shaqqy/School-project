@@ -18,7 +18,7 @@ class Game : public QObject
 public:
     explicit Game(QObject *parent = nullptr);
     Actor* player;
-    std::vector<QPointF*> L_O_P;
+    std::vector<QPointF*> LOP;
     std::vector<Actor*> opponents;
     std::vector<QPixmap*> pixmaps;
     std::vector<Actor*> npcs;
@@ -40,6 +40,7 @@ public:
     void setNetwork(Network *newNetwork);
 
 
+    void generateLevelSlice();
 public slots:
     void initEnemies();
     void initPlatforms();
@@ -49,6 +50,7 @@ public slots:
     void startSlot(SchoolSkipper _mode);
 
 protected:
+    QSize *viewportSize;
     QGraphicsScene *scene;
     QGraphicsView *view;
     QGraphicsView *enemyView;
