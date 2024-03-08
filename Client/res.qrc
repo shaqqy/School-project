@@ -10,6 +10,7 @@
         <file>images/chat.png</file>
         <file>images/chat-close.png</file>
         <file>images/chat_message_new.png</file>
+        <file>images/play_online.png</file>
     </qresource>
     <qresource prefix="/sounds">
         <file>sounds/button_click.mp3</file>

@@ -7,7 +7,7 @@ SchoolSkipperClient::SchoolSkipperClient(QWidget *parent)
 {
     isGraphicsViewsInitialized = false;
 
-    numberOfPlayers = 3;
+    numberOfPlayers = 2;
 
     ui->setupUi(this);
 
