@@ -2,14 +2,17 @@
 
 Network::Network(QObject* parent) : QObject(parent)
 {
+    qDebug() << "[SYS] Initializing networker ...";
+
     udpSocket = new QUdpSocket(this);
     tcpSocket = new QTcpSocket(this);
 
-    connect(tcpSocket, &QTcpSocket::connected, this, &Network::tcpConnected);
     connect(tcpSocket, &QTcpSocket::disconnected, this, &Network::tcpDisconnected);
+
+    qDebug() << "[SYS] Initialized networker";
 }
 
-void Network::initUdpSocket(int port) {
+void Network::initUdpSocket() {
     connect(udpSocket, &QUdpSocket::readyRead, this, &Network::readNewUdpData);
 
     /*
@@ -24,7 +27,7 @@ void Network::initUdpSocket(int port) {
     /*
      *  Binding the UDP socket to the right network interface
      */
-    udpSocket->bind(tcpSocket->localAddress(), port);
+    udpSocket->bind(tcpSocket->localAddress(), 30000);
     tcpSocket->close();
 }
 
@@ -60,21 +63,17 @@ void Network::initTcpSocket() {
         } else {
             qDebug() << "[NET] Server not reachable (TCP)";
 
-            emit chatConnectedStatusSignal(false);
+            emit tcpConnectionStatus(false);
         }
     } else {
         qDebug() << "[NET] Already connected via (TCP) to: " << tcpSocket->peerAddress();
     }
 }
 
-void Network::tcpConnected() {
-    emit chatConnectedStatusSignal(true);
-}
-
 void Network::tcpDisconnected() {
     qDebug() << "[NET] Disconnected from Server (TCP)";
 
-    emit chatConnectedStatusSignal(false);
+    emit tcpConnectionStatus(false);
 }
 
 void Network::readNewTcpData() {
@@ -89,13 +88,11 @@ void Network::readNewTcpData() {
     qDebug() << "[NET] TCP message from " << tcpSocket->peerAddress() << ":" << tcpSocket->peerPort();
     qDebug() << "[NET] TCP message: " << message;
 
-    emit chatMessageReadySignal(message);
+    emit newChatMessage(message, SchoolSkipper::INCOMING_MESSAGE);
 }
 
 void Network::sendTcpMessage(QByteArray message) {
-    QByteArray messageWithPrefix = QByteArray("Message " + message);
-
-    tcpSocket->write(messageWithPrefix, messageWithPrefix.length());
+    tcpSocket->write(message, message.length());
 
     qDebug() << "[NET] Sent message (TCP): " << message;
 }

@@ -6,10 +6,21 @@ ChatFrame::ChatFrame(QWidget* parent) : QFrame(parent){
     setStyleSheet("background-color: black;");
     initWidgets();
 
+    /*
+     *  connect trigger signals for sending a new message
+     */
+    connect(inputBox, &QLineEdit::returnPressed, this, &ChatFrame::sendMessagePressed);
+    connect(sendButton, &QPushButton::clicked, this, &ChatFrame::sendMessagePressed);
+
+    /*
+     * connect the new message signal with the handler slot
+     */
+    connect(this, &ChatFrame::newMessage, this, &ChatFrame::handleNewMessage);
+
     qDebug() << "[SYS] Initialized chat frame";
 }
 
-void ChatFrame::newMessage(QString message, SchoolSkipper type) {
+void ChatFrame::handleNewMessage(QString message, SchoolSkipper type) {
     QString sender;
 
     switch (type) {
@@ -23,15 +34,17 @@ void ChatFrame::newMessage(QString message, SchoolSkipper type) {
         break;
 
     default:
-        qDebug() << "[SYS] Got message with invalid message type";
+        qDebug() << "[SYS] Receiveed message with invalid message type";
     }
 
     textBox->setText(textBox->toPlainText() + "[" + QTime::currentTime().toString() + "](" + sender + "): " + message + "\n");
 }
 
-void ChatFrame::initWidgets() {
-    expandButton = new QPushButton(this);
+void ChatFrame::sendMessagePressed() {
+    emit newMessage(inputBox->text(), SchoolSkipper::OUTGOING_MESSAGE);
+}
 
+void ChatFrame::initWidgets() {
     connectedStatusLabel = new QLabel(this);
     reconnectButton = new QPushButton(this);
     minimizeButton = new QPushButton(this);
@@ -46,14 +59,14 @@ void ChatFrame::initWidgets() {
 }
 
 void ChatFrame::initWidgetsDefaultParams() {
-    expandButton->resize(QSize(40, 40));
+    //expandButton->resize(QSize(40, 40));
 
     inputBox->setPlaceholderText("Type Message ...");
     inputBox->setTextMargins(QMargins(5, 0, 0, 0));
 }
 
 void ChatFrame::initWidgetsStyles() {
-    expandButton->setStyleSheet("background: white; border-left: 3px solid grey; border-top: 3px solid grey; border-bottom: 3px solid grey; border-top-left-radius: 20px; border-bottom-left-radius: 20px;");
+    //expandButton->setStyleSheet("background: white; border-left: 3px solid grey; border-top: 3px solid grey; border-bottom: 3px solid grey; border-top-left-radius: 20px; border-bottom-left-radius: 20px;");
 
     connectedStatusLabel->setStyleSheet("background-color: black; border-top: 3px solid grey; border-right: 1px solid white;");
 

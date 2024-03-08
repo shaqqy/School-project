@@ -7,6 +7,9 @@
 #include <QTextBrowser>
 #include <QHostInfo>
 
+#include "enums.h"
+
+
 class Network : public QObject
 {
     Q_OBJECT
@@ -14,7 +17,7 @@ class Network : public QObject
 public:
     Network(QObject* parent);
 
-    void initUdpSocket(int port);
+    void initUdpSocket();
     void initTcpSocket();
 
 private:
@@ -29,11 +32,10 @@ public slots:
     void sendTcpMessage(QByteArray message);
 
     void tcpDisconnected();
-    void tcpConnected();
 
 signals:
-    void chatMessageReadySignal(QString message);
-    void chatConnectedStatusSignal(bool connected);
+    void newChatMessage(QString message, SchoolSkipper type);
+    void tcpConnectionStatus(bool connected);
 };
 
 #endif // NETWORK_H

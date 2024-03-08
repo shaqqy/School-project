@@ -23,28 +23,24 @@ SchoolSkipperClient::SchoolSkipperClient(QWidget *parent)
     chatFrame = new ChatFrame(this);
     chatFrame->show();
 
+    expandChatFrame = new QPushButton(this);
+    expandChatFrame->show();
+
+    menuFrame = new MenuFrame(this);
+    menuFrame->show();
+
     /*
-     *  Initialization of application components. Chat window needs to be initialized first!
+     * connect the networker with the chat frame
      */
-    initMenuBar();
+    connect(networker, &Network::newChatMessage, chatFrame, &ChatFrame::newMessage);
+    connect(chatFrame, &ChatFrame::sendMessageOverNetwork, networker, &Network::sendTcpMessage);
+
     initGraphicsViews();
 }
 
 SchoolSkipperClient::~SchoolSkipperClient()
 {
     delete ui;
-}
-
-void SchoolSkipperClient::initMenuBar() {
-    qDebug() << "[SYS] Initializing menu bar ...";
-
-    menuBarFrame = new QFrame(this);
-    menuBarFrame->move(QPoint(0, 0));
-    menuBarFrame->setStyleSheet("background-color: black; border-top: 3px solid grey; border-left: 3px solid grey; border-top-left-radius: 10px;");
-
-    isMenuBarInitialized = true;
-
-    qDebug() << "[SYS] Initialized menu bar";
 }
 
 void SchoolSkipperClient::initGraphicsViews() {
@@ -78,14 +74,6 @@ void SchoolSkipperClient::initGraphicsViews() {
     qDebug() << "[SYS] Initialized graphics views";
 }
 
-void SchoolSkipperClient::handleVisibilityOfChat() {
-    if (chatFrame->isVisible()) {
-        resize(QSize(this->width() - (int) SchoolSkipper::CHAT_WINDOW_WIDTH, this->height()));
-    } else {
-        resize(QSize(this->width() + (int) SchoolSkipper::CHAT_WINDOW_WIDTH, this->height()));
-    }
-}
-
 void SchoolSkipperClient::paintEvent(QPaintEvent*) {
     const int width = ui->centralwidget->width();
     const int height = ui->centralwidget->height();
@@ -105,21 +93,17 @@ void SchoolSkipperClient::paintEvent(QPaintEvent*) {
         graphicsViewsGridFrame->show();
     }
 
-    /*
-     *  Size calculation and style manipulation for menu bar
-     */
-    if (isMenuBarInitialized) {
-        if (chatFrame->isVisible()) {
-            menuBarFrame->resize(QSize(width - (int) SchoolSkipper::CHAT_WINDOW_WIDTH, (int) SchoolSkipper::CUSTOM_MENU_BAR_HEIGHT));
-            menuBarFrame->setStyleSheet(menuBarFrame->styleSheet() + "border-top-right-radius: 0px; border-right: 1px solid white;");
-        } else {
-            menuBarFrame->resize(QSize(width, (int) SchoolSkipper::CUSTOM_MENU_BAR_HEIGHT));
-            menuBarFrame->setStyleSheet(menuBarFrame->styleSheet() + "border-top-right-radius: 10px; border-right: 3px solid grey;");
-        }
-
-        menuBarFrame->show();
-    }
-
     chatFrame->move(width - (int) SchoolSkipper::CHAT_WINDOW_WIDTH, 0);
     chatFrame->resize((int) SchoolSkipper::CHAT_WINDOW_WIDTH, height);
+
+    expandChatFrame->resize(width / 30, width / 30);
+    expandChatFrame->move(width - expandChatFrame->width(), (int) SchoolSkipper::CHAT_EXPAND_BUTTON_Y_POS);
+
+    menuFrame->move(0, 0);
+
+    if (chatFrame-isVisible()) {
+        menuFrame->resize(width - (int) SchoolSkipper::CHAT_WINDOW_WIDTH, (int) SchoolSkipper::CUSTOM_MENU_BAR_HEIGHT);
+    } else {
+        menuFrame->resize(width, (int) SchoolSkipper::CUSTOM_MENU_BAR_HEIGHT);
+    }
 }

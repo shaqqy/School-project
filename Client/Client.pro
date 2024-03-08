@@ -16,6 +16,7 @@ SOURCES += \
     chatframe.cpp \
     main.cpp \
     mainwindow.cpp \
+    menuframe.cpp \
     network.cpp
 
 HEADERS += \
@@ -26,6 +27,7 @@ HEADERS += \
     chatframe.h \
     enums.h \
     mainwindow.h \
+    menuframe.h \
     network.h
 
 FORMS += \
