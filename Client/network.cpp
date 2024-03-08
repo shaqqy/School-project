@@ -1,12 +1,12 @@
 #include "network.h"
 
-Network::Network(QObject *parent) : QObject(parent) {
-  udpSocket = new QUdpSocket(this);
-  tcpSocket = new QTcpSocket(this);
+Network::Network(QObject* parent) : QObject(parent)
+{
+    udpSocket = new QUdpSocket(this);
+    tcpSocket = new QTcpSocket(this);
 
-  connect(tcpSocket, &QTcpSocket::connected, this, &Network::tcpConnected);
-  connect(tcpSocket, &QTcpSocket::disconnected, this,
-          &Network::tcpDisconnected);
+    connect(tcpSocket, &QTcpSocket::connected, this, &Network::tcpConnected);
+    connect(tcpSocket, &QTcpSocket::disconnected, this, &Network::tcpDisconnected);
 }
 
 void Network::initUdpSocket(int port) {

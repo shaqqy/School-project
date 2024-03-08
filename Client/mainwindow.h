@@ -20,6 +20,8 @@
 #include "enums.h"
 #include "network.h"
 #include <QtMath>
+#include "chatframe.h"
+#include <QShortcut>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -47,32 +49,25 @@ signals:
 private:
     Ui::MainWindow *ui;
 
+    Network* server;
+    Network* networker;
+
     QFrame* graphicsViewsGridFrame;
     QGridLayout* graphicsViewsGrid;
     QGraphicsScene* graphicsScene;
-    QGraphicsPixmapItem* graphicsSceneBackground;
+    QList<QGraphicsPixmapItem*> graphicsSceneBackgroundsList;
     QList<QGraphicsView*> graphicsViewsList;
 
-    Network* server;
-    Network* networker;
-    Game* game;
-    QPushButton* chatExpandButton;
-    QPushButton* chatMinimizeButton;
-    QTextBrowser* chatWindow;
-    QLineEdit* chatBox;
+    QFrame* menuBarFrame;
 
-    QPushButton* sendButton;
-    QPushButton* reconnectButton;
-    QLabel* chatConnectedStatus;
-
-    bool isChatWindowInitialized;
-    bool isChatVisible;
-    bool isChatConnected;
+    ChatFrame* chatFrame;
 
     bool isGraphicsViewsInitialized;
+    bool isMenuBarInitialized;
 
     int numberOfPlayers;
 
+    void initMenuBar();
     void initChatWindow();
     void initGraphicsViews();
 

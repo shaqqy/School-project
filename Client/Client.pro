@@ -13,6 +13,7 @@ SOURCES += \
     assets/actor.cpp \
     assets/game.cpp \
     assets/platform.cpp \
+    chatframe.cpp \
     main.cpp \
     mainwindow.cpp \
     network.cpp
@@ -22,6 +23,7 @@ HEADERS += \
     assets/actor.h \
     assets/game.h \
     assets/platform.h \
+    chatframe.h \
     enums.h \
     mainwindow.h \
     network.h

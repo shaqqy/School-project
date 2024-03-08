@@ -19,6 +19,7 @@ private:
 
 protected:
     virtual void paintEvent(QPaintEvent* paint) override;
+    void onClick();
 
 };
 
