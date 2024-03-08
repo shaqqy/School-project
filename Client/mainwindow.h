@@ -36,6 +36,20 @@ public:
     SchoolSkipperClient(QWidget *parent = nullptr);
     ~SchoolSkipperClient();
 
+    const QString WINDOW_TITLE = "School Skipper";
+    const QIcon WINDOW_ICON = QIcon(":/images/images/icon.png");
+
+    const QIcon CHAT_EXPAND_ICON_DEFAULT = QIcon(":/images/images/chat.png");
+    const QIcon CHAT_EXPAND_ICON_NEW_MESSAGE = QIcon(":/images/images/chat_new_message.png");
+
+signals:
+    void visibilityChangeOfChatFrame(bool visibile);
+
+public slots:
+    void handleVisibilityChangeOfChatFrame(bool visible);
+    void expandChatFrame();
+    void minimizeChatFrame();
+
 private:
     Ui::MainWindow *ui;
 
@@ -43,7 +57,7 @@ private:
     ChatFrame* chatFrame;
     MenuFrame* menuFrame;
 
-    QPushButton* expandChatFrame;
+    QPushButton* expandChatFrameButton;
 
     QFrame* graphicsViewsGridFrame;
     QGridLayout* graphicsViewsGrid;
@@ -57,6 +71,10 @@ private:
     int numberOfPlayers;
 
     void initGraphicsViews();
+
+    void initWindowDefaultParams();
+    void initFrames();
+    void initNetwork();
 
 protected:
     virtual void paintEvent(QPaintEvent* paint) override;

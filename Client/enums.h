@@ -7,7 +7,7 @@ enum class SchoolSkipper {
      */
     CHAT_WINDOW_WIDTH = 250,
     CHAT_INPUT_BOX_HEIGHT = 40,
-    CHAT_EXPAND_BUTTON_Y_POS = 30,
+    CHAT_EXPAND_BUTTON_Y_POS = 60,
 
     CUSTOM_MENU_BAR_HEIGHT = 30,
 

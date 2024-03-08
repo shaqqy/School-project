@@ -21,7 +21,7 @@ class ChatFrame : public QFrame
 public:
     ChatFrame(QWidget* parent);
 
-    const QString CHAT_MINIMIZE_ICON = ":/images/images/chat-close.png";
+    const QIcon CHAT_MINIMIZE_ICON = QIcon(":/images/images/chat-close.png");
 
 signals:
     void minimizeChatFrame();
@@ -31,6 +31,9 @@ signals:
 
 public slots:
     void handleNewMessage(QString message, SchoolSkipper type);
+    void handleConnectionChange(bool connected);
+    void handleMinimizePressed();
+
     void sendMessagePressed();
 
 private:
