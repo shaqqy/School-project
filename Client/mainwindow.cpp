@@ -68,11 +68,12 @@ void SchoolSkipperClient::initGraphicsViews() {
    * with a forced ceiling - didnt work
    */
 
-  for (int column = 0; column < /*qCeil(numberOfPlayers / 2)*/ 1; column++) {
-    for (int row = 0; row < 2; row++) {
-      QGraphicsView *currentGraphicsView =
-          new QGraphicsView(graphicsScene, graphicsViewsGridFrame);
-      currentGraphicsView->setStyleSheet("border: none;");
+    for (int column = 0; column < /*qCeil(numberOfPlayers / 2)*/ 1; column++) {
+        for (int row = 0; row < 2; row++) {
+            QGraphicsView* currentGraphicsView = new QGraphicsView(graphicsScene, graphicsViewsGridFrame);
+            currentGraphicsView->setStyleSheet("border: 1px solid white;");
+            currentGraphicsView->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+            currentGraphicsView->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
 
       graphicsViewsGrid->addWidget(currentGraphicsView, row, column);
 
