@@ -3,7 +3,7 @@
 
 enum class SchoolSkipper {
     Gamemode_Singleplayer = 1,
-    Gamemode_Multiplayer = 2
+    Gamemode_Multiplayer = 2,
     /*
      * Size parameters
      */

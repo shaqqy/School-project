@@ -18,8 +18,6 @@ public:
     void initUdpSocket(int port);
     void initTcpSocket();
 
-    void initUdpSocket(int port);
-    void initTcpSocket();
     std::vector<QPointF*> L_O_P;
     void saveLastOpponentPosition(QString message);
 private:

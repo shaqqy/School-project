@@ -1,4 +1,4 @@
-#include "game.h"
+#include "assets/game.h"
 #include <QDebug>
 /*!
  * \brief Game::Game

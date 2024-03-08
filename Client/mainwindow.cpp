@@ -30,7 +30,20 @@ SchoolSkipperClient::SchoolSkipperClient(QWidget *parent)
     initGraphicsViews();
 }
 
-SchoolSkipperClient::~SchoolSkipperClient() { delete ui; }
+SchoolSkipperClient::~SchoolSkipperClient()
+{
+    delete ui;
+}
+
+void SchoolSkipperClient::keyPressEvent(QKeyEvent *event)
+{
+
+}
+
+void SchoolSkipperClient::keyReleaseEvent(QKeyEvent *event)
+{
+
+}
 
 void SchoolSkipperClient::initMenuBar() {
     qDebug() << "[SYS] Initializing menu bar ...";
@@ -83,8 +96,9 @@ void SchoolSkipperClient::handleVisibilityOfChat() {
     }
 }
 
-void SchoolSkipperClient::scrollToEnd(QScrollBar *scrollBar) {
-  scrollBar->setValue(scrollBar->maximum());
+void SchoolSkipperClient::paintEvent(QPaintEvent*) {
+    const int width = ui->centralwidget->width();
+    const int height = ui->centralwidget->height();
 
     /*
      *  Size calculation and style manipulation for graphics view grid and graphics scene backgrounds
