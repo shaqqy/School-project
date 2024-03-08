@@ -37,9 +37,12 @@ public slots:
     void messageReadyToSendSlot();
     void chatMessageReadySlot(QString message);
     void chatConnectedStatusSlot(bool connected);
-
+    void startRepaint();
+    void keyPressEvent(QKeyEvent *event) override;
+    void keyReleaseEvent(QKeyEvent *event) override;
 signals:
     QByteArray messageReadyToSendSignal(QByteArray message);
+
 
 private:
     Ui::MainWindow *ui;

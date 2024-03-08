@@ -57,6 +57,7 @@ protected:
     double gravity;
     QTimer *timer;
 signals:
+    void startRepaint();
 
 };
 

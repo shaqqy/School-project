@@ -29,13 +29,16 @@ public:
 
     double getSpeedH() const;
     void setSpeedH(double newSpeedH);
+    std::vector<QPixmap*> pixmaps;
 
 public slots:
     void move(QPointF point);
 
+
 signals:
 
 protected:
+    void keyReleaseEvent(QKeyEvent *event);
     void keyPressEvent(QKeyEvent *event);
 
 private:

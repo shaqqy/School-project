@@ -5,9 +5,11 @@ Actor::Actor(QObject *parent)
 {
     setFlags(QGraphicsItem::ItemIsFocusable);
     setFlags(QGraphicsItem::ItemIsMovable);
-    X = 155;
-    Y = 275;
+    X = 0;
+    Y = 0;
     setPixmap(QPixmap(":/images/images/blue-lik-right@2x.png"));
+    pixmaps.push_back(new QPixmap(":/images/images/blue-lik-right@2x.png"));
+    pixmaps.push_back(new QPixmap(":/images/images/blue-lik-left@2x.png"));
 }
 
 Actor::Actor(QPixmap *pix, bool isPlayer)
@@ -98,11 +100,24 @@ void Actor::keyPressEvent(QKeyEvent *event)
         else
         {
             speedH = -20;
-            setPixmap(QPixmap());
+            setPixmap(QPixmap(":/images/images/blue-lik-left@2x.png"));
         }
         break;
     case Qt::Key_Space:
         //TODO: implement shooting
+        break;
+    }
+}
+
+void Actor::keyReleaseEvent(QKeyEvent* event)
+{
+    switch(event->key())
+    {
+    case Qt::Key_Left:
+        speedH = 0;
+        break;
+    case Qt::Key_Right:
+        speedH = 0;
         break;
     }
 }
