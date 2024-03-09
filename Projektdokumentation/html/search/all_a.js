@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['_7eserver_0',['~Server',['../class_server.html#a4b3aa2579cb1c8cd1d069582c14d0fa6',1,'Server']]]
+  ['keypressevent_0',['keyPressEvent',['../class_actor.html#a65464a1935da5ba12265ce3364221ed2',1,'Actor']]]
 ];

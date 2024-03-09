@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['player_5falive_0',['player_alive',['../class_server.html#a0839eb66ce4c772eb7c00aec0add14fb',1,'Server']]]
+  ['background_0',['background',['../class_custom_frame.html#aba8bb3945ecb2fdbf20d542d30013c00',1,'CustomFrame']]]
 ];

@@ -7,7 +7,7 @@
 #include <QNetworkDatagram>
 #include <vector>
 #include <QFile>
-
+#include <QDataStream>
 
 
 #define MAXCLIENT 2
@@ -19,7 +19,6 @@ public:
     void operator=(const Server&) = delete;
     Server(Server &other) = delete;
     static Server* GetInstance();
-
 public slots:
   void acceptConnection();
   void startRead();
@@ -32,8 +31,10 @@ protected:
   QUdpSocket *multicast;
   QTcpServer *msg_server;
   bool running = false;
+  QFile *log;
 
 private:
+  int rdyCounter = 0;
   std::vector<bool> player_alive;
   QList<QTcpSocket*> messengers;
   Server(QObject * parent = 0);

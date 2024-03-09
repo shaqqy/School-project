@@ -1,5 +1,6 @@
 #include <QCoreApplication>
 #include "simpleServer.h"
+#include <QTcpSocket>
 //#include "simpleServer.cpp"
 Server* Server::server_ = NULL;
 
@@ -13,5 +14,8 @@ int main(int argc, char *argv[])
 //    test->test = "WOW";
 //    test = Server::GetInstance();
 //    qDebug() << test->test;
+
+
+
     return a.exec();
 }

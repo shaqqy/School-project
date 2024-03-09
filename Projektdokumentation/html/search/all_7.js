@@ -1,9 +1,25 @@
 var searchData=
 [
-  ['server_0',['Server',['../class_server.html',1,'Server'],['../class_server.html#af31cebdb603fe8fcf8600f919a39f788',1,'Server::Server(Server &amp;other)=delete'],['../class_server.html#a1950ac036d86af898428d7ba39bbf048',1,'Server::Server(QObject *parent=0)']]],
-  ['server_5f_1',['server_',['../class_server.html#aed2d3732571f48b8a5d31ee0b60463af',1,'Server']]],
-  ['simpleserver_2ecpp_2',['simpleServer.cpp',['../simple_server_8cpp.html',1,'']]],
-  ['simpleserver_2eh_3',['simpleServer.h',['../simple_server_8h.html',1,'']]],
-  ['startgame_4',['startGame',['../class_server.html#aa1574f3bedbb825909ce77fe986c87a8',1,'Server']]],
-  ['startread_5',['startRead',['../class_server.html#a4054668080d50e32ba1651c4faea932f',1,'Server']]]
+  ['game_0',['Game',['../class_game.html',1,'Game'],['../class_game.html#a3b4c8aab575024b6f3e2d648c6e17418',1,'Game::Game()']]],
+  ['game_2ecpp_1',['game.cpp',['../game_8cpp.html',1,'']]],
+  ['game_2eh_2',['game.h',['../game_8h.html',1,'']]],
+  ['gamemode_5fmultiplayer_3',['Gamemode_Multiplayer',['../enums_8h.html#a35d73133b9b2c5eb7eff997b2cb4bab7a4a447be511c049d72e245f50bb96ab87',1,'enums.h']]],
+  ['gamemode_5fsingleplayer_4',['Gamemode_Singleplayer',['../enums_8h.html#a35d73133b9b2c5eb7eff997b2cb4bab7afccda883aaff6343b1d51d00c8ac6f7c',1,'enums.h']]],
+  ['getenemyview_5',['getEnemyView',['../class_game.html#a479a572f34087c49ee425d2e85494de2',1,'Game']]],
+  ['getinstance_6',['GetInstance',['../class_server.html#a299d70204dbb1ec873242d09ab596830',1,'Server']]],
+  ['getmultiplayerbutton_7',['getMultiplayerButton',['../class_custom_frame.html#ad6a3ef9dad6b9af84a333dcc3803b83d',1,'CustomFrame']]],
+  ['getplaybutton_8',['getPlayButton',['../class_custom_frame.html#ad3e5ce258b7d55cd65fb8239f39a02ac',1,'CustomFrame']]],
+  ['getscene_9',['getScene',['../class_game.html#a04608f1061499359a32b39a566b12649',1,'Game']]],
+  ['getspeedh_10',['getSpeedH',['../class_actor.html#a3a3127e80c463643a8bc8f2aa1c50541',1,'Actor']]],
+  ['getspeedv_11',['getSpeedV',['../class_actor.html#a9eab8bc305ef2e0adfe6e8ede5d885df',1,'Actor']]],
+  ['getview_12',['getView',['../class_game.html#ab75fb1573b204d92323a78a3fc96499e',1,'Game']]],
+  ['getx_13',['getX',['../class_actor.html#a154e7fdf8ccf371b4a60a93fde09a1d0',1,'Actor']]],
+  ['gety_14',['getY',['../class_actor.html#a361762fef37cdccf8910a535af44567c',1,'Actor']]],
+  ['graphicsscene_15',['graphicsScene',['../class_school_skipper_client.html#ac26283c90568f0df8e85794aa970e3a1',1,'SchoolSkipperClient']]],
+  ['graphicsscenebackground_16',['graphicsSceneBackground',['../class_school_skipper_client.html#aa41e35b707ea0945423efd057dd23edd',1,'SchoolSkipperClient']]],
+  ['graphicsscenebackgroundopponentframe_17',['graphicsSceneBackgroundOpponentFrame',['../class_school_skipper_client.html#ad5ebde6ee1c8f4024920de222a57aa51',1,'SchoolSkipperClient']]],
+  ['graphicssceneopponentframe_18',['graphicsSceneOpponentFrame',['../class_school_skipper_client.html#aa1e7b831482ee8794fab158114f70ac6',1,'SchoolSkipperClient']]],
+  ['graphicsviewmainframe_19',['graphicsViewMainFrame',['../class_school_skipper_client.html#a77e1bb9c62d9c17ad4da8e79b4287d19',1,'SchoolSkipperClient']]],
+  ['graphicsviewopponentframe_20',['graphicsViewOpponentFrame',['../class_school_skipper_client.html#a6d19027addc28c645a569fc8a4d2f555',1,'SchoolSkipperClient']]],
+  ['gravity_21',['gravity',['../class_actor.html#ac6db038ba22078710d65a5dc759d9f04',1,'Actor::gravity'],['../class_game.html#a42ed93fcd42faa9d7d7702c33478d04b',1,'Game::gravity']]]
 ];

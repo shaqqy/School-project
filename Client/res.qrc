@@ -1,0 +1,21 @@
+<RCC>
+    <qresource prefix="/images">
+        <file>images/play_menu.png</file>
+        <file>images/default_background_menu.png</file>
+        <file>images/default_background.png</file>
+        <file>images/multiplayer.png</file>
+        <file>images/icon.png</file>
+        <file>images/frozen_right_player.png</file>
+        <file>images/blue-lik-right@2x.png</file>
+        <file>images/chat.png</file>
+        <file>images/chat-close.png</file>
+        <file>images/chat_message_new.png</file>
+        <file>images/play_online.png</file>
+        <file>images/blue-lik-left@2x.png</file>
+        <file>images/bug_1_2x.png</file>
+        <file>images/platform_standard.png</file>
+    </qresource>
+    <qresource prefix="/sounds">
+        <file>sounds/button_click.mp3</file>
+    </qresource>
+</RCC>

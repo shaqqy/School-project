@@ -1,1 +1,6 @@
-/build-simpleServer-Desktop_Qt_5_15_2_MSVC2015_64bit-Debug
+build-Client-Desktop_Qt_5_15_2_MinGW_64_bit-Debug/
+**/build*/
+build-simpleServer-Desktop_Qt_5_15_2_MinGW_32_bit-Debug/
+/build-Client-Desktop_Qt_5_15_2_MinGW_64_bit-Debug/
+/build-simpleServer_Qt_5_15_2_MinGW_64_bit-Debug/
+/build-Client-Desktop_Qt_5_15_2_MSVC2015_64bit-Debug/

@@ -55,7 +55,7 @@
                          </stereotypes>
                          <context>Server</context>
                          <name>Server</name>
-                         <pos>x:-260;y:-475</pos>
+                         <pos>x:-265;y:-480</pos>
                          <rect>x:-210;y:-220;w:420;h:440</rect>
                          <auto-sized>false</auto-sized>
                          <visual-role>0</visual-role>
@@ -67,8 +67,8 @@
                     </item>
                    </qlist>
                   </elements>
-                  <last-modified>1705391863773</last-modified>
-                  <toolbarid>General</toolbarid>
+                  <last-modified>1709957729840</last-modified>
+                  <toolbarid>Classes</toolbarid>
                  </MDiagram>
                 </base-MDiagram>
                </MCanvasDiagram>
@@ -88,6 +88,11 @@
                    <MElement>
                     <uid>{9a863fbf-87f2-4083-a4ae-76f7bc64fe49}</uid>
                     <flags>1</flags>
+                    <stereotypes>
+                     <qlist>
+                      <item>entity</item>
+                     </qlist>
+                    </stereotypes>
                    </MElement>
                   </base-MElement>
                   <name>Server</name>
@@ -121,14 +126,14 @@
                             <qlist>
                              <item>
                               <MClassMember>
-                               <uid>{07750d71-df2d-420d-b7d4-e4de112311c5}</uid>
+                               <uid>{65b23372-877b-4b05-bf7a-94091d3e843d}</uid>
                                <type>1</type>
                                <declaration>Q_OBJECT</declaration>
                               </MClassMember>
                              </item>
                              <item>
                               <MClassMember>
-                               <uid>{62c837be-ce25-4488-a873-a8c3a531c160}</uid>
+                               <uid>{1652fc30-e619-4984-8936-724262562069}</uid>
                                <visibility>1</visibility>
                                <type>2</type>
                                <declaration>void operator=(const Server&amp;)</declaration>
@@ -136,7 +141,7 @@
                              </item>
                              <item>
                               <MClassMember>
-                               <uid>{ec3785de-e870-40a5-afba-c2746c3efaae}</uid>
+                               <uid>{49c1474b-d760-46aa-afe0-c085d68c8277}</uid>
                                <visibility>1</visibility>
                                <type>2</type>
                                <declaration>Server(Server &amp;other)</declaration>
@@ -144,7 +149,7 @@
                              </item>
                              <item>
                               <MClassMember>
-                               <uid>{4dcf6e74-b370-4ec4-b1cf-2b4959276bda}</uid>
+                               <uid>{a23df0fd-46be-4170-8093-39eaed564c3b}</uid>
                                <visibility>1</visibility>
                                <type>2</type>
                                <properties>64</properties>
@@ -153,7 +158,7 @@
                              </item>
                              <item>
                               <MClassMember>
-                               <uid>{42726f9f-4300-4072-b7b5-02e3cffa6011}</uid>
+                               <uid>{639203f9-11b2-4d47-8fc4-01e0af87076e}</uid>
                                <visibility>7</visibility>
                                <type>2</type>
                                <declaration>void acceptConnection()</declaration>
@@ -161,7 +166,7 @@
                              </item>
                              <item>
                               <MClassMember>
-                               <uid>{0a43d488-062b-4da5-ad32-b59c7c8bdb16}</uid>
+                               <uid>{48a14469-8410-4d69-84af-205ddfe34dc6}</uid>
                                <visibility>7</visibility>
                                <type>2</type>
                                <declaration>void startRead()</declaration>
@@ -169,7 +174,7 @@
                              </item>
                              <item>
                               <MClassMember>
-                               <uid>{eac2fc6c-e471-48cb-8bf2-f7364f366726}</uid>
+                               <uid>{12ff3ff1-8dbd-4aba-9d38-9547f0b57c65}</uid>
                                <visibility>7</visibility>
                                <type>2</type>
                                <declaration>void startGame()</declaration>
@@ -177,7 +182,7 @@
                              </item>
                              <item>
                               <MClassMember>
-                               <uid>{e805f368-f4d4-46dd-86cd-618fee222230}</uid>
+                               <uid>{28c6c027-eebe-4ea4-8f2f-7d979c78028a}</uid>
                                <visibility>7</visibility>
                                <type>2</type>
                                <declaration>void handleMessage()</declaration>
@@ -185,7 +190,7 @@
                              </item>
                              <item>
                               <MClassMember>
-                               <uid>{72f4659a-a169-46f1-b29c-97fc700d8404}</uid>
+                               <uid>{41657963-9ee9-41bb-9610-4d5426befc97}</uid>
                                <visibility>7</visibility>
                                <type>2</type>
                                <declaration>void handleDisconnect()</declaration>
@@ -193,7 +198,7 @@
                              </item>
                              <item>
                               <MClassMember>
-                               <uid>{21faa6e4-2bb3-4199-b7a3-d779cbf2a33a}</uid>
+                               <uid>{d70340c9-6971-4c02-946c-3c35b56d7133}</uid>
                                <visibility>2</visibility>
                                <type>1</type>
                                <declaration>QHostAddress multicastGroup</declaration>
@@ -201,7 +206,7 @@
                              </item>
                              <item>
                               <MClassMember>
-                               <uid>{f7588d1e-a18a-4ac0-b8b3-c51eee74cedb}</uid>
+                               <uid>{5af9257a-7505-40a3-8b98-2f17c45d5c32}</uid>
                                <visibility>2</visibility>
                                <type>1</type>
                                <declaration>QUdpSocket *multicast</declaration>
@@ -209,7 +214,7 @@
                              </item>
                              <item>
                               <MClassMember>
-                               <uid>{849c216a-e885-47f8-b315-6911e708ad84}</uid>
+                               <uid>{346629e3-a724-4d49-bf29-0c18a23d0cf5}</uid>
                                <visibility>2</visibility>
                                <type>1</type>
                                <declaration>QTcpServer *msg_server</declaration>
@@ -217,7 +222,7 @@
                              </item>
                              <item>
                               <MClassMember>
-                               <uid>{4dd49ae3-4ab1-45da-a4af-24085037a0a7}</uid>
+                               <uid>{41e35c47-cffe-4612-897d-93380ce9c42a}</uid>
                                <visibility>2</visibility>
                                <type>1</type>
                                <declaration>bool running</declaration>
@@ -225,7 +230,23 @@
                              </item>
                              <item>
                               <MClassMember>
-                               <uid>{b73dad0c-0ea0-49ec-8e28-b03db988c91d}</uid>
+                               <uid>{d61d8dd4-8fc7-4540-bd31-8f72262b0333}</uid>
+                               <visibility>2</visibility>
+                               <type>1</type>
+                               <declaration>QFile *log</declaration>
+                              </MClassMember>
+                             </item>
+                             <item>
+                              <MClassMember>
+                               <uid>{200ec3c1-d1f9-444d-874d-f4d40633f575}</uid>
+                               <visibility>3</visibility>
+                               <type>1</type>
+                               <declaration>int rdyCounter</declaration>
+                              </MClassMember>
+                             </item>
+                             <item>
+                              <MClassMember>
+                               <uid>{4e3338e1-3796-41d3-aafc-180c8b50ef5d}</uid>
                                <visibility>3</visibility>
                                <type>1</type>
                                <declaration>std::vector&lt;bool&gt; player_alive</declaration>
@@ -233,7 +254,7 @@
                              </item>
                              <item>
                               <MClassMember>
-                               <uid>{d20f321f-5fba-458b-b1af-11bddf386be8}</uid>
+                               <uid>{b25640b8-25ab-4033-8f03-aec22a99763a}</uid>
                                <visibility>3</visibility>
                                <type>1</type>
                                <declaration>QList&lt;QTcpSocket*&gt; messengers</declaration>
@@ -241,7 +262,7 @@
                              </item>
                              <item>
                               <MClassMember>
-                               <uid>{4b7112da-ada1-4650-b3c2-a287f18dba09}</uid>
+                               <uid>{260a0f23-3df3-410e-9aa2-284c917d9a03}</uid>
                                <visibility>3</visibility>
                                <type>2</type>
                                <declaration>Server(QObject * parent = 0)</declaration>
@@ -249,7 +270,7 @@
                              </item>
                              <item>
                               <MClassMember>
-                               <uid>{44cf4e9a-ad7c-430d-a8ae-e480b4ef4464}</uid>
+                               <uid>{260fa112-ab66-4ae4-888d-1242eab563e5}</uid>
                                <visibility>3</visibility>
                                <type>2</type>
                                <declaration>~Server()</declaration>
@@ -257,7 +278,7 @@
                              </item>
                              <item>
                               <MClassMember>
-                               <uid>{f7bf3dd0-8aa1-4547-8034-690dd7233e97}</uid>
+                               <uid>{afc90542-ec72-40a2-b0be-b385e00da189}</uid>
                                <visibility>3</visibility>
                                <type>1</type>
                                <properties>64</properties>

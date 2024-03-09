@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['_7eclient_0',['~Client',['../class_client.html#a840e519ca781888cbd54181572ebe3a7',1,'Client']]],
-  ['_7eserver_1',['~Server',['../class_server.html#a4b3aa2579cb1c8cd1d069582c14d0fa6',1,'Server']]]
+  ['openmainmenu_0',['openMainMenu',['../class_custom_frame.html#a0b89d1646a9f914181cdd11401915c5b',1,'CustomFrame']]],
+  ['operator_3d_1',['operator=',['../class_server.html#a94a3806d56e33c490edd381f2bbde812',1,'Server']]]
 ];
