@@ -23,6 +23,9 @@ public:
 
     const QIcon CHAT_MINIMIZE_ICON = QIcon(":/images/images/chat-close.png");
 
+    QLineEdit *getInputBox() const;
+    void setInputBox(QLineEdit *newInputBox);
+
 signals:
     void minimizeChatFrame();
 

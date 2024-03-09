@@ -15,13 +15,13 @@ Platform::Platform(QObject *parent, QPixmap *pix)
 
 QRectF Platform::boundingRect() const
 {
-    return pixmap().rect();
+    return QRectF(pos().x(),pos().y(),pixmap().rect().width(),pixmap().height());
 }
 
 QPainterPath Platform::shape() const
 {
     QPainterPath path;
-    path.addRect(pixmap().rect());
+    path.addRect(boundingRect());
     return path;
 }
 
@@ -30,4 +30,6 @@ void Platform::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, 
     Q_UNUSED(option);
     Q_UNUSED(widget);
     painter->drawPixmap(this->x(), this->y(), pixmap());
+    painter->setPen(QColor::fromRgb(255,0,0,255));
+    painter->drawRect(boundingRect());
 }

@@ -37,10 +37,6 @@ public slots:
 
 signals:
 
-protected:
-    void keyReleaseEvent(QKeyEvent *event);
-    void keyPressEvent(QKeyEvent *event);
-
 private:
     double X;
     double Y;

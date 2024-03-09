@@ -16,13 +16,13 @@
 #include <QPushButton>
 #include <QList>
 #include <QGridLayout>
+#include <QShortcut>
 #include "assets/game.h"
 #include "enums.h"
 #include "network.h"
-#include <QtMath>
 #include "chatframe.h"
-#include <QShortcut>
 #include "menuframe.h"
+
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -33,17 +33,26 @@ class SchoolSkipperClient : public QMainWindow
     Q_OBJECT
 
 public:
-    Game* game;
     SchoolSkipperClient(QWidget *parent = nullptr);
     ~SchoolSkipperClient();
 
-public slots:
-    void keyPressEvent(QKeyEvent *event) override;
-    void keyReleaseEvent(QKeyEvent *event) override;
+    const QString WINDOW_TITLE = "School Skipper";
+    const QIcon WINDOW_ICON = QIcon(":/images/images/icon.png");
+
+    const QIcon CHAT_EXPAND_ICON_DEFAULT = QIcon(":/images/images/chat.png");
+    const QIcon CHAT_EXPAND_ICON_NEW_MESSAGE = QIcon(":/images/images/chat_new_message.png");
+    Game *game;
+    void initStartButtons();
 signals:
-    QByteArray messageReadyToSendSignal(QByteArray message);
+    void visibilityChangeOfChatFrame(bool visibile);
 
+public slots:
+    void handleVisibilityChangeOfChatFrame(bool visible);
+    void expandChatFrame();
+    void minimizeChatFrame();
 
+    void keyPressEvent(QKeyEvent *event) override;
+    void hideStartButtons();
 private:
     Ui::MainWindow *ui;
 
@@ -51,8 +60,9 @@ private:
     ChatFrame* chatFrame;
     MenuFrame* menuFrame;
 
-    QPushButton* expandChatFrame;
-
+    QPushButton* expandChatFrameButton;
+    QPushButton* single;
+    QPushButton* multi;
     QFrame* graphicsViewsGridFrame;
     QGridLayout* graphicsViewsGrid;
     QGraphicsScene* graphicsScene;
@@ -65,6 +75,10 @@ private:
     int numberOfPlayers;
 
     void initGraphicsViews();
+
+    void initWindowDefaultParams();
+    void initFrames();
+    void initNetwork();
 
 protected:
     virtual void paintEvent(QPaintEvent* paint) override;

@@ -66,6 +66,16 @@ void ChatFrame::sendMessagePressed() {
     emit newMessage(inputBox->text(), SchoolSkipper::OUTGOING_MESSAGE);
 }
 
+QLineEdit *ChatFrame::getInputBox() const
+{
+    return inputBox;
+}
+
+void ChatFrame::setInputBox(QLineEdit *newInputBox)
+{
+    inputBox = newInputBox;
+}
+
 void ChatFrame::initWidgets() {
     connectedStatusLabel = new QLabel(this);
     reconnectButton = new QPushButton(this);

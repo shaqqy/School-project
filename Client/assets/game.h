@@ -11,6 +11,8 @@
 #include "enums.h"
 #include "platform.h"
 #include <QRandomGenerator>
+#include <QRectF>
+#include "chatframe.h"
 
 class Game : public QObject
 {
@@ -18,13 +20,15 @@ class Game : public QObject
 public:
     explicit Game(QObject *parent = nullptr);
     Actor* player;
-    std::vector<QPointF*> LOP;
-    std::vector<Actor*> opponents;
-    std::vector<QPixmap*> pixmaps;
-    std::vector<Actor*> npcs;
-    std::vector<Platform*> platforms;
+    QPointF* LOP;
+    Actor* opponent;
+    QList<QPixmap*> pixmaps;
+    QList<Actor*> npcs;
+    QList<Platform*> platforms;
     SchoolSkipper mode;
     Network *network;
+    ChatFrame *chat;
+
     double calculateDistance(QPointF item1, QPointF item2);
 
     QGraphicsScene *getScene() const;
@@ -41,13 +45,18 @@ public:
 
 
     void generateLevelSlice();
+    void centerViewOnPlayArea();
+    void initPlayer();
+    ChatFrame *getChat() const;
+    void setChat(ChatFrame *newChat);
+
 public slots:
     void initEnemies();
     void initPlatforms();
     void move();
     void moveNPCs();
     void moveEnemy();
-    void startSlot(SchoolSkipper _mode);
+    void startSlot();
 
 protected:
     QSize *viewportSize;
@@ -58,8 +67,15 @@ protected:
     double max;
     double gravity;
     QTimer *timer;
+    void loadPixmaps();
 signals:
     void startRepaint();
+private:
+    QGraphicsRectItem *invisibleArea;
+    QPixmap* platformPix;
+    QPixmap* npcPix;
+    int ping;
+    int difficulty;
 
 };
 

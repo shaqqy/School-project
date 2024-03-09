@@ -2,6 +2,9 @@
 #define ENUMS_H
 
 enum class SchoolSkipper {
+    /*
+     * Game Modes
+     */
     Gamemode_Singleplayer = 1,
     Gamemode_Multiplayer = 2,
     /*
@@ -9,9 +12,9 @@ enum class SchoolSkipper {
      */
     CHAT_WINDOW_WIDTH = 250,
     CHAT_INPUT_BOX_HEIGHT = 40,
-    CHAT_EXPAND_BUTTON_Y_POS = 30,
-
-    CUSTOM_MENU_BAR_HEIGHT = 30,
+    CHAT_EXPAND_BUTTON_Y_POS = 60,
+    CUSTOM_MENU_BAR_HEIGHT = 40,
+    CUSTOM_MENU_BAR_ITEMS_WIDTH = 40,
 
     /*
      *  Message types

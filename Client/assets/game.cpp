@@ -9,13 +9,21 @@
 Game::Game(QObject *parent) : QObject{parent} {
   player = new Actor(this);
   timer = new QTimer(this);
-  QPixmap *enemy_test = new QPixmap(":/images/images/bug_1_2x.png");
-  pixmaps.push_back(enemy_test);
   connect(timer, &QTimer::timeout, this, &Game::move);
   connect(timer, &QTimer::timeout, this, &Game::moveNPCs);
+  loadPixmaps();
   gravity = 1;
+  ping = 0;
+  difficulty = 1;
 }
 
+ChatFrame *Game::getChat() const { return chat; }
+
+void Game::setChat(ChatFrame *newChat) { chat = newChat; }
+void Game::loadPixmaps() {
+  platformPix = new QPixmap(":/images/images/platform_standard.png");
+  npcPix = new QPixmap(":/images/images/bug_1_2x.png");
+}
 /*!
  * \brief Game::getNetwork
  * convenience function
@@ -46,6 +54,7 @@ double Game::calculateDistance(QPointF item1, QPointF item2) {
  * Handles movement of ingame entities
  */
 void Game::move() {
+  ping++;
   // Start by calculating the score
   score = 150 * std::abs(max);
   // Check for collisions with npcs and platforms
@@ -58,8 +67,9 @@ void Game::move() {
     } else if (collision->data(404) == "npc") {
       if (player->getSpeedV() > 0)
         // Player dead
-        if(mode == SchoolSkipper::Gamemode_Multiplayer)
-            network->sendTcpMessage("Dead");
+        disconnect(timer, &QTimer::timeout, this, &Game::move);
+        if (mode == SchoolSkipper::Gamemode_Multiplayer)
+          network->sendTcpMessage("Dead");
       // TODO: Show end score and game over
     }
   }
@@ -77,21 +87,37 @@ void Game::move() {
   player->setSpeedV(player->getSpeedV() + gravity);
   // Check if the doodler went too low (loose condition)
   QPointF viewport_pos = getView()->mapFromScene(player->pos());
-//  qDebug() << "Viewpos" << viewport_pos;
-//  qDebug() << "Scenepos" << player->pos();
+  // qDebug() << "Viewpos" << viewport_pos;
+  qDebug() << "Scenepos" << player->pos();
   if (viewport_pos.y() > 560) {
     if (this->mode == SchoolSkipper::Gamemode_Singleplayer) {
+      timer->stop();
       // Player fell down
       // TODO: Show end score and game over
     } else {
       // Player "fell down"
+      disconnect(timer, &QTimer::timeout, this, &Game::move);
       network->sendTcpMessage("Dead");
       // TODO: Show end score and game over
     }
   }
   // Scroll higher if the player reached over a certain point in the screen
-  if (viewport_pos.y() < 250) {
-    view->scroll(0, 300);
+  if (viewport_pos.y() < 80 /*&& ping % 5 == 0*/) {
+    //    view->scroll(0, -300);
+    ping = 0;
+    view->centerOn(QPointF(viewportSize->width() / 2, player->pos().y()));
+    //    view->setTransformationAnchor(QGraphicsView::NoAnchor);
+    //    view->translate(viewportSize->width()/2,player->pos().y()-300);
+    //    view->verticalScrollBar()->setValue(view->verticalScrollBar()->value()-500);
+    //    view->QAbstractScrollArea::scroll(0,player->pos().y()-400);
+    generateLevelSlice();
+  }
+  if(mode == SchoolSkipper::Gamemode_Multiplayer){
+    int x, y;
+    x = player->pos().x();
+    y = player->pos().y();
+    QString msg = QString::number(x)+"x"+QString::number(y);
+    network->sendUdpMessage(QByteArray(msg.toUtf8()));
   }
   //    qDebug() << player->pos();
   //    emit startRepaint();
@@ -108,7 +134,7 @@ void Game::move() {
 void Game::moveNPCs() {
   // Check if the enemy has speed Values set for it's horizontal and vertical
   // speeds and move it accordingly
-  foreach (auto const npc, npcs) {
+  Q_FOREACH (auto const npc, npcs) {
     npc->moveBy(npc->getSpeedH(), npc->getSpeedV());
     if (!npc->isVisible()) {
       npc->setSpeedH(npc->getSpeedH() * -1);
@@ -125,15 +151,19 @@ void Game::moveNPCs() {
  * transpose by the size of our frame
  */
 void Game::moveEnemy() {
-  for (int i = 0; i < opponents.size(); i++) {
+  if (*LOP != opponent->pos()) {
+    if(LOP->x() < opponent->pos().x()){
+      opponent->setPixmap(*opponent->pixmaps.back());
+    }else{
+      opponent->setPixmap(*opponent->pixmaps.front());
+    }
     QPropertyAnimation *animation =
-        new QPropertyAnimation(opponents.at(i), "Geometry");
-    auto enemyBoundingRect = opponents.at(i)->boundingRect();
+        new QPropertyAnimation(opponent, "Geometry");
+    auto enemyBoundingRect = opponent->boundingRect();
     animation->setStartValue(enemyBoundingRect);
 
     // Transpose the value
-    animation->setEndValue(QRectF(LOP.at(i)->x(), LOP.at(i)->y(),
-                                  enemyBoundingRect.width(),
+    animation->setEndValue(QRectF(LOP->x(), LOP->y(), enemyBoundingRect.width(),
                                   enemyBoundingRect.height()));
     animation->setDuration(25);
     animation->start(QAbstractAnimation::DeleteWhenStopped);
@@ -146,24 +176,36 @@ void Game::moveEnemy() {
  * _mode defines whether we need to start in multiplayer mode or singleplayer
  * timer will be started with an interval of 25ms
  */
-void Game::startSlot(SchoolSkipper _mode) {
-  mode = _mode;
-  player->setPos(150, 0);
-  player->setZValue(100);
-  scene->addItem(player);
+void Game::startSlot() {
+  QObject *sender = QObject::sender();
+  if (sender->objectName() == "Singleplayer") {
+    mode = SchoolSkipper::Gamemode_Singleplayer;
+  } else {
+    mode = SchoolSkipper::Gamemode_Multiplayer;
+    opponent = new Actor();
+    LOP = new QPointF();
+  }
   viewportSize = new QSize(view->size());
-  player->show();
-  player->setFocus(Qt::FocusReason::OtherFocusReason);
-  player->setSpeedV(-20);
   if (mode == SchoolSkipper::Gamemode_Multiplayer) {
-    for (int i = 0; i < network->LOP.size(); i++) {
-      LOP.push_back(network->LOP.at(i));
-    }
     connect(timer, &QTimer::timeout, this, &Game::moveEnemy);
   }
+  initPlayer();
   initPlatforms();
-  timer->setInterval(20);
+//  invisibleArea = new QGraphicsRectItem(QRectF(0, -(view->size().height() / 2),
+//                                               view->size().width(),
+//                                               view->size().height() / 2));
+//  invisibleArea->setBrush(QBrush(QColor::fromRgb(0, 0, 0, 0)));
+//  scene->addItem(invisibleArea);
+  timer->setInterval(25);
   timer->start();
+}
+
+void Game::initPlayer() {
+  scene->addItem(player);
+  player->setPos(300, -viewportSize->height() / 2);
+  player->setZValue(100);
+  player->show();
+  player->setSpeedV(0);
 }
 /*!
  * \brief Game::getEnemyView
@@ -180,6 +222,12 @@ void Game::initEnemies() {
     npcs.push_back(enemy);
   }
 }
+
+void Game::centerViewOnPlayArea() {
+  view->centerOn(
+      QPointF(view->size().width() / 2, -(view->size().height() / 2)));
+}
+
 /*!
  * \brief Game::setEnemyView
  * \param newEnemyView
@@ -191,28 +239,96 @@ void Game::setEnemyView(QGraphicsView *newEnemyView) {
  * \brief Game::initPlatforms sets up a "test level" with platforms
  */
 void Game::initPlatforms() {
-  QPixmap *plat = new QPixmap(":/images/images/platform_standard.png");
+  Platform *doodleStart = new Platform(this, platformPix);
+  scene->addItem(doodleStart);
+  doodleStart->setPos(QPointF(view->size().width() / 2 - 50,
+                              -viewportSize->height() / 2 + 150));
+  doodleStart->show();
   for (int i = 0; i < 20; i++) {
-    Platform *tmp = new Platform(scene, plat);
+    Platform *tmp = new Platform(scene, platformPix);
     scene->addItem(tmp);
     //        tmp->mapToScene(300+i*10,300);
     // Put them from middle to left
-    if (i % 2 == 0) {
+    if (i % 3 == 0) {
       tmp->setPos(
-          QPointF(i * QRandomGenerator::global()->bounded(1, 12), i * 20));
+          QPointF(i * QRandomGenerator::global()->bounded(1, 12), (-i * 20)));
     }
     // Put them from middle to right
-    else {
-      tmp->setPos(
-          QPointF(i * QRandomGenerator::global()->bounded(1, 9) + 300, i * 15));
+    else if (i % 2 == 0) {
+      tmp->setPos(QPointF(i * QRandomGenerator::global()->bounded(1, 9) + 300,
+                          -i * 15));
+    } else {
+      tmp->setPos(QPointF(i + 150, -i * 15));
     }
     tmp->show();
     platforms.push_back(tmp);
   }
+  //  for (int i = 0; i < 15; i++) {
+  //    Platform *tmp = new Platform(this, platformPix);
+  //    scene->addItem(tmp);
+  //    tmp->setPos(QPointF(i * platformPix->width(), 0));
+  //    tmp->show();
+  //    platforms.push_back(tmp);
+  //  }
 }
-void Game::generateLevelSlice(){
-    //Generate platforms and npcs above the view
-    //
+void Game::generateLevelSlice() {
+  if (difficulty < 20)
+    difficulty++;
+  // Get Player Position as Point
+  QPointF playerpos = player->pos();
+  // Generate platforms as a multiple from a random distance the player can jump
+  // (about 60px so 45-65) (the harder the difficulty the closer to the max
+  // maybe?) Place them somewhere on X within the boundaries of the viewport
+  QPointF lastPlaced;
+  QRandomGenerator rnd;
+  for (int i = 0; i < 10; i++) {
+    Platform *tmp = new Platform(scene, platformPix);
+    if (i == 0) {
+      lastPlaced =
+          QPointF(rnd.bounded(0, viewportSize->rwidth()),
+                  playerpos.y() - rnd.bounded(5 + difficulty, 25 + difficulty));
+      tmp->setPos(lastPlaced);
+    } else {
+      lastPlaced = QPointF(rnd.bounded(0, viewportSize->rwidth()),
+                           lastPlaced.y() -
+                               rnd.bounded(5 + difficulty, 25 + difficulty));
+    }
+  }
+  // Generate platforms and npcs above the view
+  for (int i = 0; i < (20 - difficulty % 10); i++) {
+    Platform *tmp = new Platform(scene, platformPix);
+    scene->addItem(tmp);
+    //        tmp->mapToScene(300+i*10,300);
+    // Put them from middle to left
+    if (i % 3 == 0) {
+      lastPlaced = QPointF(
+          QRandomGenerator::global()->bounded(0, viewportSize->rwidth()),
+          playerpos.y() -
+              QRandomGenerator::global()->bounded(45 + difficulty, 65));
+      tmp->setPos(lastPlaced);
+      //      tmp->setPos(
+      //          QPointF(i * QRandomGenerator::global()->bounded(1, 12), (-i *
+      //          20)));
+    }
+    // Put them from middle to right
+    else if (i % 2 == 0) {
+      tmp->mapToParent(
+          (QRandomGenerator::global()->bounded((viewportSize->width() / 3) * 2,
+                                               viewportSize->width())),
+          player->pos().y() - i * 10);
+      //      tmp->setPos(QPointF(i * QRandomGenerator::global()->bounded(1, 9)
+      //      + 300,
+      //                          -i * 15));
+    } else {
+      tmp->mapToParent(
+          (QRandomGenerator::global()->bounded(
+              (viewportSize->width() / 3), (viewportSize->width() / 3) * 2)),
+          player->pos().y() - i * 10);
+      //      tmp->setPos(QPointF(i + 150, -i * 15));
+    }
+    tmp->show();
+    platforms.push_back(tmp);
+  }
 }
 /*!
  * \brief Game::getView

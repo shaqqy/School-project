@@ -46,7 +46,8 @@ QPainterPath Actor::shape() const
     if(_isPlayer)
     {
         QPainterPath path;
-        path.addRect(X+15,Y+49,boundingRect().width(),boundingRect().height()); //real size of the collider to be used
+        path.addEllipse(X+10,Y+10,boundingRect().width()-20,boundingRect().height()-10);
+        //path.addRect(X,Y,boundingRect().width()-10,boundingRect().height()-10); //real size of the collider to be used
         return path;
     }
     else
@@ -65,6 +66,8 @@ void Actor::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWi
     Q_UNUSED(option);
     Q_UNUSED(widget);
     painter->drawPixmap(X,Y,50,50, pixmap()); //draw our pixmap with the size 50, 50 on the positon of X and Y
+    painter->setPen(QColor::fromRgb(0,255,0,255));
+    painter->drawEllipse(X,Y,boundingRect().width()-20,boundingRect().height()-10);
 }
 
 void Actor::fall()
@@ -76,50 +79,6 @@ void Actor::fall()
 void Actor::move(QPointF point)
 {
     setPos(point);
-}
-
-void Actor::keyPressEvent(QKeyEvent *event)
-{
-    switch(event->key()){
-    case Qt::Key_Right:
-        if(event->isAutoRepeat())
-        {
-            speedH = 20;
-        }
-        else
-        {
-            speedH = 20;
-            setPixmap(QPixmap(":/images/images/blue-lik-right@2x.png"));
-        }
-        break;
-    case Qt::Key_Left:
-        if(event->isAutoRepeat())
-        {
-            speedH = -20;
-        }
-        else
-        {
-            speedH = -20;
-            setPixmap(QPixmap(":/images/images/blue-lik-left@2x.png"));
-        }
-        break;
-    case Qt::Key_Space:
-        //TODO: implement shooting
-        break;
-    }
-}
-
-void Actor::keyReleaseEvent(QKeyEvent* event)
-{
-    switch(event->key())
-    {
-    case Qt::Key_Left:
-        speedH = 0;
-        break;
-    case Qt::Key_Right:
-        speedH = 0;
-        break;
-    }
 }
 
 double Actor::getSpeedH() const

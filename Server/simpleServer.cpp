@@ -19,7 +19,7 @@ Server::Server(QObject* parent): QObject(parent)
     }
     msg_server = new QTcpServer();
     connect(msg_server, &QTcpServer::newConnection, this, &Server::acceptConnection);
-    msg_server->listen(/*Socket.localAddress()*/QHostAddress("192.168.0.2"), 30001);
+    msg_server->listen(/*Socket.localAddress()*/QHostAddress("192.168.0.43"), 30001);
     Socket.disconnectFromHost();
     multicastGroup = QHostAddress(QStringLiteral("239.255.43.21"));
     multicast = new QUdpSocket(this);
