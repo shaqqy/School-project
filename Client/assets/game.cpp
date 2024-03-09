@@ -244,7 +244,7 @@ void Game::setEnemyView(QGraphicsView *newEnemyView) {
  * \brief Game::initPlatforms sets up a "test level" with platforms
  */
 void Game::initPlatforms() {
-  Platform *doodleStart = new Platform(this, platformPix);
+  Platform *doodleStart = new Platform(scene, platformPix);
   scene->addItem(doodleStart);
   doodleStart->setPos(QPointF(view->size().width() / 2 - 50,
                               -viewportSize->height() / 2 + 150));
@@ -268,13 +268,13 @@ void Game::initPlatforms() {
     tmp->show();
     platforms.push_back(tmp);
   }
-  //  for (int i = 0; i < 15; i++) {
-  //    Platform *tmp = new Platform(this, platformPix);
-  //    scene->addItem(tmp);
-  //    tmp->setPos(QPointF(i * platformPix->width(), 0));
-  //    tmp->show();
-  //    platforms.push_back(tmp);
-  //  }
+   for (int i = 0; i < 15; i++) {
+     Platform *tmp = new Platform(this, platformPix);
+     scene->addItem(tmp);
+     tmp->setPos(QPointF(i * platformPix->width(), 0));
+     tmp->show();
+     platforms.push_back(tmp);
+   }
 }
 void Game::generateLevelSlice() {
   if (difficulty < 20)
