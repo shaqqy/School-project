@@ -31,6 +31,7 @@ protected:
   QUdpSocket *multicast;
   QTcpServer *msg_server;
   bool running = false;
+  QFile *log;
 
 private:
   int rdyCounter = 0;

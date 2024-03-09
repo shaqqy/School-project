@@ -68,7 +68,7 @@ void SchoolSkipperClient::initStartButtons(){
   QPixmap *singleplayerPix = new QPixmap(":/images/images/play_menu.png");
   auto tmp1 = singleplayerPix->scaled(QSize(100,50));
   QIcon singleplayerIcon = QIcon(tmp1);
-  single = new QPushButton(singleplayerIcon,"");
+  single = new QPushButton(singleplayerIcon,"Singleplayer");
   graphicsScene->addWidget(single);
   single->setGeometry(270,-350, singleplayerPix->width(),singleplayerPix->height());
   single->setObjectName("Singleplayer");
@@ -79,7 +79,7 @@ void SchoolSkipperClient::initStartButtons(){
   QPixmap *multiplayerPix = new QPixmap(":/images/images/multiplayer.png");
   auto tmp2 = multiplayerPix->scaled(QSize(100,50));
   QIcon multiplayerIcon = QIcon(tmp2);
-  multi = new QPushButton(multiplayerIcon,"");
+  multi = new QPushButton(multiplayerIcon,"Multiplayer");
   graphicsScene->addWidget(multi);
   multi->setGeometry(270,-150, multiplayerPix->width(),multiplayerPix->height());
   multi->setObjectName("Multiplayer");
