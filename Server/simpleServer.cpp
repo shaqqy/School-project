@@ -138,9 +138,16 @@ void Server::handleMessage()
     }
     else if (msg.startsWith("Ready"))
     {
-        int idx = messengers.indexOf(sender);
-        player_alive[idx] = true;
-        startGame();
+        if(rdyCounter==0){
+        // int idx = messengers.indexOf(sender);
+        // player_alive[idx] = true;
+            rdyCounter++;
+        }else if(rdyCounter == 1)
+        {
+            startGame();
+        }else{
+            rdyCounter=1;
+        }
     }
 }
 /*!

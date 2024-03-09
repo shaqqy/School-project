@@ -98,7 +98,7 @@ void Network::readNewTcpData() {
     qDebug() << "[NET] TCP message from " << tcpSocket->peerAddress() << ":"
              << tcpSocket->peerPort();
     qDebug() << "[NET] TCP message: " << message;
-  } else if (message.startsWith("Ready")) {
+  } else if (message.startsWith("Start")) {
     emit startFromServer();
     qDebug() << "[NET] TCP message from " << tcpSocket->peerAddress() << ":"
              << tcpSocket->peerPort();

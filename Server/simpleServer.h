@@ -33,6 +33,7 @@ protected:
   bool running = false;
 
 private:
+  int rdyCounter = 0;
   std::vector<bool> player_alive;
   QList<QTcpSocket*> messengers;
   Server(QObject * parent = 0);
