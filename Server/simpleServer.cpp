@@ -77,7 +77,7 @@ void Server::startRead() {
   qDebug() << "Message: " << buffer;
   if(log->open(QIODevice::ReadWrite)){
       QTextStream stream(log);
-      stream << buffer << Qt::endl;
+      stream <<sender.toString() << "," <<buffer << Qt::endl;
   }
 }
 
@@ -93,7 +93,7 @@ void Server::startGame() {
         QDateTime date = QDateTime::currentDateTime();
         QString formattedTime = date.toString("dd.MM.yyyy hh:mm:ss");
         QByteArray formattedTimeMsg = formattedTime.toLocal8Bit();
-        log = new QFile(formattedTimeMsg+".txt");
+        log = new QFile(formattedTimeMsg+".csv");
         if(log->open(QIODevice::ReadWrite)){
             QTextStream stream(log);
             stream << "START" << Qt::endl;
@@ -140,7 +140,7 @@ void Server::handleMessage() {
     qDebug() << "Player with IP " << sender->localAddress() << " died";
       if(log->open(QIODevice::ReadWrite)){
           QTextStream stream(log);
-          stream << sender->localAddress().toString() << " " << buffer << Qt::endl;
+          stream << sender->localAddress().toString() << "," << buffer << Qt::endl;
           stream << "GAME OVER" << Qt::endl;
       }
   } else if (msg.startsWith("Message")) {
