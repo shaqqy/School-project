@@ -187,6 +187,7 @@ void Game::startSlot() {
   } else {
     mode = SchoolSkipper::Gamemode_Multiplayer;
     opponent = new Actor();
+    opponent->setOpacity(0.4);
     LOP = new QPointF();
     connect(timer, &QTimer::timeout, this, &Game::moveEnemy);
   }
