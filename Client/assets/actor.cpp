@@ -66,8 +66,8 @@ void Actor::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWi
     Q_UNUSED(option);
     Q_UNUSED(widget);
     painter->drawPixmap(X,Y,50,50, pixmap()); //draw our pixmap with the size 50, 50 on the positon of X and Y
-    painter->setPen(QColor::fromRgb(0,255,0,255));
-    painter->drawEllipse(X,Y,boundingRect().width()-20,boundingRect().height()-10);
+    // painter->setPen(QColor::fromRgb(0,255,0,255));
+    // painter->drawEllipse(X,Y,boundingRect().width()-20,boundingRect().height()-10);
 }
 
 void Actor::fall()
