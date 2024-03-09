@@ -68,8 +68,8 @@ void Game::move() {
       if (player->getSpeedV() > 0)
         // Player dead
         disconnect(timer, &QTimer::timeout, this, &Game::move);
-        if (mode == SchoolSkipper::Gamemode_Multiplayer)
-          network->sendTcpMessage("Dead");
+      if (mode == SchoolSkipper::Gamemode_Multiplayer)
+        network->sendTcpMessage("Dead");
       // TODO: Show end score and game over
     }
   }
@@ -112,11 +112,11 @@ void Game::move() {
     //    view->QAbstractScrollArea::scroll(0,player->pos().y()-400);
     generateLevelSlice();
   }
-  if(mode == SchoolSkipper::Gamemode_Multiplayer){
+  if (mode == SchoolSkipper::Gamemode_Multiplayer) {
     int x, y;
     x = player->pos().x();
     y = player->pos().y();
-    QString msg = QString::number(x)+"x"+QString::number(y);
+    QString msg = QString::number(x) + "x" + QString::number(y);
     network->sendUdpMessage(QByteArray(msg.toUtf8()));
   }
   //    qDebug() << player->pos();
@@ -152,9 +152,9 @@ void Game::moveNPCs() {
  */
 void Game::moveEnemy() {
   if (*LOP != opponent->pos()) {
-    if(LOP->x() < opponent->pos().x()){
+    if (LOP->x() < opponent->pos().x()) {
       opponent->setPixmap(*opponent->pixmaps.back());
-    }else{
+    } else {
       opponent->setPixmap(*opponent->pixmaps.front());
     }
     QPropertyAnimation *animation =
@@ -178,26 +178,31 @@ void Game::moveEnemy() {
  */
 void Game::startSlot() {
   QObject *sender = QObject::sender();
+  initPlayer();
+  initPlatforms();
   if (sender->objectName() == "Singleplayer") {
     mode = SchoolSkipper::Gamemode_Singleplayer;
+    timer->setInterval(25);
+    timer->start();
   } else {
     mode = SchoolSkipper::Gamemode_Multiplayer;
     opponent = new Actor();
     LOP = new QPointF();
-  }
-  viewportSize = new QSize(view->size());
-  if (mode == SchoolSkipper::Gamemode_Multiplayer) {
     connect(timer, &QTimer::timeout, this, &Game::moveEnemy);
   }
-  initPlayer();
-  initPlatforms();
-//  invisibleArea = new QGraphicsRectItem(QRectF(0, -(view->size().height() / 2),
-//                                               view->size().width(),
-//                                               view->size().height() / 2));
-//  invisibleArea->setBrush(QBrush(QColor::fromRgb(0, 0, 0, 0)));
-//  scene->addItem(invisibleArea);
-  timer->setInterval(25);
-  timer->start();
+  viewportSize = new QSize(view->size());
+
+  //  invisibleArea = new QGraphicsRectItem(QRectF(0, -(view->size().height() /
+  //  2),
+  //                                               view->size().width(),
+  //                                               view->size().height() / 2));
+  //  invisibleArea->setBrush(QBrush(QColor::fromRgb(0, 0, 0, 0)));
+  //  scene->addItem(invisibleArea);
+}
+
+void Game::startFromServer(){
+    timer->setInterval(25);
+    timer->start();
 }
 
 void Game::initPlayer() {

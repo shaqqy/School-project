@@ -38,6 +38,7 @@ public slots:
 signals:
     void newChatMessage(QString message, SchoolSkipper type);
     void tcpConnectionStatus(bool connected);
+    void startFromServer();
 };
 
 #endif // NETWORK_H

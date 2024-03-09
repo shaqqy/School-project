@@ -58,6 +58,7 @@ public slots:
     void moveEnemy();
     void startSlot();
 
+    void startFromServer();
 protected:
     QSize *viewportSize;
     QGraphicsScene *scene;

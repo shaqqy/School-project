@@ -50,6 +50,7 @@ SchoolSkipperClient::SchoolSkipperClient(QWidget *parent)
    */
   game = new Game(this);
   game->setNetwork(networker);
+  connect(networker, &Network::startFromServer, game, &Game::startFromServer);
   game->setScene(this->graphicsScene);
   game->setView(this->graphicsViewsList.front());
   game->centerViewOnPlayArea();
