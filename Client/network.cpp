@@ -54,7 +54,7 @@ void Network::readNewUdpData() {
 }
 
 void Network::sendUdpMessage(QByteArray message) {
-  udpSocket->writeDatagram(message, QHostAddress("10.10.197.12"), 30001);
+  udpSocket->writeDatagram(message, QHostAddress("192.168.0.2"), 30001);
 
   qDebug() << "[NET] Sent message (UDP): " << message;
 }
@@ -68,6 +68,8 @@ void Network::initTcpSocket() {
 
     if (tcpSocket->waitForConnected(2000)) {
       qDebug() << "[NET] Connected with (TCP): " << tcpSocket->peerAddress();
+
+      emit tcpConnectionStatus(true);
     } else {
       qDebug() << "[NET] Server not reachable (TCP)";
 

@@ -22,14 +22,27 @@ ChatFrame::ChatFrame(QWidget* parent) : QFrame(parent){
      */
     connect(minimizeButton, &QPushButton::clicked, this, &ChatFrame::handleMinimizePressed);
 
+    /*
+     *  connect for reconnecting the tcp socket in the networker
+     */
+    connect(reconnectButton, &QPushButton::clicked, this, &ChatFrame::handleReconnectChat);
+
     qDebug() << "[SYS] Initialized chat frame";
 }
 
 void ChatFrame::handleNewMessage(QString message, SchoolSkipper type) {
+    if (message.isEmpty()) {
+        return;
+    }
+
     QString sender;
 
     switch (type) {
     case SchoolSkipper::INCOMING_MESSAGE:
+        if (this->isHidden()) {
+            emit changeIconOfExpandButton(CHAT_EXPAND_ICON_NEW_MESSAGE);
+        }
+
         sender = "Opponent";
         break;
 
@@ -48,17 +61,32 @@ void ChatFrame::handleNewMessage(QString message, SchoolSkipper type) {
 
 void ChatFrame::handleConnectionChange(bool connected) {
     if (connected) {
+        this->connected = connected;
+
         connectedStatusLabel->setText("Connected");
-        connectedStatusLabel->setStyleSheet("color: green");
+        connectedStatusLabel->setStyleSheet(connectedStatusLabel->styleSheet() + "color: green");
 
         return;
     }
 
+    this->connected = connected;
+
     connectedStatusLabel->setText("Disconnected");
-    connectedStatusLabel->setStyleSheet("color: red");
+    connectedStatusLabel->setStyleSheet(connectedStatusLabel->styleSheet() + "color: red");
+}
+
+void ChatFrame::handleReconnectChat() {
+    if (!connected) {
+        emit reconnectChat();
+
+        return;
+    }
+
+    qDebug() << "[SYS] Already connected via TCP! Click not forwarded to networker";
 }
 
 void ChatFrame::handleMinimizePressed() {
+    emit changeIconOfExpandButton(CHAT_EXPAND_ICON_DEFAULT);
     emit minimizeChatFrame();
 }
 
@@ -96,7 +124,7 @@ void ChatFrame::initWidgetsDefaultParams() {
 }
 
 void ChatFrame::initWidgetsStyles() {
-    connectedStatusLabel->setStyleSheet("background-color: black; border-top: 3px solid grey; border-right: 3px solid grey;");
+    connectedStatusLabel->setStyleSheet("background-color: black; border-top: 3px solid grey;");
 
     reconnectButton->setStyleSheet("border-top: 3px solid grey; border-right: 3px solid grey; border-top-right-radius: 10px; background-color: black;");
     reconnectButton->setIcon(style()->standardIcon(QStyle::SP_BrowserReload));
