@@ -29,6 +29,8 @@ public:
 signals:
     void minimizeChatFrame();
 
+    void reconnectChat();
+
     void newMessage(QString message, SchoolSkipper type);
     void sendMessageOverNetwork(QByteArray message);
 
@@ -36,6 +38,7 @@ public slots:
     void handleNewMessage(QString message, SchoolSkipper type);
     void handleConnectionChange(bool connected);
     void handleMinimizePressed();
+    void handleReconnectChat();
 
     void sendMessagePressed();
 
@@ -48,6 +51,8 @@ private:
 
     QLineEdit* inputBox;
     QPushButton* sendButton;
+
+    bool connected;
 
     void scrollTextBoxToEnd();
 

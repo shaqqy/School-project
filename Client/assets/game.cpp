@@ -178,6 +178,7 @@ void Game::moveEnemy() {
  */
 void Game::startSlot() {
   QObject *sender = QObject::sender();
+  viewportSize = new QSize(view->size());
   initPlayer();
   initPlatforms();
   if (sender->objectName() == "Singleplayer") {
@@ -190,8 +191,8 @@ void Game::startSlot() {
     opponent->setOpacity(0.4);
     LOP = new QPointF();
     connect(timer, &QTimer::timeout, this, &Game::moveEnemy);
+    network->sendTcpMessage(QByteArray::fromStdString("Ready"));
   }
-  viewportSize = new QSize(view->size());
 
   //  invisibleArea = new QGraphicsRectItem(QRectF(0, -(view->size().height() /
   //  2),

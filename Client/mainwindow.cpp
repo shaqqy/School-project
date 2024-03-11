@@ -35,7 +35,7 @@ SchoolSkipperClient::SchoolSkipperClient(QWidget *parent)
 
   /*
    *  connect minimize and maximize buttons for handling the visibility of the
-   * chat frame
+   * chat frame. And connect reconnect button of chat frame
    */
   connect(this, &SchoolSkipperClient::visibilityChangeOfChatFrame, this,
           &SchoolSkipperClient::handleVisibilityChangeOfChatFrame);
@@ -43,8 +43,11 @@ SchoolSkipperClient::SchoolSkipperClient(QWidget *parent)
           &SchoolSkipperClient::expandChatFrame);
   connect(chatFrame, &ChatFrame::minimizeChatFrame, this,
           &SchoolSkipperClient::minimizeChatFrame);
+  connect(chatFrame, &ChatFrame::reconnectChat, this, &SchoolSkipperClient::reconnectTcp);
 
   initGraphicsViews();
+  networker->initTcpSocket();
+
   /*
    * Do this here after the network init!
    */
@@ -113,7 +116,6 @@ void SchoolSkipperClient::initFrames() {
 
 void SchoolSkipperClient::initNetwork() {
   networker = new Network(this);
-  networker->initTcpSocket();
 }
 
 void SchoolSkipperClient::handleVisibilityChangeOfChatFrame(bool visible) {
@@ -144,6 +146,10 @@ void SchoolSkipperClient::expandChatFrame() {
 
 void SchoolSkipperClient::minimizeChatFrame() {
   emit visibilityChangeOfChatFrame(false);
+}
+
+void SchoolSkipperClient::reconnectTcp() {
+  networker->initTcpSocket();
 }
 
 void SchoolSkipperClient::initGraphicsViews() {

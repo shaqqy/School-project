@@ -50,6 +50,7 @@ public slots:
     void handleVisibilityChangeOfChatFrame(bool visible);
     void expandChatFrame();
     void minimizeChatFrame();
+    void reconnectTcp();
 
     void keyPressEvent(QKeyEvent *event) override;
     void hideStartButtons();
