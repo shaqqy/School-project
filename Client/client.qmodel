@@ -97,7 +97,7 @@
                          <context>Assets</context>
                          <name>CustomButton</name>
                          <pos>x:-340;y:20</pos>
-                         <rect>x:-145;y:-85;w:290;h:170</rect>
+                         <rect>x:-140;y:-85;w:280;h:170</rect>
                          <visual-role>0</visual-role>
                         </DObject>
                        </base-DObject>
@@ -119,7 +119,7 @@
                          <context>Assets</context>
                          <name>Game</name>
                          <pos>x:430;y:-315</pos>
-                         <rect>x:-160;y:-390;w:320;h:780</rect>
+                         <rect>x:-150;y:-390;w:300;h:780</rect>
                          <visual-role>0</visual-role>
                         </DObject>
                        </base-DObject>
@@ -141,7 +141,7 @@
                          <context>Assets</context>
                          <name>Platform</name>
                          <pos>x:105;y:645</pos>
-                         <rect>x:-245;y:-85;w:490;h:170</rect>
+                         <rect>x:-230;y:-85;w:460;h:170</rect>
                          <visual-role>0</visual-role>
                         </DObject>
                        </base-DObject>
@@ -163,7 +163,7 @@
                          <context>Client</context>
                          <name>ChatFrame</name>
                          <pos>x:50;y:320</pos>
-                         <rect>x:-180;y:-210;w:360;h:420</rect>
+                         <rect>x:-175;y:-210;w:350;h:420</rect>
                          <visual-role>0</visual-role>
                         </DObject>
                        </base-DObject>
@@ -185,7 +185,7 @@
                          <context>Client</context>
                          <name>Network</name>
                          <pos>x:-315;y:-240</pos>
-                         <rect>x:-170;y:-160;w:340;h:320</rect>
+                         <rect>x:-165;y:-160;w:330;h:320</rect>
                          <visual-role>0</visual-role>
                         </DObject>
                        </base-DObject>
@@ -207,7 +207,7 @@
                          <context>Client</context>
                          <name>MenuFrame</name>
                          <pos>x:-340;y:225</pos>
-                         <rect>x:-145;y:-105;w:290;h:210</rect>
+                         <rect>x:-140;y:-105;w:280;h:210</rect>
                          <visual-role>0</visual-role>
                         </DObject>
                        </base-DObject>
@@ -222,27 +222,6 @@
                  </MDiagram>
                 </base-MDiagram>
                </MCanvasDiagram>
-              </instance>
-             </target>
-            </handle>
-           </item>
-           <item>
-            <handle>
-             <uid>{2bbc20e3-1eb1-4ebf-ba66-a4880dfe0224}</uid>
-             <target>
-              <instance type="MClass">
-               <MClass>
-                <base-MObject>
-                 <MObject>
-                  <base-MElement>
-                   <MElement>
-                    <uid>{2bbc20e3-1eb1-4ebf-ba66-a4880dfe0224}</uid>
-                   </MElement>
-                  </base-MElement>
-                  <name>Neu Class</name>
-                 </MObject>
-                </base-MObject>
-               </MClass>
               </instance>
              </target>
             </handle>
@@ -1293,14 +1272,14 @@
                                        <qlist>
                                         <item>
                                          <MClassMember>
-                                          <uid>{552627ee-46a8-4785-a9c9-d3ca889648ac}</uid>
+                                          <uid>{391e2e22-1071-47fe-8cf5-b40c80376649}</uid>
                                           <type>1</type>
                                           <declaration>Q_OBJECT</declaration>
                                          </MClassMember>
                                         </item>
                                         <item>
                                          <MClassMember>
-                                          <uid>{34db14d9-6352-4cf2-acfc-783f7d63e686}</uid>
+                                          <uid>{44efa9df-315c-4f6b-b9b8-24ee1f1b7c3c}</uid>
                                           <visibility>1</visibility>
                                           <type>2</type>
                                           <declaration>explicit Platform(QObject *parent = nullptr)</declaration>
@@ -1308,7 +1287,7 @@
                                         </item>
                                         <item>
                                          <MClassMember>
-                                          <uid>{24857500-a489-4dd4-8a91-02ea4650739e}</uid>
+                                          <uid>{703b1a2c-ff63-4a1d-92a2-be539ada26c7}</uid>
                                           <visibility>1</visibility>
                                           <type>2</type>
                                           <declaration>Platform(QObject* parent = nullptr, QPixmap* pix = nullptr)</declaration>
@@ -1316,7 +1295,7 @@
                                         </item>
                                         <item>
                                          <MClassMember>
-                                          <uid>{a4c9bb2e-42e3-4723-87f2-34dd4dc5e915}</uid>
+                                          <uid>{8475466a-c7e1-4409-b250-9ebdf05e910e}</uid>
                                           <visibility>1</visibility>
                                           <type>2</type>
                                           <properties>4</properties>
@@ -1325,7 +1304,7 @@
                                         </item>
                                         <item>
                                          <MClassMember>
-                                          <uid>{4c199dd8-75fd-447c-a647-c0dac1149299}</uid>
+                                          <uid>{26ecc1b0-05c8-4180-8dca-02bc81774a19}</uid>
                                           <visibility>1</visibility>
                                           <type>2</type>
                                           <properties>4</properties>
@@ -1334,7 +1313,7 @@
                                         </item>
                                         <item>
                                          <MClassMember>
-                                          <uid>{49a8e718-e45f-4756-9d83-fbb8705b3a2d}</uid>
+                                          <uid>{9e9be310-94a7-4faf-8d70-763a15de4229}</uid>
                                           <visibility>1</visibility>
                                           <type>2</type>
                                           <declaration>void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget)</declaration>
@@ -1401,14 +1380,14 @@
                             <qlist>
                              <item>
                               <MClassMember>
-                               <uid>{270b1796-04ba-4d96-9269-fa7ff35d389b}</uid>
+                               <uid>{38999a77-75a4-476c-bda9-85afb12e15c9}</uid>
                                <type>1</type>
                                <declaration>Q_OBJECT</declaration>
                               </MClassMember>
                              </item>
                              <item>
                               <MClassMember>
-                               <uid>{8887b104-a242-42e0-9c51-5a6faa1fb6f0}</uid>
+                               <uid>{b43e2692-965a-4a7f-8861-229463ba874a}</uid>
                                <visibility>1</visibility>
                                <type>2</type>
                                <declaration>ChatFrame(QWidget* parent)</declaration>
@@ -1416,7 +1395,7 @@
                              </item>
                              <item>
                               <MClassMember>
-                               <uid>{fc34eb97-513c-4613-ac88-aaf3fab4b394}</uid>
+                               <uid>{faeaa4b5-8934-4efb-b6d1-43484090df0e}</uid>
                                <visibility>1</visibility>
                                <type>1</type>
                                <declaration>const QIcon CHAT_MINIMIZE_ICON</declaration>
@@ -1424,7 +1403,7 @@
                              </item>
                              <item>
                               <MClassMember>
-                               <uid>{9c5cb11e-5f2c-431c-a244-8e10516f0121}</uid>
+                               <uid>{9e82820f-d8fd-44a4-84f8-d915a9e5c580}</uid>
                                <visibility>1</visibility>
                                <type>2</type>
                                <properties>4</properties>
@@ -1433,7 +1412,7 @@
                              </item>
                              <item>
                               <MClassMember>
-                               <uid>{b6efc2ca-4ef4-4977-85bc-781f03bc2eb3}</uid>
+                               <uid>{55637f4c-9c06-48c7-b8ba-2148655be296}</uid>
                                <visibility>1</visibility>
                                <type>2</type>
                                <declaration>void setInputBox(QLineEdit *newInputBox)</declaration>
@@ -1441,7 +1420,7 @@
                              </item>
                              <item>
                               <MClassMember>
-                               <uid>{0109a2e7-870e-488f-baa0-0e21cf8b3a87}</uid>
+                               <uid>{9b03f11c-382b-40a4-8edf-848abe7c6ddd}</uid>
                                <visibility>4</visibility>
                                <type>2</type>
                                <declaration>void minimizeChatFrame()</declaration>
@@ -1449,7 +1428,7 @@
                              </item>
                              <item>
                               <MClassMember>
-                               <uid>{4a2802e9-9f4f-43cc-b67b-1828f3a52fd1}</uid>
+                               <uid>{a52777ee-db64-4a10-ac2b-75098e6ebfe2}</uid>
                                <visibility>4</visibility>
                                <type>2</type>
                                <declaration>void newMessage(QString message, SchoolSkipper type)</declaration>
@@ -1457,7 +1436,7 @@
                              </item>
                              <item>
                               <MClassMember>
-                               <uid>{b765081d-da52-452c-91b5-466beb66277d}</uid>
+                               <uid>{08596e12-6077-45f2-bf2b-3fc42498d3de}</uid>
                                <visibility>4</visibility>
                                <type>2</type>
                                <declaration>void sendMessageOverNetwork(QByteArray message)</declaration>
@@ -1465,7 +1444,7 @@
                              </item>
                              <item>
                               <MClassMember>
-                               <uid>{02c16ed8-4fa7-4f9e-8b9c-b4a2770142db}</uid>
+                               <uid>{1eee24fa-a0ec-487b-93dd-45abb43567cc}</uid>
                                <visibility>7</visibility>
                                <type>2</type>
                                <declaration>void handleNewMessage(QString message, SchoolSkipper type)</declaration>
@@ -1473,7 +1452,7 @@
                              </item>
                              <item>
                               <MClassMember>
-                               <uid>{95f4689d-7859-4d8f-9bd3-e17882933b7b}</uid>
+                               <uid>{36d23974-9856-4467-b924-b57a743ae314}</uid>
                                <visibility>7</visibility>
                                <type>2</type>
                                <declaration>void handleConnectionChange(bool connected)</declaration>
@@ -1481,7 +1460,7 @@
                              </item>
                              <item>
                               <MClassMember>
-                               <uid>{c040ce9c-7bdf-4910-b770-e1480323505e}</uid>
+                               <uid>{220891d5-4cdb-41f7-9d96-147232dbd8d9}</uid>
                                <visibility>7</visibility>
                                <type>2</type>
                                <declaration>void handleMinimizePressed()</declaration>
@@ -1489,7 +1468,7 @@
                              </item>
                              <item>
                               <MClassMember>
-                               <uid>{00481fd2-54be-4d06-b768-669fba61ff4b}</uid>
+                               <uid>{9868a58c-2d0d-47ce-ab4f-9640656567fc}</uid>
                                <visibility>7</visibility>
                                <type>2</type>
                                <declaration>void sendMessagePressed()</declaration>
@@ -1497,7 +1476,7 @@
                              </item>
                              <item>
                               <MClassMember>
-                               <uid>{db8a081a-fdc9-4bd1-afd2-cbf73ea14aa5}</uid>
+                               <uid>{8fc9fab6-d095-408b-a6e8-89d7739b0aa6}</uid>
                                <visibility>3</visibility>
                                <type>1</type>
                                <declaration>QLabel* connectedStatusLabel</declaration>
@@ -1505,7 +1484,7 @@
                              </item>
                              <item>
                               <MClassMember>
-                               <uid>{1afbfe34-7033-41a7-919d-48cc2137f602}</uid>
+                               <uid>{0e769219-ac1c-4f9e-b2c6-229b6e8e97cb}</uid>
                                <visibility>3</visibility>
                                <type>1</type>
                                <declaration>QPushButton* minimizeButton</declaration>
@@ -1513,7 +1492,7 @@
                              </item>
                              <item>
                               <MClassMember>
-                               <uid>{a0799f3f-14c2-4afe-b0d5-9276d7730712}</uid>
+                               <uid>{de0a8172-f0aa-4a00-9184-fbc5116bd8d2}</uid>
                                <visibility>3</visibility>
                                <type>1</type>
                                <declaration>QPushButton* reconnectButton</declaration>
@@ -1521,7 +1500,7 @@
                              </item>
                              <item>
                               <MClassMember>
-                               <uid>{024799f4-7c5c-415f-92f8-def65a4fe5f3}</uid>
+                               <uid>{85ea61b9-b9bb-4e17-b634-e325e2a7169b}</uid>
                                <visibility>3</visibility>
                                <type>1</type>
                                <declaration>QTextBrowser* textBox</declaration>
@@ -1529,7 +1508,7 @@
                              </item>
                              <item>
                               <MClassMember>
-                               <uid>{da40056b-564e-437b-90b9-3938614233bb}</uid>
+                               <uid>{c342797d-3672-4bfd-a00d-90fe10833cd5}</uid>
                                <visibility>3</visibility>
                                <type>1</type>
                                <declaration>QLineEdit* inputBox</declaration>
@@ -1537,7 +1516,7 @@
                              </item>
                              <item>
                               <MClassMember>
-                               <uid>{7abca963-5b2f-42b3-a355-e17ba030d63b}</uid>
+                               <uid>{4e1d4c3a-7ba6-4e67-bc55-19af3677988b}</uid>
                                <visibility>3</visibility>
                                <type>1</type>
                                <declaration>QPushButton* sendButton</declaration>
@@ -1545,7 +1524,7 @@
                              </item>
                              <item>
                               <MClassMember>
-                               <uid>{b5781fdb-d1a0-463c-a533-3d4e677f008a}</uid>
+                               <uid>{83137a97-dbf4-4aa8-91f8-4bdff3daba80}</uid>
                                <visibility>3</visibility>
                                <type>2</type>
                                <declaration>void scrollTextBoxToEnd()</declaration>
@@ -1553,7 +1532,7 @@
                              </item>
                              <item>
                               <MClassMember>
-                               <uid>{fa335558-dfe4-4ef3-b52a-3da219464c7c}</uid>
+                               <uid>{272a4ef8-8235-4b06-8f0c-903388223c69}</uid>
                                <visibility>3</visibility>
                                <type>2</type>
                                <declaration>void initWidgets()</declaration>
@@ -1561,7 +1540,7 @@
                              </item>
                              <item>
                               <MClassMember>
-                               <uid>{11162faa-6c0d-41ae-b7fb-192658d394f5}</uid>
+                               <uid>{87e760d5-1bb8-4bcd-a57c-4ed1cfaf71fc}</uid>
                                <visibility>3</visibility>
                                <type>2</type>
                                <declaration>void initWidgetsDefaultParams()</declaration>
@@ -1569,7 +1548,7 @@
                              </item>
                              <item>
                               <MClassMember>
-                               <uid>{6b519514-c389-4a52-a8da-428ce29bedee}</uid>
+                               <uid>{30972391-cfc2-4d66-b55c-516550d3094b}</uid>
                                <visibility>3</visibility>
                                <type>2</type>
                                <declaration>void initWidgetsStyles()</declaration>
@@ -1577,7 +1556,7 @@
                              </item>
                              <item>
                               <MClassMember>
-                               <uid>{10d6068c-c3c5-444e-bcde-4b94c1143df6}</uid>
+                               <uid>{f46030ed-1c26-4bd5-b54e-9578f79c397b}</uid>
                                <visibility>2</visibility>
                                <type>2</type>
                                <properties>9</properties>
