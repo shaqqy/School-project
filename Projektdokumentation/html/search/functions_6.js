@@ -1,10 +1,9 @@
 var searchData=
 [
-  ['handleconnectionchange_0',['handleConnectionChange',['../class_chat_frame.html#a24b5bb406ec8aac88f08701150c7b8fa',1,'ChatFrame']]],
-  ['handledisconnect_1',['handleDisconnect',['../class_server.html#a8e7300cb514ecce1b7e6931ace9f6777',1,'Server']]],
-  ['handlemessage_2',['handleMessage',['../class_server.html#ae0ebaeca61bbf8feddf51223e5924a27',1,'Server']]],
-  ['handleminimizepressed_3',['handleMinimizePressed',['../class_chat_frame.html#a732661fdf63678564db94cfc1448ca39',1,'ChatFrame']]],
-  ['handlenewmessage_4',['handleNewMessage',['../class_chat_frame.html#ab16485de31dee9298948d5a1ef03c088',1,'ChatFrame']]],
-  ['handlevisibilitychangeofchatframe_5',['handleVisibilityChangeOfChatFrame',['../class_school_skipper_client.html#ad4aa1977051710c73cf432783f822025',1,'SchoolSkipperClient']]],
-  ['hidestartbuttons_6',['hideStartButtons',['../class_school_skipper_client.html#a44324465813f02d63e6e5db7a3d089b2',1,'SchoolSkipperClient']]]
+  ['initchatwindow_0',['initChatWindow',['../class_school_skipper_client.html#a3245017c686a4174e3ff776bda66cf14',1,'SchoolSkipperClient']]],
+  ['initgameframes_1',['initGameFrames',['../class_school_skipper_client.html#aa1d6b2d00d97ce8d0513a1d9f59049d2',1,'SchoolSkipperClient']]],
+  ['initgraphicsviewandscene_2',['initGraphicsViewAndScene',['../class_school_skipper_client.html#a9fb59ea65d84b13a6f50ad1c4261f2f9',1,'SchoolSkipperClient']]],
+  ['initplatforms_3',['initPlatforms',['../class_game.html#a1f4352a83044a094217858584e671b02',1,'Game']]],
+  ['inittcpsocket_4',['initTcpSocket',['../class_network.html#a33ae2b2265b85d424aaa8c94f80087b6',1,'Network']]],
+  ['initudpsocket_5',['initUdpSocket',['../class_network.html#ad9305e2eb6a113d3bfe685105830f09e',1,'Network']]]
 ];

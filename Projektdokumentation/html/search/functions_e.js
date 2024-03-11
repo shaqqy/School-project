@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['readnewtcpdata_0',['readNewTcpData',['../class_network.html#a47573016ecd010ab92570c21089c4fb7',1,'Network']]],
-  ['readnewudpdata_1',['readNewUdpData',['../class_network.html#a03bca8d1724dfd9fe065bd737f4d17c6',1,'Network']]]
+  ['_7eschoolskipperclient_0',['~SchoolSkipperClient',['../class_school_skipper_client.html#a3d110391817ae188defed6a8c5be3c45',1,'SchoolSkipperClient']]],
+  ['_7eserver_1',['~Server',['../class_server.html#a4b3aa2579cb1c8cd1d069582c14d0fa6',1,'Server']]]
 ];

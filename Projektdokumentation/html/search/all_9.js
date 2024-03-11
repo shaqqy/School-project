@@ -1,21 +1,10 @@
 var searchData=
 [
-  ['incoming_5fmessage_0',['INCOMING_MESSAGE',['../enums_8h.html#a35d73133b9b2c5eb7eff997b2cb4bab7a1e4bd5080731650a78fd41dc75d98582',1,'enums.h']]],
-  ['initenemies_1',['initEnemies',['../class_game.html#aa79b8b669c7035b9bf95214be209743e',1,'Game']]],
-  ['initframes_2',['initFrames',['../class_school_skipper_client.html#a563cf23fb0bed78e118d9cba197e4ec8',1,'SchoolSkipperClient']]],
-  ['initgraphicsviews_3',['initGraphicsViews',['../class_school_skipper_client.html#a63aa1287f17fef53f93d16387b677c32',1,'SchoolSkipperClient']]],
-  ['initnetwork_4',['initNetwork',['../class_school_skipper_client.html#a70eb693f2dea255a46656ff45324bb1f',1,'SchoolSkipperClient']]],
-  ['initplatforms_5',['initPlatforms',['../class_game.html#a1f4352a83044a094217858584e671b02',1,'Game']]],
-  ['initplayer_6',['initPlayer',['../class_game.html#a405c0bb8156590c93304f11cf1f08065',1,'Game']]],
-  ['initstartbuttons_7',['initStartButtons',['../class_school_skipper_client.html#a1ad7d5b794c39ae459882e90ed4d8852',1,'SchoolSkipperClient']]],
-  ['inittcpsocket_8',['initTcpSocket',['../class_network.html#a2cd8963e872e810b1a8e6689f8376a24',1,'Network']]],
-  ['initudpsocket_9',['initUdpSocket',['../class_network.html#a5d0d8ebca585ed9423f6177028b2e6a6',1,'Network']]],
-  ['initwidgets_10',['initWidgets',['../class_chat_frame.html#a56dd00c45708f8ffdf7f5255c1a9815d',1,'ChatFrame::initWidgets()'],['../class_menu_frame.html#ada1b0ed2304bc08f18414246d4132bf8',1,'MenuFrame::initWidgets()']]],
-  ['initwidgetsdefaultparams_11',['initWidgetsDefaultParams',['../class_chat_frame.html#a225acea81e4cac0341da747633295eeb',1,'ChatFrame']]],
-  ['initwidgetsstyles_12',['initWidgetsStyles',['../class_chat_frame.html#abc4440c040d9d709411038990d5afd9a',1,'ChatFrame::initWidgetsStyles()'],['../class_menu_frame.html#aa99ddbfd1255f89b8c90c50a748e79eb',1,'MenuFrame::initWidgetsStyles()']]],
-  ['initwindowdefaultparams_13',['initWindowDefaultParams',['../class_school_skipper_client.html#a23c70ead304a8c8849ecc11a06f257bb',1,'SchoolSkipperClient']]],
-  ['inputbox_14',['inputBox',['../class_chat_frame.html#aaf46fddf0b9c85490edaf357c662e42f',1,'ChatFrame']]],
-  ['invisiblearea_15',['invisibleArea',['../class_game.html#ac27d6aa4cf1072e82984b5b697767cdb',1,'Game']]],
-  ['isgraphicsviewsinitialized_16',['isGraphicsViewsInitialized',['../class_school_skipper_client.html#a2c87f18f2afcf84c27271d17023739d0',1,'SchoolSkipperClient']]],
-  ['ismenubarinitialized_17',['isMenuBarInitialized',['../class_school_skipper_client.html#a6070d9db51b900c92df11f3cc964d029',1,'SchoolSkipperClient']]]
+  ['initchatwindow_0',['initChatWindow',['../class_school_skipper_client.html#a3245017c686a4174e3ff776bda66cf14',1,'SchoolSkipperClient']]],
+  ['initgameframes_1',['initGameFrames',['../class_school_skipper_client.html#aa1d6b2d00d97ce8d0513a1d9f59049d2',1,'SchoolSkipperClient']]],
+  ['initgraphicsviewandscene_2',['initGraphicsViewAndScene',['../class_school_skipper_client.html#a9fb59ea65d84b13a6f50ad1c4261f2f9',1,'SchoolSkipperClient']]],
+  ['initplatforms_3',['initPlatforms',['../class_game.html#a1f4352a83044a094217858584e671b02',1,'Game']]],
+  ['inittcpsocket_4',['initTcpSocket',['../class_network.html#a33ae2b2265b85d424aaa8c94f80087b6',1,'Network']]],
+  ['initudpsocket_5',['initUdpSocket',['../class_network.html#ad9305e2eb6a113d3bfe685105830f09e',1,'Network']]],
+  ['ismenuactive_6',['isMenuActive',['../class_school_skipper_client.html#ad451ce3b1920d6480c4617dab2c6f446',1,'SchoolSkipperClient']]]
 ];

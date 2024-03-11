@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.10.0"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>School-skipper: Network Class Reference</title>
+<title>School-skipper_Server: Network Class Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -23,9 +23,9 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">School-skipper
+   <div id="projectname">School-skipper_Server
    </div>
-   <div id="projectbrief">A doodle jump clone</div>
+   <div id="projectbrief">Handling of the messaging/Multicast handshaking</div>
   </td>
  </tr>
  </tbody>
@@ -74,9 +74,7 @@ $(function() {
 <div class="header">
   <div class="summary">
 <a href="#pub-slots">Public Slots</a> &#124;
-<a href="#signals">Signals</a> &#124;
 <a href="#pub-methods">Public Member Functions</a> &#124;
-<a href="#pub-attribs">Public Attributes</a> &#124;
 <a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="class_network-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">Network Class Reference</div></div>
@@ -101,33 +99,15 @@ Public Slots</h2></td></tr>
 <tr class="separator:a972f829713a1d5cf8b1757bb34ac6de4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a15855aebac53069846300ad2bcaa3a40" id="r_a15855aebac53069846300ad2bcaa3a40"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a15855aebac53069846300ad2bcaa3a40">sendTcpMessage</a> (QByteArray message)</td></tr>
 <tr class="separator:a15855aebac53069846300ad2bcaa3a40"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a86ce93b6e118d50c0ed6e14d192cedd2" id="r_a86ce93b6e118d50c0ed6e14d192cedd2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a86ce93b6e118d50c0ed6e14d192cedd2">tcpDisconnected</a> ()</td></tr>
-<tr class="separator:a86ce93b6e118d50c0ed6e14d192cedd2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="signals" name="signals"></a>
-Signals</h2></td></tr>
-<tr class="memitem:ac82fdf6c0aaa79c5f61db4cd67a355dd" id="r_ac82fdf6c0aaa79c5f61db4cd67a355dd"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac82fdf6c0aaa79c5f61db4cd67a355dd">newChatMessage</a> (QString message, <a class="el" href="enums_8h.html#a35d73133b9b2c5eb7eff997b2cb4bab7">SchoolSkipper</a> type)</td></tr>
-<tr class="separator:ac82fdf6c0aaa79c5f61db4cd67a355dd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3e7aef8662baa12a2a2be8b8a6246d13" id="r_a3e7aef8662baa12a2a2be8b8a6246d13"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3e7aef8662baa12a2a2be8b8a6246d13">tcpConnectionStatus</a> (bool connected)</td></tr>
-<tr class="separator:a3e7aef8662baa12a2a2be8b8a6246d13"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:affd3a47d681883fa1a62cd8d5510b880" id="r_affd3a47d681883fa1a62cd8d5510b880"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#affd3a47d681883fa1a62cd8d5510b880">startFromServer</a> ()</td></tr>
-<tr class="separator:affd3a47d681883fa1a62cd8d5510b880"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:aea80423ac849b8fb5a043a1172f66281" id="r_aea80423ac849b8fb5a043a1172f66281"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aea80423ac849b8fb5a043a1172f66281">Network</a> (QObject *parent)</td></tr>
 <tr class="separator:aea80423ac849b8fb5a043a1172f66281"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5d0d8ebca585ed9423f6177028b2e6a6" id="r_a5d0d8ebca585ed9423f6177028b2e6a6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5d0d8ebca585ed9423f6177028b2e6a6">initUdpSocket</a> ()</td></tr>
-<tr class="separator:a5d0d8ebca585ed9423f6177028b2e6a6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2cd8963e872e810b1a8e6689f8376a24" id="r_a2cd8963e872e810b1a8e6689f8376a24"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2cd8963e872e810b1a8e6689f8376a24">initTcpSocket</a> ()</td></tr>
-<tr class="separator:a2cd8963e872e810b1a8e6689f8376a24"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
-Public Attributes</h2></td></tr>
-<tr class="memitem:a37424114922f7dbef657402fab869388" id="r_a37424114922f7dbef657402fab869388"><td class="memItemLeft" align="right" valign="top">QPointF *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a37424114922f7dbef657402fab869388">COP</a></td></tr>
-<tr class="separator:a37424114922f7dbef657402fab869388"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7f245108981d4c651089c7aef6a149d8" id="r_a7f245108981d4c651089c7aef6a149d8"><td class="memItemLeft" align="right" valign="top">QPointF *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7f245108981d4c651089c7aef6a149d8">LOP</a></td></tr>
-<tr class="separator:a7f245108981d4c651089c7aef6a149d8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad9305e2eb6a113d3bfe685105830f09e" id="r_ad9305e2eb6a113d3bfe685105830f09e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad9305e2eb6a113d3bfe685105830f09e">initUdpSocket</a> (int port)</td></tr>
+<tr class="separator:ad9305e2eb6a113d3bfe685105830f09e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a33ae2b2265b85d424aaa8c94f80087b6" id="r_a33ae2b2265b85d424aaa8c94f80087b6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a33ae2b2265b85d424aaa8c94f80087b6">initTcpSocket</a> (int port)</td></tr>
+<tr class="separator:a33ae2b2265b85d424aaa8c94f80087b6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
@@ -155,8 +135,8 @@ Private Attributes</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="a2cd8963e872e810b1a8e6689f8376a24" name="a2cd8963e872e810b1a8e6689f8376a24"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2cd8963e872e810b1a8e6689f8376a24">&#9670;&#160;</a></span>initTcpSocket()</h2>
+<a id="a33ae2b2265b85d424aaa8c94f80087b6" name="a33ae2b2265b85d424aaa8c94f80087b6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a33ae2b2265b85d424aaa8c94f80087b6">&#9670;&#160;</a></span>initTcpSocket()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -164,7 +144,7 @@ Private Attributes</h2></td></tr>
         <tr>
           <td class="memname">void Network::initTcpSocket </td>
           <td>(</td>
-          <td class="paramname"><span class="paramname"></span></td><td>)</td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>port</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -172,8 +152,8 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="a5d0d8ebca585ed9423f6177028b2e6a6" name="a5d0d8ebca585ed9423f6177028b2e6a6"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5d0d8ebca585ed9423f6177028b2e6a6">&#9670;&#160;</a></span>initUdpSocket()</h2>
+<a id="ad9305e2eb6a113d3bfe685105830f09e" name="ad9305e2eb6a113d3bfe685105830f09e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad9305e2eb6a113d3bfe685105830f09e">&#9670;&#160;</a></span>initUdpSocket()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -181,39 +161,10 @@ Private Attributes</h2></td></tr>
         <tr>
           <td class="memname">void Network::initUdpSocket </td>
           <td>(</td>
-          <td class="paramname"><span class="paramname"></span></td><td>)</td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>port</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="ac82fdf6c0aaa79c5f61db4cd67a355dd" name="ac82fdf6c0aaa79c5f61db4cd67a355dd"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac82fdf6c0aaa79c5f61db4cd67a355dd">&#9670;&#160;</a></span>newChatMessage</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void Network::newChatMessage </td>
-          <td>(</td>
-          <td class="paramtype">QString</td>          <td class="paramname"><span class="paramname"><em>message</em>, </span></td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="enums_8h.html#a35d73133b9b2c5eb7eff997b2cb4bab7">SchoolSkipper</a></td>          <td class="paramname"><span class="paramname"><em>type</em></span>&#160;)</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">signal</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 
 </div>
@@ -318,110 +269,7 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="affd3a47d681883fa1a62cd8d5510b880" name="affd3a47d681883fa1a62cd8d5510b880"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#affd3a47d681883fa1a62cd8d5510b880">&#9670;&#160;</a></span>startFromServer</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void Network::startFromServer </td>
-          <td>(</td>
-          <td class="paramname"><span class="paramname"></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">signal</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a3e7aef8662baa12a2a2be8b8a6246d13" name="a3e7aef8662baa12a2a2be8b8a6246d13"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3e7aef8662baa12a2a2be8b8a6246d13">&#9670;&#160;</a></span>tcpConnectionStatus</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void Network::tcpConnectionStatus </td>
-          <td>(</td>
-          <td class="paramtype">bool</td>          <td class="paramname"><span class="paramname"><em>connected</em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">signal</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a86ce93b6e118d50c0ed6e14d192cedd2" name="a86ce93b6e118d50c0ed6e14d192cedd2"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a86ce93b6e118d50c0ed6e14d192cedd2">&#9670;&#160;</a></span>tcpDisconnected</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void Network::tcpDisconnected </td>
-          <td>(</td>
-          <td class="paramname"><span class="paramname"></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">slot</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
 <h2 class="groupheader">Member Data Documentation</h2>
-<a id="a37424114922f7dbef657402fab869388" name="a37424114922f7dbef657402fab869388"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a37424114922f7dbef657402fab869388">&#9670;&#160;</a></span>COP</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">QPointF* Network::COP</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a7f245108981d4c651089c7aef6a149d8" name="a7f245108981d4c651089c7aef6a149d8"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a7f245108981d4c651089c7aef6a149d8">&#9670;&#160;</a></span>LOP</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">QPointF* Network::LOP</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
 <a id="a41c26338639f61475059aa66f04f73d9" name="a41c26338639f61475059aa66f04f73d9"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a41c26338639f61475059aa66f04f73d9">&#9670;&#160;</a></span>tcpSocket</h2>
 

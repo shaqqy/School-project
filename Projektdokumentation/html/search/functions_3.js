@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['expandchatframe_0',['expandChatFrame',['../class_school_skipper_client.html#ac6c3d0764a7ba294b5df35d92ff3d968',1,'SchoolSkipperClient']]]
+  ['fall_0',['fall',['../class_actor.html#ab436c28ed9f817c01fceb0661f8c6e14',1,'Actor']]]
 ];

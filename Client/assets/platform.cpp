@@ -30,6 +30,6 @@ void Platform::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, 
     Q_UNUSED(option);
     Q_UNUSED(widget);
     painter->drawPixmap(this->x(), this->y(), pixmap());
-//     painter->setPen(QColor::fromRgb(255,0,0,255));
-//     painter->drawRect(boundingRect());
+    // painter->setPen(QColor::fromRgb(255,0,0,255));
+    // painter->drawRect(boundingRect());
 }

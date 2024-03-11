@@ -74,13 +74,6 @@ void Game::move() {
   }
   // Move the doodler by it's speed
   player->moveBy(player->getSpeedH(), player->getSpeedV());
-  //  if (ping == 3) {
-  //    player->moveBy(player->getSpeedH(), player->getSpeedV());
-  //    ping = 0;
-  //  } else {
-  //    ping++;
-  //    player->moveBy(player->getSpeedH(), 0);
-  //  }
   // Add the decay of horizontal speed
   if (player->getSpeedH() > 0) {
     player->setSpeedH(player->getSpeedH() - 1);

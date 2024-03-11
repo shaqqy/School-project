@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.10.0"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>School-skipper: D:/Berufsschule/school_skipper/School-project/Client/assets/actor.h Source File</title>
+<title>School-skipper_Server: D:/Berufsschule/school_skipper/School-project/Client/assets/actor.h Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -23,9 +23,9 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">School-skipper
+   <div id="projectname">School-skipper_Server
    </div>
-   <div id="projectbrief">A doodle jump clone</div>
+   <div id="projectbrief">Handling of the messaging/Multicast handshaking</div>
   </td>
  </tr>
  </tbody>
@@ -116,46 +116,47 @@ $(function() { codefold.init(0); });
 <div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span> </div>
 <div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>    <span class="keywordtype">double</span> <a class="code hl_function" href="class_actor.html#a3a3127e80c463643a8bc8f2aa1c50541">getSpeedH</a>() <span class="keyword">const</span>;</div>
 <div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_actor.html#a4636ffaf731f974566dd06b7ad0e2c7e">setSpeedH</a>(<span class="keywordtype">double</span> newSpeedH);</div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno"><a class="line" href="class_actor.html#ab1fbb5ef6193fbae8f82feab7cab15ec">   32</a></span>    std::vector&lt;QPixmap*&gt; <a class="code hl_variable" href="class_actor.html#ab1fbb5ef6193fbae8f82feab7cab15ec">pixmaps</a>;</div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span> </div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span><span class="keyword">public</span> slots:</div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>    <span class="keywordtype">void</span> <a class="code hl_slot" href="class_actor.html#a4f0566171082dec02f207a0280352804">move</a>(QPointF point);</div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span> </div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span> </div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span><span class="keyword">public</span> slots:</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>    <span class="keywordtype">void</span> <a class="code hl_slot" href="class_actor.html#a4f0566171082dec02f207a0280352804">move</a>(QPointF point);</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span> </div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>signals:</div>
 <div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span> </div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>signals:</div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span> </div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span><span class="keyword">private</span>:</div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno"><a class="line" href="class_actor.html#a35e79b1ba746bf2745059ec1421972f5">   41</a></span>    <span class="keywordtype">double</span> <a class="code hl_variable" href="class_actor.html#a35e79b1ba746bf2745059ec1421972f5">X</a>;</div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno"><a class="line" href="class_actor.html#a455fe99a88f73e7eaadd5b988e2f43ee">   42</a></span>    <span class="keywordtype">double</span> <a class="code hl_variable" href="class_actor.html#a455fe99a88f73e7eaadd5b988e2f43ee">Y</a>;</div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno"><a class="line" href="class_actor.html#ac3f99f10f12ef7c26e7434d59e8cc902">   43</a></span>    <span class="keywordtype">double</span> <a class="code hl_variable" href="class_actor.html#ac3f99f10f12ef7c26e7434d59e8cc902">speedV</a>;</div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno"><a class="line" href="class_actor.html#a302cc4744afb113d8ab6793edaa90436">   44</a></span>    <span class="keywordtype">double</span> <a class="code hl_variable" href="class_actor.html#a302cc4744afb113d8ab6793edaa90436">speedH</a>;</div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno"><a class="line" href="class_actor.html#a6fc868962b842545fe44a282b404d239">   45</a></span>    <span class="keywordtype">bool</span> <a class="code hl_variable" href="class_actor.html#a6fc868962b842545fe44a282b404d239">_isPlayer</a>;</div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno"><a class="line" href="class_actor.html#ac6db038ba22078710d65a5dc759d9f04">   46</a></span>    <span class="keywordtype">double</span> <a class="code hl_variable" href="class_actor.html#ac6db038ba22078710d65a5dc759d9f04">gravity</a> = 3;</div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>};</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span><span class="keyword">protected</span>:</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_actor.html#a65464a1935da5ba12265ce3364221ed2">keyPressEvent</a>(QKeyEvent *event);</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span> </div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span><span class="keyword">private</span>:</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno"><a class="line" href="class_actor.html#a35e79b1ba746bf2745059ec1421972f5">   42</a></span>    <span class="keywordtype">double</span> <a class="code hl_variable" href="class_actor.html#a35e79b1ba746bf2745059ec1421972f5">X</a>;</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno"><a class="line" href="class_actor.html#a455fe99a88f73e7eaadd5b988e2f43ee">   43</a></span>    <span class="keywordtype">double</span> <a class="code hl_variable" href="class_actor.html#a455fe99a88f73e7eaadd5b988e2f43ee">Y</a>;</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno"><a class="line" href="class_actor.html#ac3f99f10f12ef7c26e7434d59e8cc902">   44</a></span>    <span class="keywordtype">double</span> <a class="code hl_variable" href="class_actor.html#ac3f99f10f12ef7c26e7434d59e8cc902">speedV</a>;</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno"><a class="line" href="class_actor.html#a302cc4744afb113d8ab6793edaa90436">   45</a></span>    <span class="keywordtype">double</span> <a class="code hl_variable" href="class_actor.html#a302cc4744afb113d8ab6793edaa90436">speedH</a>;</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno"><a class="line" href="class_actor.html#a6fc868962b842545fe44a282b404d239">   46</a></span>    <span class="keywordtype">bool</span> <a class="code hl_variable" href="class_actor.html#a6fc868962b842545fe44a282b404d239">_isPlayer</a>;</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno"><a class="line" href="class_actor.html#ac6db038ba22078710d65a5dc759d9f04">   47</a></span>    <span class="keywordtype">double</span> <a class="code hl_variable" href="class_actor.html#ac6db038ba22078710d65a5dc759d9f04">gravity</a> = 3;</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>};</div>
 </div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span><span class="preprocessor">#endif </span><span class="comment">// ACTOR_H</span></div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span><span class="preprocessor">#endif </span><span class="comment">// ACTOR_H</span></div>
 <div class="ttc" id="aclass_actor_html"><div class="ttname"><a href="class_actor.html">Actor</a></div><div class="ttdef"><b>Definition</b> actor.h:11</div></div>
-<div class="ttc" id="aclass_actor_html_a154e7fdf8ccf371b4a60a93fde09a1d0"><div class="ttname"><a href="class_actor.html#a154e7fdf8ccf371b4a60a93fde09a1d0">Actor::getX</a></div><div class="ttdeci">double getX() const</div><div class="ttdef"><b>Definition</b> actor.cpp:114</div></div>
-<div class="ttc" id="aclass_actor_html_a302cc4744afb113d8ab6793edaa90436"><div class="ttname"><a href="class_actor.html#a302cc4744afb113d8ab6793edaa90436">Actor::speedH</a></div><div class="ttdeci">double speedH</div><div class="ttdef"><b>Definition</b> actor.h:44</div></div>
-<div class="ttc" id="aclass_actor_html_a35e79b1ba746bf2745059ec1421972f5"><div class="ttname"><a href="class_actor.html#a35e79b1ba746bf2745059ec1421972f5">Actor::X</a></div><div class="ttdeci">double X</div><div class="ttdef"><b>Definition</b> actor.h:41</div></div>
-<div class="ttc" id="aclass_actor_html_a361762fef37cdccf8910a535af44567c"><div class="ttname"><a href="class_actor.html#a361762fef37cdccf8910a535af44567c">Actor::getY</a></div><div class="ttdeci">double getY() const</div><div class="ttdef"><b>Definition</b> actor.cpp:104</div></div>
-<div class="ttc" id="aclass_actor_html_a3a3127e80c463643a8bc8f2aa1c50541"><div class="ttname"><a href="class_actor.html#a3a3127e80c463643a8bc8f2aa1c50541">Actor::getSpeedH</a></div><div class="ttdeci">double getSpeedH() const</div><div class="ttdef"><b>Definition</b> actor.cpp:84</div></div>
-<div class="ttc" id="aclass_actor_html_a3c1da4dd8dc402238873b21eff918678"><div class="ttname"><a href="class_actor.html#a3c1da4dd8dc402238873b21eff918678">Actor::setX</a></div><div class="ttdeci">void setX(double newX)</div><div class="ttdef"><b>Definition</b> actor.cpp:119</div></div>
-<div class="ttc" id="aclass_actor_html_a3dacc10007513e85189d8248d112a0b7"><div class="ttname"><a href="class_actor.html#a3dacc10007513e85189d8248d112a0b7">Actor::shape</a></div><div class="ttdeci">QPainterPath shape() const</div><div class="ttdef"><b>Definition</b> actor.cpp:44</div></div>
-<div class="ttc" id="aclass_actor_html_a455fe99a88f73e7eaadd5b988e2f43ee"><div class="ttname"><a href="class_actor.html#a455fe99a88f73e7eaadd5b988e2f43ee">Actor::Y</a></div><div class="ttdeci">double Y</div><div class="ttdef"><b>Definition</b> actor.h:42</div></div>
-<div class="ttc" id="aclass_actor_html_a4636ffaf731f974566dd06b7ad0e2c7e"><div class="ttname"><a href="class_actor.html#a4636ffaf731f974566dd06b7ad0e2c7e">Actor::setSpeedH</a></div><div class="ttdeci">void setSpeedH(double newSpeedH)</div><div class="ttdef"><b>Definition</b> actor.cpp:89</div></div>
-<div class="ttc" id="aclass_actor_html_a4f0566171082dec02f207a0280352804"><div class="ttname"><a href="class_actor.html#a4f0566171082dec02f207a0280352804">Actor::move</a></div><div class="ttdeci">void move(QPointF point)</div><div class="ttdef"><b>Definition</b> actor.cpp:79</div></div>
-<div class="ttc" id="aclass_actor_html_a6fc868962b842545fe44a282b404d239"><div class="ttname"><a href="class_actor.html#a6fc868962b842545fe44a282b404d239">Actor::_isPlayer</a></div><div class="ttdeci">bool _isPlayer</div><div class="ttdef"><b>Definition</b> actor.h:45</div></div>
-<div class="ttc" id="aclass_actor_html_a7c0e27587744b883fc6e735f103b9415"><div class="ttname"><a href="class_actor.html#a7c0e27587744b883fc6e735f103b9415">Actor::boundingRect</a></div><div class="ttdeci">QRectF boundingRect() const</div><div class="ttdef"><b>Definition</b> actor.cpp:38</div></div>
-<div class="ttc" id="aclass_actor_html_a9eab8bc305ef2e0adfe6e8ede5d885df"><div class="ttname"><a href="class_actor.html#a9eab8bc305ef2e0adfe6e8ede5d885df">Actor::getSpeedV</a></div><div class="ttdeci">double getSpeedV() const</div><div class="ttdef"><b>Definition</b> actor.cpp:94</div></div>
+<div class="ttc" id="aclass_actor_html_a154e7fdf8ccf371b4a60a93fde09a1d0"><div class="ttname"><a href="class_actor.html#a154e7fdf8ccf371b4a60a93fde09a1d0">Actor::getX</a></div><div class="ttdeci">double getX() const</div><div class="ttdef"><b>Definition</b> actor.cpp:139</div></div>
+<div class="ttc" id="aclass_actor_html_a302cc4744afb113d8ab6793edaa90436"><div class="ttname"><a href="class_actor.html#a302cc4744afb113d8ab6793edaa90436">Actor::speedH</a></div><div class="ttdeci">double speedH</div><div class="ttdef"><b>Definition</b> actor.h:45</div></div>
+<div class="ttc" id="aclass_actor_html_a35e79b1ba746bf2745059ec1421972f5"><div class="ttname"><a href="class_actor.html#a35e79b1ba746bf2745059ec1421972f5">Actor::X</a></div><div class="ttdeci">double X</div><div class="ttdef"><b>Definition</b> actor.h:42</div></div>
+<div class="ttc" id="aclass_actor_html_a361762fef37cdccf8910a535af44567c"><div class="ttname"><a href="class_actor.html#a361762fef37cdccf8910a535af44567c">Actor::getY</a></div><div class="ttdeci">double getY() const</div><div class="ttdef"><b>Definition</b> actor.cpp:129</div></div>
+<div class="ttc" id="aclass_actor_html_a3a3127e80c463643a8bc8f2aa1c50541"><div class="ttname"><a href="class_actor.html#a3a3127e80c463643a8bc8f2aa1c50541">Actor::getSpeedH</a></div><div class="ttdeci">double getSpeedH() const</div><div class="ttdef"><b>Definition</b> actor.cpp:109</div></div>
+<div class="ttc" id="aclass_actor_html_a3c1da4dd8dc402238873b21eff918678"><div class="ttname"><a href="class_actor.html#a3c1da4dd8dc402238873b21eff918678">Actor::setX</a></div><div class="ttdeci">void setX(double newX)</div><div class="ttdef"><b>Definition</b> actor.cpp:144</div></div>
+<div class="ttc" id="aclass_actor_html_a3dacc10007513e85189d8248d112a0b7"><div class="ttname"><a href="class_actor.html#a3dacc10007513e85189d8248d112a0b7">Actor::shape</a></div><div class="ttdeci">QPainterPath shape() const</div><div class="ttdef"><b>Definition</b> actor.cpp:42</div></div>
+<div class="ttc" id="aclass_actor_html_a455fe99a88f73e7eaadd5b988e2f43ee"><div class="ttname"><a href="class_actor.html#a455fe99a88f73e7eaadd5b988e2f43ee">Actor::Y</a></div><div class="ttdeci">double Y</div><div class="ttdef"><b>Definition</b> actor.h:43</div></div>
+<div class="ttc" id="aclass_actor_html_a4636ffaf731f974566dd06b7ad0e2c7e"><div class="ttname"><a href="class_actor.html#a4636ffaf731f974566dd06b7ad0e2c7e">Actor::setSpeedH</a></div><div class="ttdeci">void setSpeedH(double newSpeedH)</div><div class="ttdef"><b>Definition</b> actor.cpp:114</div></div>
+<div class="ttc" id="aclass_actor_html_a4f0566171082dec02f207a0280352804"><div class="ttname"><a href="class_actor.html#a4f0566171082dec02f207a0280352804">Actor::move</a></div><div class="ttdeci">void move(QPointF point)</div><div class="ttdef"><b>Definition</b> actor.cpp:74</div></div>
+<div class="ttc" id="aclass_actor_html_a65464a1935da5ba12265ce3364221ed2"><div class="ttname"><a href="class_actor.html#a65464a1935da5ba12265ce3364221ed2">Actor::keyPressEvent</a></div><div class="ttdeci">void keyPressEvent(QKeyEvent *event)</div><div class="ttdef"><b>Definition</b> actor.cpp:79</div></div>
+<div class="ttc" id="aclass_actor_html_a6fc868962b842545fe44a282b404d239"><div class="ttname"><a href="class_actor.html#a6fc868962b842545fe44a282b404d239">Actor::_isPlayer</a></div><div class="ttdeci">bool _isPlayer</div><div class="ttdef"><b>Definition</b> actor.h:46</div></div>
+<div class="ttc" id="aclass_actor_html_a7c0e27587744b883fc6e735f103b9415"><div class="ttname"><a href="class_actor.html#a7c0e27587744b883fc6e735f103b9415">Actor::boundingRect</a></div><div class="ttdeci">QRectF boundingRect() const</div><div class="ttdef"><b>Definition</b> actor.cpp:36</div></div>
+<div class="ttc" id="aclass_actor_html_a9eab8bc305ef2e0adfe6e8ede5d885df"><div class="ttname"><a href="class_actor.html#a9eab8bc305ef2e0adfe6e8ede5d885df">Actor::getSpeedV</a></div><div class="ttdeci">double getSpeedV() const</div><div class="ttdef"><b>Definition</b> actor.cpp:119</div></div>
 <div class="ttc" id="aclass_actor_html_aa0fc674ef09b215b67ff2fff69b79459"><div class="ttname"><a href="class_actor.html#aa0fc674ef09b215b67ff2fff69b79459">Actor::Actor</a></div><div class="ttdeci">Actor(QObject *parent=nullptr)</div><div class="ttdef"><b>Definition</b> actor.cpp:3</div></div>
-<div class="ttc" id="aclass_actor_html_aafced77eeb9de19d7eb427b5b8ad9b1e"><div class="ttname"><a href="class_actor.html#aafced77eeb9de19d7eb427b5b8ad9b1e">Actor::setY</a></div><div class="ttdeci">void setY(double newY)</div><div class="ttdef"><b>Definition</b> actor.cpp:109</div></div>
-<div class="ttc" id="aclass_actor_html_ab1fbb5ef6193fbae8f82feab7cab15ec"><div class="ttname"><a href="class_actor.html#ab1fbb5ef6193fbae8f82feab7cab15ec">Actor::pixmaps</a></div><div class="ttdeci">std::vector&lt; QPixmap * &gt; pixmaps</div><div class="ttdef"><b>Definition</b> actor.h:32</div></div>
-<div class="ttc" id="aclass_actor_html_ab436c28ed9f817c01fceb0661f8c6e14"><div class="ttname"><a href="class_actor.html#ab436c28ed9f817c01fceb0661f8c6e14">Actor::fall</a></div><div class="ttdeci">void fall()</div><div class="ttdef"><b>Definition</b> actor.cpp:73</div></div>
-<div class="ttc" id="aclass_actor_html_ab5f9e007b18cdcbd0e178004a6559f06"><div class="ttname"><a href="class_actor.html#ab5f9e007b18cdcbd0e178004a6559f06">Actor::setSpeedV</a></div><div class="ttdeci">void setSpeedV(double newSpeedV)</div><div class="ttdef"><b>Definition</b> actor.cpp:99</div></div>
-<div class="ttc" id="aclass_actor_html_ac3f99f10f12ef7c26e7434d59e8cc902"><div class="ttname"><a href="class_actor.html#ac3f99f10f12ef7c26e7434d59e8cc902">Actor::speedV</a></div><div class="ttdeci">double speedV</div><div class="ttdef"><b>Definition</b> actor.h:43</div></div>
-<div class="ttc" id="aclass_actor_html_ac6db038ba22078710d65a5dc759d9f04"><div class="ttname"><a href="class_actor.html#ac6db038ba22078710d65a5dc759d9f04">Actor::gravity</a></div><div class="ttdeci">double gravity</div><div class="ttdef"><b>Definition</b> actor.h:46</div></div>
-<div class="ttc" id="aclass_actor_html_ad2849460a18b6752c12aff5cb638731f"><div class="ttname"><a href="class_actor.html#ad2849460a18b6752c12aff5cb638731f">Actor::paint</a></div><div class="ttdeci">void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget)</div><div class="ttdef"><b>Definition</b> actor.cpp:64</div></div>
+<div class="ttc" id="aclass_actor_html_aafced77eeb9de19d7eb427b5b8ad9b1e"><div class="ttname"><a href="class_actor.html#aafced77eeb9de19d7eb427b5b8ad9b1e">Actor::setY</a></div><div class="ttdeci">void setY(double newY)</div><div class="ttdef"><b>Definition</b> actor.cpp:134</div></div>
+<div class="ttc" id="aclass_actor_html_ab436c28ed9f817c01fceb0661f8c6e14"><div class="ttname"><a href="class_actor.html#ab436c28ed9f817c01fceb0661f8c6e14">Actor::fall</a></div><div class="ttdeci">void fall()</div><div class="ttdef"><b>Definition</b> actor.cpp:68</div></div>
+<div class="ttc" id="aclass_actor_html_ab5f9e007b18cdcbd0e178004a6559f06"><div class="ttname"><a href="class_actor.html#ab5f9e007b18cdcbd0e178004a6559f06">Actor::setSpeedV</a></div><div class="ttdeci">void setSpeedV(double newSpeedV)</div><div class="ttdef"><b>Definition</b> actor.cpp:124</div></div>
+<div class="ttc" id="aclass_actor_html_ac3f99f10f12ef7c26e7434d59e8cc902"><div class="ttname"><a href="class_actor.html#ac3f99f10f12ef7c26e7434d59e8cc902">Actor::speedV</a></div><div class="ttdeci">double speedV</div><div class="ttdef"><b>Definition</b> actor.h:44</div></div>
+<div class="ttc" id="aclass_actor_html_ac6db038ba22078710d65a5dc759d9f04"><div class="ttname"><a href="class_actor.html#ac6db038ba22078710d65a5dc759d9f04">Actor::gravity</a></div><div class="ttdeci">double gravity</div><div class="ttdef"><b>Definition</b> actor.h:47</div></div>
+<div class="ttc" id="aclass_actor_html_ad2849460a18b6752c12aff5cb638731f"><div class="ttname"><a href="class_actor.html#ad2849460a18b6752c12aff5cb638731f">Actor::paint</a></div><div class="ttdeci">void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget)</div><div class="ttdef"><b>Definition</b> actor.cpp:61</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

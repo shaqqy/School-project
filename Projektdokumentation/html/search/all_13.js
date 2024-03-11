@@ -1,6 +1,4 @@
 var searchData=
 [
-  ['udpsocket_0',['udpSocket',['../class_network.html#abe13b25142448321afb980b52f15e92d',1,'Network']]],
-  ['ui_1',['Ui',['../namespace_ui.html',1,'']]],
-  ['ui_2',['ui',['../class_school_skipper_client.html#a37082172e51904a61f3fe51cee9eacdb',1,'SchoolSkipperClient']]]
+  ['view_0',['view',['../class_game.html#af336c3f6691b0689a529bba908db4b04',1,'Game']]]
 ];

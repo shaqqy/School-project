@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['x_0',['X',['../class_actor.html#a35e79b1ba746bf2745059ec1421972f5',1,'Actor']]]
+  ['y_0',['Y',['../class_actor.html#a455fe99a88f73e7eaadd5b988e2f43ee',1,'Actor']]]
 ];

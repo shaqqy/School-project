@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.10.0"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>School-skipper: Game Class Reference</title>
+<title>School-skipper_Server: Game Class Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -23,9 +23,9 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">School-skipper
+   <div id="projectname">School-skipper_Server
    </div>
-   <div id="projectbrief">A doodle jump clone</div>
+   <div id="projectbrief">Handling of the messaging/Multicast handshaking</div>
   </td>
  </tr>
  </tbody>
@@ -74,12 +74,9 @@ $(function() {
 <div class="header">
   <div class="summary">
 <a href="#pub-slots">Public Slots</a> &#124;
-<a href="#signals">Signals</a> &#124;
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pub-attribs">Public Attributes</a> &#124;
-<a href="#pro-methods">Protected Member Functions</a> &#124;
 <a href="#pro-attribs">Protected Attributes</a> &#124;
-<a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="class_game-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">Game Class Reference</div></div>
 </div><!--header-->
@@ -95,11 +92,7 @@ Inheritance diagram for Game:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-slots" name="pub-slots"></a>
 Public Slots</h2></td></tr>
-<tr class="memitem:aa79b8b669c7035b9bf95214be209743e" id="r_aa79b8b669c7035b9bf95214be209743e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa79b8b669c7035b9bf95214be209743e">initEnemies</a> ()</td></tr>
-<tr class="memdesc:aa79b8b669c7035b9bf95214be209743e"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="#aa79b8b669c7035b9bf95214be209743e" title="Game::initEnemies.">Game::initEnemies</a>.  <br /></td></tr>
-<tr class="separator:aa79b8b669c7035b9bf95214be209743e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1f4352a83044a094217858584e671b02" id="r_a1f4352a83044a094217858584e671b02"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1f4352a83044a094217858584e671b02">initPlatforms</a> ()</td></tr>
-<tr class="memdesc:a1f4352a83044a094217858584e671b02"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="#a1f4352a83044a094217858584e671b02" title="Game::initPlatforms sets up a &quot;test level&quot; with platforms.">Game::initPlatforms</a> sets up a "test level" with platforms.  <br /></td></tr>
 <tr class="separator:a1f4352a83044a094217858584e671b02"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5b31b390923967aeac6b7789a297aaa0" id="r_a5b31b390923967aeac6b7789a297aaa0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5b31b390923967aeac6b7789a297aaa0">move</a> ()</td></tr>
 <tr class="memdesc:a5b31b390923967aeac6b7789a297aaa0"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="#a5b31b390923967aeac6b7789a297aaa0" title="Game::move.">Game::move</a>.  <br /></td></tr>
@@ -107,19 +100,12 @@ Public Slots</h2></td></tr>
 <tr class="memitem:a0e05c8bdb6c1fde9bc984d00c7042f3f" id="r_a0e05c8bdb6c1fde9bc984d00c7042f3f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0e05c8bdb6c1fde9bc984d00c7042f3f">moveNPCs</a> ()</td></tr>
 <tr class="memdesc:a0e05c8bdb6c1fde9bc984d00c7042f3f"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="#a0e05c8bdb6c1fde9bc984d00c7042f3f" title="Game::moveNPCs.">Game::moveNPCs</a>.  <br /></td></tr>
 <tr class="separator:a0e05c8bdb6c1fde9bc984d00c7042f3f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab412d4f8d3e1f0e0f737d1bd22aeca46" id="r_ab412d4f8d3e1f0e0f737d1bd22aeca46"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab412d4f8d3e1f0e0f737d1bd22aeca46">moveEnemy</a> ()</td></tr>
-<tr class="memdesc:ab412d4f8d3e1f0e0f737d1bd22aeca46"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="#ab412d4f8d3e1f0e0f737d1bd22aeca46" title="Game::moveEnemy.">Game::moveEnemy</a>.  <br /></td></tr>
-<tr class="separator:ab412d4f8d3e1f0e0f737d1bd22aeca46"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a28757184a94404fd1520e5366287d456" id="r_a28757184a94404fd1520e5366287d456"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a28757184a94404fd1520e5366287d456">startSlot</a> ()</td></tr>
-<tr class="memdesc:a28757184a94404fd1520e5366287d456"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="#a28757184a94404fd1520e5366287d456" title="Game::startSlot.">Game::startSlot</a>.  <br /></td></tr>
-<tr class="separator:a28757184a94404fd1520e5366287d456"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afafba397847add793e5ca6909fd497f6" id="r_afafba397847add793e5ca6909fd497f6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afafba397847add793e5ca6909fd497f6">startFromServer</a> ()</td></tr>
-<tr class="separator:afafba397847add793e5ca6909fd497f6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="signals" name="signals"></a>
-Signals</h2></td></tr>
-<tr class="memitem:ad0ac62aa19dbadd0333ee8160e7bb86c" id="r_ad0ac62aa19dbadd0333ee8160e7bb86c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad0ac62aa19dbadd0333ee8160e7bb86c">startRepaint</a> ()</td></tr>
-<tr class="separator:ad0ac62aa19dbadd0333ee8160e7bb86c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6ec9dd81a7f4615c3fa7d15fedcaa67e" id="r_a6ec9dd81a7f4615c3fa7d15fedcaa67e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6ec9dd81a7f4615c3fa7d15fedcaa67e">moveEnemy</a> (QPointF target)</td></tr>
+<tr class="memdesc:a6ec9dd81a7f4615c3fa7d15fedcaa67e"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="#a6ec9dd81a7f4615c3fa7d15fedcaa67e" title="Game::moveEnemy.">Game::moveEnemy</a>.  <br /></td></tr>
+<tr class="separator:a6ec9dd81a7f4615c3fa7d15fedcaa67e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0195f4d40ced4cf32a57ae146c885d72" id="r_a0195f4d40ced4cf32a57ae146c885d72"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0195f4d40ced4cf32a57ae146c885d72">startSlot</a> (<a class="el" href="enums_8h.html#a35d73133b9b2c5eb7eff997b2cb4bab7">SchoolSkipper</a> _mode)</td></tr>
+<tr class="memdesc:a0195f4d40ced4cf32a57ae146c885d72"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="#a0195f4d40ced4cf32a57ae146c885d72" title="Game::startSlot.">Game::startSlot</a>.  <br /></td></tr>
+<tr class="separator:a0195f4d40ced4cf32a57ae146c885d72"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
@@ -147,53 +133,22 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:aea85ee23e78b6e2388e5d0050da6d025" id="r_aea85ee23e78b6e2388e5d0050da6d025"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aea85ee23e78b6e2388e5d0050da6d025">setEnemyView</a> (QGraphicsView *newEnemyView)</td></tr>
 <tr class="memdesc:aea85ee23e78b6e2388e5d0050da6d025"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="#aea85ee23e78b6e2388e5d0050da6d025" title="Game::setEnemyView.">Game::setEnemyView</a>.  <br /></td></tr>
 <tr class="separator:aea85ee23e78b6e2388e5d0050da6d025"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a34ef3a3940b5ad2cd7a5dad9f0d64f0b" id="r_a34ef3a3940b5ad2cd7a5dad9f0d64f0b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_network.html">Network</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a34ef3a3940b5ad2cd7a5dad9f0d64f0b">getNetwork</a> () const</td></tr>
-<tr class="memdesc:a34ef3a3940b5ad2cd7a5dad9f0d64f0b"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="#a34ef3a3940b5ad2cd7a5dad9f0d64f0b" title="Game::getNetwork convenience function.">Game::getNetwork</a> convenience function.  <br /></td></tr>
-<tr class="separator:a34ef3a3940b5ad2cd7a5dad9f0d64f0b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a671723de3657c817ee16608919574725" id="r_a671723de3657c817ee16608919574725"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a671723de3657c817ee16608919574725">setNetwork</a> (<a class="el" href="class_network.html">Network</a> *newNetwork)</td></tr>
-<tr class="memdesc:a671723de3657c817ee16608919574725"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="#a671723de3657c817ee16608919574725" title="Game::setNetwork convenience function.">Game::setNetwork</a> convenience function.  <br /></td></tr>
-<tr class="separator:a671723de3657c817ee16608919574725"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8535e216627bac79c964438505b0e49c" id="r_a8535e216627bac79c964438505b0e49c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8535e216627bac79c964438505b0e49c">generateLevelSlice</a> ()</td></tr>
-<tr class="separator:a8535e216627bac79c964438505b0e49c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7bde4534d5e444e9e14b19729f42c392" id="r_a7bde4534d5e444e9e14b19729f42c392"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7bde4534d5e444e9e14b19729f42c392">centerViewOnPlayArea</a> ()</td></tr>
-<tr class="separator:a7bde4534d5e444e9e14b19729f42c392"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a405c0bb8156590c93304f11cf1f08065" id="r_a405c0bb8156590c93304f11cf1f08065"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a405c0bb8156590c93304f11cf1f08065">initPlayer</a> ()</td></tr>
-<tr class="separator:a405c0bb8156590c93304f11cf1f08065"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8867dab3c9e4c49afedfe1437a22c98f" id="r_a8867dab3c9e4c49afedfe1437a22c98f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_chat_frame.html">ChatFrame</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8867dab3c9e4c49afedfe1437a22c98f">getChat</a> () const</td></tr>
-<tr class="separator:a8867dab3c9e4c49afedfe1437a22c98f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a658e8904b4bb76cc1082f1741df7cedf" id="r_a658e8904b4bb76cc1082f1741df7cedf"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a658e8904b4bb76cc1082f1741df7cedf">setChat</a> (<a class="el" href="class_chat_frame.html">ChatFrame</a> *newChat)</td></tr>
-<tr class="separator:a658e8904b4bb76cc1082f1741df7cedf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
 <tr class="memitem:a3ccfc03d51fe0578a685661063d32cbd" id="r_a3ccfc03d51fe0578a685661063d32cbd"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_actor.html">Actor</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3ccfc03d51fe0578a685661063d32cbd">player</a></td></tr>
 <tr class="separator:a3ccfc03d51fe0578a685661063d32cbd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a223527e5643ac7f9f05a559ed3a3e300" id="r_a223527e5643ac7f9f05a559ed3a3e300"><td class="memItemLeft" align="right" valign="top">QPointF *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a223527e5643ac7f9f05a559ed3a3e300">LOP</a></td></tr>
-<tr class="separator:a223527e5643ac7f9f05a559ed3a3e300"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a659930ab5362dce0d7ff5556bf1bfbca" id="r_a659930ab5362dce0d7ff5556bf1bfbca"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_actor.html">Actor</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a659930ab5362dce0d7ff5556bf1bfbca">opponent</a></td></tr>
-<tr class="separator:a659930ab5362dce0d7ff5556bf1bfbca"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9f4d194b37103fb8b91333edc551006f" id="r_a9f4d194b37103fb8b91333edc551006f"><td class="memItemLeft" align="right" valign="top">QList&lt; QPixmap * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9f4d194b37103fb8b91333edc551006f">pixmaps</a></td></tr>
-<tr class="separator:a9f4d194b37103fb8b91333edc551006f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aba2bb81ee2f064554c3f214a1bd3bd0d" id="r_aba2bb81ee2f064554c3f214a1bd3bd0d"><td class="memItemLeft" align="right" valign="top">QList&lt; <a class="el" href="class_actor.html">Actor</a> * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aba2bb81ee2f064554c3f214a1bd3bd0d">npcs</a></td></tr>
-<tr class="separator:aba2bb81ee2f064554c3f214a1bd3bd0d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2e20520a6b2121f99abb43e2dc3a37dc" id="r_a2e20520a6b2121f99abb43e2dc3a37dc"><td class="memItemLeft" align="right" valign="top">QList&lt; <a class="el" href="class_platform.html">Platform</a> * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2e20520a6b2121f99abb43e2dc3a37dc">platforms</a></td></tr>
-<tr class="separator:a2e20520a6b2121f99abb43e2dc3a37dc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae8d01e861597f7341615adf34aa86068" id="r_ae8d01e861597f7341615adf34aa86068"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_actor.html">Actor</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae8d01e861597f7341615adf34aa86068">enemy</a></td></tr>
+<tr class="separator:ae8d01e861597f7341615adf34aa86068"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa6d6cb5777de4f755f34f63c4bc57956" id="r_aa6d6cb5777de4f755f34f63c4bc57956"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="class_actor.html">Actor</a> * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa6d6cb5777de4f755f34f63c4bc57956">npcs</a></td></tr>
+<tr class="separator:aa6d6cb5777de4f755f34f63c4bc57956"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a61ac67fc7b90d9cae504c7ecadff5892" id="r_a61ac67fc7b90d9cae504c7ecadff5892"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="class_platform.html">Platform</a> * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a61ac67fc7b90d9cae504c7ecadff5892">platforms</a></td></tr>
+<tr class="separator:a61ac67fc7b90d9cae504c7ecadff5892"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a436afc0ac40b0c33db487e1f8f8a725d" id="r_a436afc0ac40b0c33db487e1f8f8a725d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="enums_8h.html#a35d73133b9b2c5eb7eff997b2cb4bab7">SchoolSkipper</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a436afc0ac40b0c33db487e1f8f8a725d">mode</a></td></tr>
 <tr class="separator:a436afc0ac40b0c33db487e1f8f8a725d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6b3db316aafee1f43e06c3d471ddcdeb" id="r_a6b3db316aafee1f43e06c3d471ddcdeb"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_network.html">Network</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6b3db316aafee1f43e06c3d471ddcdeb">network</a></td></tr>
-<tr class="separator:a6b3db316aafee1f43e06c3d471ddcdeb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0135397e31756ea1a90c9821392ea842" id="r_a0135397e31756ea1a90c9821392ea842"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_chat_frame.html">ChatFrame</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0135397e31756ea1a90c9821392ea842">chat</a></td></tr>
-<tr class="separator:a0135397e31756ea1a90c9821392ea842"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-methods" name="pro-methods"></a>
-Protected Member Functions</h2></td></tr>
-<tr class="memitem:a7d15e0d06b78a8e624c86db5e41021de" id="r_a7d15e0d06b78a8e624c86db5e41021de"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7d15e0d06b78a8e624c86db5e41021de">loadPixmaps</a> ()</td></tr>
-<tr class="separator:a7d15e0d06b78a8e624c86db5e41021de"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-attribs" name="pro-attribs"></a>
 Protected Attributes</h2></td></tr>
-<tr class="memitem:ae007c3191373449bcae56c4f9f929a0d" id="r_ae007c3191373449bcae56c4f9f929a0d"><td class="memItemLeft" align="right" valign="top">QSize *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae007c3191373449bcae56c4f9f929a0d">viewportSize</a></td></tr>
-<tr class="separator:ae007c3191373449bcae56c4f9f929a0d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8119e3b9a632906c6808fa294b46a92a" id="r_a8119e3b9a632906c6808fa294b46a92a"><td class="memItemLeft" align="right" valign="top">QGraphicsScene *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8119e3b9a632906c6808fa294b46a92a">scene</a></td></tr>
 <tr class="separator:a8119e3b9a632906c6808fa294b46a92a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af336c3f6691b0689a529bba908db4b04" id="r_af336c3f6691b0689a529bba908db4b04"><td class="memItemLeft" align="right" valign="top">QGraphicsView *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af336c3f6691b0689a529bba908db4b04">view</a></td></tr>
@@ -208,19 +163,6 @@ Protected Attributes</h2></td></tr>
 <tr class="separator:a42ed93fcd42faa9d7d7702c33478d04b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5e7f2b309d353973cd1d6654417fb87b" id="r_a5e7f2b309d353973cd1d6654417fb87b"><td class="memItemLeft" align="right" valign="top">QTimer *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5e7f2b309d353973cd1d6654417fb87b">timer</a></td></tr>
 <tr class="separator:a5e7f2b309d353973cd1d6654417fb87b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
-Private Attributes</h2></td></tr>
-<tr class="memitem:ac27d6aa4cf1072e82984b5b697767cdb" id="r_ac27d6aa4cf1072e82984b5b697767cdb"><td class="memItemLeft" align="right" valign="top">QGraphicsRectItem *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac27d6aa4cf1072e82984b5b697767cdb">invisibleArea</a></td></tr>
-<tr class="separator:ac27d6aa4cf1072e82984b5b697767cdb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a12f4af6a04ada21336fa8ce0a45f2758" id="r_a12f4af6a04ada21336fa8ce0a45f2758"><td class="memItemLeft" align="right" valign="top">QPixmap *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a12f4af6a04ada21336fa8ce0a45f2758">platformPix</a></td></tr>
-<tr class="separator:a12f4af6a04ada21336fa8ce0a45f2758"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aef7bda65b377ea58cae9446783a5e8c1" id="r_aef7bda65b377ea58cae9446783a5e8c1"><td class="memItemLeft" align="right" valign="top">QPixmap *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aef7bda65b377ea58cae9446783a5e8c1">npcPix</a></td></tr>
-<tr class="separator:aef7bda65b377ea58cae9446783a5e8c1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8ae39bd5ec44fd8b0a15595645e27ae3" id="r_a8ae39bd5ec44fd8b0a15595645e27ae3"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8ae39bd5ec44fd8b0a15595645e27ae3">ping</a></td></tr>
-<tr class="separator:a8ae39bd5ec44fd8b0a15595645e27ae3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a536a6390d16f05d402928bd731e06ef3" id="r_a536a6390d16f05d402928bd731e06ef3"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a536a6390d16f05d402928bd731e06ef3">difficulty</a></td></tr>
-<tr class="separator:a536a6390d16f05d402928bd731e06ef3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a3b4c8aab575024b6f3e2d648c6e17418" name="a3b4c8aab575024b6f3e2d648c6e17418"></a>
@@ -288,57 +230,6 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="a7bde4534d5e444e9e14b19729f42c392" name="a7bde4534d5e444e9e14b19729f42c392"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a7bde4534d5e444e9e14b19729f42c392">&#9670;&#160;</a></span>centerViewOnPlayArea()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void Game::centerViewOnPlayArea </td>
-          <td>(</td>
-          <td class="paramname"><span class="paramname"></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a8535e216627bac79c964438505b0e49c" name="a8535e216627bac79c964438505b0e49c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8535e216627bac79c964438505b0e49c">&#9670;&#160;</a></span>generateLevelSlice()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void Game::generateLevelSlice </td>
-          <td>(</td>
-          <td class="paramname"><span class="paramname"></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a8867dab3c9e4c49afedfe1437a22c98f" name="a8867dab3c9e4c49afedfe1437a22c98f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8867dab3c9e4c49afedfe1437a22c98f">&#9670;&#160;</a></span>getChat()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="class_chat_frame.html">ChatFrame</a> * Game::getChat </td>
-          <td>(</td>
-          <td class="paramname"><span class="paramname"></span></td><td>)</td>
-          <td> const</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
 <a id="a479a572f34087c49ee425d2e85494de2" name="a479a572f34087c49ee425d2e85494de2"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a479a572f34087c49ee425d2e85494de2">&#9670;&#160;</a></span>getEnemyView()</h2>
 
@@ -356,26 +247,6 @@ Private Attributes</h2></td></tr>
 
 <p><a class="el" href="#a479a572f34087c49ee425d2e85494de2" title="Game::getEnemyView.">Game::getEnemyView</a>. </p>
 <dl class="section return"><dt>Returns</dt><dd>pointer to enemyView </dd></dl>
-
-</div>
-</div>
-<a id="a34ef3a3940b5ad2cd7a5dad9f0d64f0b" name="a34ef3a3940b5ad2cd7a5dad9f0d64f0b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a34ef3a3940b5ad2cd7a5dad9f0d64f0b">&#9670;&#160;</a></span>getNetwork()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="class_network.html">Network</a> * Game::getNetwork </td>
-          <td>(</td>
-          <td class="paramname"><span class="paramname"></span></td><td>)</td>
-          <td> const</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p><a class="el" href="#a34ef3a3940b5ad2cd7a5dad9f0d64f0b" title="Game::getNetwork convenience function.">Game::getNetwork</a> convenience function. </p>
-<dl class="section return"><dt>Returns</dt><dd></dd></dl>
 
 </div>
 </div>
@@ -419,33 +290,6 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="aa79b8b669c7035b9bf95214be209743e" name="aa79b8b669c7035b9bf95214be209743e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa79b8b669c7035b9bf95214be209743e">&#9670;&#160;</a></span>initEnemies</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void Game::initEnemies </td>
-          <td>(</td>
-          <td class="paramname"><span class="paramname"></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">slot</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p><a class="el" href="#aa79b8b669c7035b9bf95214be209743e" title="Game::initEnemies.">Game::initEnemies</a>. </p>
-
-</div>
-</div>
 <a id="a1f4352a83044a094217858584e671b02" name="a1f4352a83044a094217858584e671b02"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a1f4352a83044a094217858584e671b02">&#9670;&#160;</a></span>initPlatforms</h2>
 
@@ -465,50 +309,6 @@ Private Attributes</h2></td></tr>
   </td>
   <td class="mlabels-right">
 <span class="mlabels"><span class="mlabel">slot</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p><a class="el" href="#a1f4352a83044a094217858584e671b02" title="Game::initPlatforms sets up a &quot;test level&quot; with platforms.">Game::initPlatforms</a> sets up a "test level" with platforms. </p>
-
-</div>
-</div>
-<a id="a405c0bb8156590c93304f11cf1f08065" name="a405c0bb8156590c93304f11cf1f08065"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a405c0bb8156590c93304f11cf1f08065">&#9670;&#160;</a></span>initPlayer()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void Game::initPlayer </td>
-          <td>(</td>
-          <td class="paramname"><span class="paramname"></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a7d15e0d06b78a8e624c86db5e41021de" name="a7d15e0d06b78a8e624c86db5e41021de"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a7d15e0d06b78a8e624c86db5e41021de">&#9670;&#160;</a></span>loadPixmaps()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void Game::loadPixmaps </td>
-          <td>(</td>
-          <td class="paramname"><span class="paramname"></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -543,8 +343,8 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="ab412d4f8d3e1f0e0f737d1bd22aeca46" name="ab412d4f8d3e1f0e0f737d1bd22aeca46"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab412d4f8d3e1f0e0f737d1bd22aeca46">&#9670;&#160;</a></span>moveEnemy</h2>
+<a id="a6ec9dd81a7f4615c3fa7d15fedcaa67e" name="a6ec9dd81a7f4615c3fa7d15fedcaa67e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6ec9dd81a7f4615c3fa7d15fedcaa67e">&#9670;&#160;</a></span>moveEnemy</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -555,7 +355,7 @@ Private Attributes</h2></td></tr>
         <tr>
           <td class="memname">void Game::moveEnemy </td>
           <td>(</td>
-          <td class="paramname"><span class="paramname"></span></td><td>)</td>
+          <td class="paramtype">QPointF</td>          <td class="paramname"><span class="paramname"><em>target</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -566,7 +366,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p><a class="el" href="#ab412d4f8d3e1f0e0f737d1bd22aeca46" title="Game::moveEnemy.">Game::moveEnemy</a>. </p>
+<p><a class="el" href="#a6ec9dd81a7f4615c3fa7d15fedcaa67e" title="Game::moveEnemy.">Game::moveEnemy</a>. </p>
 <p>Connect this slot to the readyRead signal of the multicast socket Whenever we receive a position update we'll add a property animation for the enemy player The enemy player will send his position which we'll have to transpose by the size of our frame </p>
 
 </div>
@@ -599,23 +399,6 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="a658e8904b4bb76cc1082f1741df7cedf" name="a658e8904b4bb76cc1082f1741df7cedf"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a658e8904b4bb76cc1082f1741df7cedf">&#9670;&#160;</a></span>setChat()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void Game::setChat </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="class_chat_frame.html">ChatFrame</a> *</td>          <td class="paramname"><span class="paramname"><em>newChat</em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
 <a id="aea85ee23e78b6e2388e5d0050da6d025" name="aea85ee23e78b6e2388e5d0050da6d025"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aea85ee23e78b6e2388e5d0050da6d025">&#9670;&#160;</a></span>setEnemyView()</h2>
 
@@ -635,31 +418,6 @@ Private Attributes</h2></td></tr>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">newEnemyView</td><td></td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
-<a id="a671723de3657c817ee16608919574725" name="a671723de3657c817ee16608919574725"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a671723de3657c817ee16608919574725">&#9670;&#160;</a></span>setNetwork()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void Game::setNetwork </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="class_network.html">Network</a> *</td>          <td class="paramname"><span class="paramname"><em>newNetwork</em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p><a class="el" href="#a671723de3657c817ee16608919574725" title="Game::setNetwork convenience function.">Game::setNetwork</a> convenience function. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">newNetwork</td><td></td></tr>
   </table>
   </dd>
 </dl>
@@ -716,58 +474,8 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="afafba397847add793e5ca6909fd497f6" name="afafba397847add793e5ca6909fd497f6"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#afafba397847add793e5ca6909fd497f6">&#9670;&#160;</a></span>startFromServer</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void Game::startFromServer </td>
-          <td>(</td>
-          <td class="paramname"><span class="paramname"></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">slot</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="ad0ac62aa19dbadd0333ee8160e7bb86c" name="ad0ac62aa19dbadd0333ee8160e7bb86c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad0ac62aa19dbadd0333ee8160e7bb86c">&#9670;&#160;</a></span>startRepaint</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void Game::startRepaint </td>
-          <td>(</td>
-          <td class="paramname"><span class="paramname"></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">signal</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a28757184a94404fd1520e5366287d456" name="a28757184a94404fd1520e5366287d456"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a28757184a94404fd1520e5366287d456">&#9670;&#160;</a></span>startSlot</h2>
+<a id="a0195f4d40ced4cf32a57ae146c885d72" name="a0195f4d40ced4cf32a57ae146c885d72"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0195f4d40ced4cf32a57ae146c885d72">&#9670;&#160;</a></span>startSlot</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -778,7 +486,7 @@ Private Attributes</h2></td></tr>
         <tr>
           <td class="memname">void Game::startSlot </td>
           <td>(</td>
-          <td class="paramname"><span class="paramname"></span></td><td>)</td>
+          <td class="paramtype"><a class="el" href="enums_8h.html#a35d73133b9b2c5eb7eff997b2cb4bab7">SchoolSkipper</a></td>          <td class="paramname"><span class="paramname"><em>_mode</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -789,7 +497,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p><a class="el" href="#a28757184a94404fd1520e5366287d456" title="Game::startSlot.">Game::startSlot</a>. </p>
+<p><a class="el" href="#a0195f4d40ced4cf32a57ae146c885d72" title="Game::startSlot.">Game::startSlot</a>. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">_mode</td><td></td></tr>
@@ -801,38 +509,16 @@ Private Attributes</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
-<a id="a0135397e31756ea1a90c9821392ea842" name="a0135397e31756ea1a90c9821392ea842"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0135397e31756ea1a90c9821392ea842">&#9670;&#160;</a></span>chat</h2>
+<a id="ae8d01e861597f7341615adf34aa86068" name="ae8d01e861597f7341615adf34aa86068"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae8d01e861597f7341615adf34aa86068">&#9670;&#160;</a></span>enemy</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="class_chat_frame.html">ChatFrame</a>* Game::chat</td>
+          <td class="memname"><a class="el" href="class_actor.html">Actor</a>* Game::enemy</td>
         </tr>
       </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a536a6390d16f05d402928bd731e06ef3" name="a536a6390d16f05d402928bd731e06ef3"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a536a6390d16f05d402928bd731e06ef3">&#9670;&#160;</a></span>difficulty</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">int Game::difficulty</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 
 </div>
@@ -881,42 +567,6 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="ac27d6aa4cf1072e82984b5b697767cdb" name="ac27d6aa4cf1072e82984b5b697767cdb"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac27d6aa4cf1072e82984b5b697767cdb">&#9670;&#160;</a></span>invisibleArea</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">QGraphicsRectItem* Game::invisibleArea</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a223527e5643ac7f9f05a559ed3a3e300" name="a223527e5643ac7f9f05a559ed3a3e300"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a223527e5643ac7f9f05a559ed3a3e300">&#9670;&#160;</a></span>LOP</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">QPointF* Game::LOP</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
 <a id="a542e4691efca4bc793283d8d05f9f8be" name="a542e4691efca4bc793283d8d05f9f8be"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a542e4691efca4bc793283d8d05f9f8be">&#9670;&#160;</a></span>max</h2>
 
@@ -953,136 +603,28 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="a6b3db316aafee1f43e06c3d471ddcdeb" name="a6b3db316aafee1f43e06c3d471ddcdeb"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6b3db316aafee1f43e06c3d471ddcdeb">&#9670;&#160;</a></span>network</h2>
+<a id="aa6d6cb5777de4f755f34f63c4bc57956" name="aa6d6cb5777de4f755f34f63c4bc57956"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa6d6cb5777de4f755f34f63c4bc57956">&#9670;&#160;</a></span>npcs</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="class_network.html">Network</a>* Game::network</td>
+          <td class="memname">std::vector&lt;<a class="el" href="class_actor.html">Actor</a>*&gt; Game::npcs</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
 </div>
 </div>
-<a id="aef7bda65b377ea58cae9446783a5e8c1" name="aef7bda65b377ea58cae9446783a5e8c1"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aef7bda65b377ea58cae9446783a5e8c1">&#9670;&#160;</a></span>npcPix</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">QPixmap* Game::npcPix</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="aba2bb81ee2f064554c3f214a1bd3bd0d" name="aba2bb81ee2f064554c3f214a1bd3bd0d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aba2bb81ee2f064554c3f214a1bd3bd0d">&#9670;&#160;</a></span>npcs</h2>
+<a id="a61ac67fc7b90d9cae504c7ecadff5892" name="a61ac67fc7b90d9cae504c7ecadff5892"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a61ac67fc7b90d9cae504c7ecadff5892">&#9670;&#160;</a></span>platforms</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">QList&lt;<a class="el" href="class_actor.html">Actor</a>*&gt; Game::npcs</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a659930ab5362dce0d7ff5556bf1bfbca" name="a659930ab5362dce0d7ff5556bf1bfbca"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a659930ab5362dce0d7ff5556bf1bfbca">&#9670;&#160;</a></span>opponent</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="class_actor.html">Actor</a>* Game::opponent</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a8ae39bd5ec44fd8b0a15595645e27ae3" name="a8ae39bd5ec44fd8b0a15595645e27ae3"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8ae39bd5ec44fd8b0a15595645e27ae3">&#9670;&#160;</a></span>ping</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">int Game::ping</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a9f4d194b37103fb8b91333edc551006f" name="a9f4d194b37103fb8b91333edc551006f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9f4d194b37103fb8b91333edc551006f">&#9670;&#160;</a></span>pixmaps</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">QList&lt;QPixmap*&gt; Game::pixmaps</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a12f4af6a04ada21336fa8ce0a45f2758" name="a12f4af6a04ada21336fa8ce0a45f2758"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a12f4af6a04ada21336fa8ce0a45f2758">&#9670;&#160;</a></span>platformPix</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">QPixmap* Game::platformPix</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a2e20520a6b2121f99abb43e2dc3a37dc" name="a2e20520a6b2121f99abb43e2dc3a37dc"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2e20520a6b2121f99abb43e2dc3a37dc">&#9670;&#160;</a></span>platforms</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">QList&lt;<a class="el" href="class_platform.html">Platform</a>*&gt; Game::platforms</td>
+          <td class="memname">std::vector&lt;<a class="el" href="class_platform.html">Platform</a>*&gt; Game::platforms</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -1180,28 +722,6 @@ Private Attributes</h2></td></tr>
       <table class="memname">
         <tr>
           <td class="memname">QGraphicsView* Game::view</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="ae007c3191373449bcae56c4f9f929a0d" name="ae007c3191373449bcae56c4f9f929a0d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae007c3191373449bcae56c4f9f929a0d">&#9670;&#160;</a></span>viewportSize</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">QSize* Game::viewportSize</td>
         </tr>
       </table>
   </td>
