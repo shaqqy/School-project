@@ -39,6 +39,10 @@ void ChatFrame::handleNewMessage(QString message, SchoolSkipper type) {
 
     switch (type) {
     case SchoolSkipper::INCOMING_MESSAGE:
+        if (this->isHidden()) {
+            emit changeIconOfExpandButton(CHAT_EXPAND_ICON_NEW_MESSAGE);
+        }
+
         sender = "Opponent";
         break;
 
@@ -82,6 +86,7 @@ void ChatFrame::handleReconnectChat() {
 }
 
 void ChatFrame::handleMinimizePressed() {
+    emit changeIconOfExpandButton(CHAT_EXPAND_ICON_DEFAULT);
     emit minimizeChatFrame();
 }
 

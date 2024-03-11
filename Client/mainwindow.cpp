@@ -35,7 +35,7 @@ SchoolSkipperClient::SchoolSkipperClient(QWidget *parent)
 
   /*
    *  connect minimize and maximize buttons for handling the visibility of the
-   * chat frame. And connect reconnect button of chat frame
+   * chat frame. And connect reconnect button of chat frame and exchange of expand button icon.
    */
   connect(this, &SchoolSkipperClient::visibilityChangeOfChatFrame, this,
           &SchoolSkipperClient::handleVisibilityChangeOfChatFrame);
@@ -44,6 +44,7 @@ SchoolSkipperClient::SchoolSkipperClient(QWidget *parent)
   connect(chatFrame, &ChatFrame::minimizeChatFrame, this,
           &SchoolSkipperClient::minimizeChatFrame);
   connect(chatFrame, &ChatFrame::reconnectChat, this, &SchoolSkipperClient::reconnectTcp);
+  connect(chatFrame, &ChatFrame::changeIconOfExpandButton, this, &SchoolSkipperClient::handleIconChangeOfExpandChatButton);
 
   initGraphicsViews();
   networker->initTcpSocket();
@@ -138,6 +139,10 @@ void SchoolSkipperClient::handleVisibilityChangeOfChatFrame(bool visible) {
       "border-right: 3px solid grey; border-top-right-radius: 10px;");
   expandChatFrameButton->show();
   chatFrame->hide();
+}
+
+void SchoolSkipperClient::handleIconChangeOfExpandChatButton(QIcon icon) {
+  expandChatFrameButton->setIcon(icon);
 }
 
 void SchoolSkipperClient::expandChatFrame() {

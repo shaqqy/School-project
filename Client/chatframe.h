@@ -22,12 +22,15 @@ public:
     ChatFrame(QWidget* parent);
 
     const QIcon CHAT_MINIMIZE_ICON = QIcon(":/images/images/chat-close.png");
+    const QIcon CHAT_EXPAND_ICON_DEFAULT = QIcon(":/images/images/chat.png");
+    const QIcon CHAT_EXPAND_ICON_NEW_MESSAGE = QIcon(":/images/images/chat_message_new.png");
 
     QLineEdit *getInputBox() const;
     void setInputBox(QLineEdit *newInputBox);
 
 signals:
     void minimizeChatFrame();
+    void changeIconOfExpandButton(QIcon icon);
 
     void reconnectChat();
 

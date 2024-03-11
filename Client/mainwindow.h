@@ -40,7 +40,7 @@ public:
     const QIcon WINDOW_ICON = QIcon(":/images/images/icon.png");
 
     const QIcon CHAT_EXPAND_ICON_DEFAULT = QIcon(":/images/images/chat.png");
-    const QIcon CHAT_EXPAND_ICON_NEW_MESSAGE = QIcon(":/images/images/chat_new_message.png");
+
     Game *game;
     void initStartButtons();
 signals:
@@ -48,6 +48,7 @@ signals:
 
 public slots:
     void handleVisibilityChangeOfChatFrame(bool visible);
+    void handleIconChangeOfExpandChatButton(QIcon icon);
     void expandChatFrame();
     void minimizeChatFrame();
     void reconnectTcp();
