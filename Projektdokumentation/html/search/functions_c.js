@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['readnewtcpdata_0',['readNewTcpData',['../class_network.html#a47573016ecd010ab92570c21089c4fb7',1,'Network']]],
-  ['readnewudpdata_1',['readNewUdpData',['../class_network.html#a03bca8d1724dfd9fe065bd737f4d17c6',1,'Network']]],
-  ['receivedatagram_2',['receiveDatagram',['../class_client__test.html#a7bd040e37e7ff8b60844b7fa8384208d',1,'Client_test']]]
+  ['onclick_0',['onClick',['../class_custom_button.html#a2d155f1ecfa97a89994cdc2bd9eca8b3',1,'CustomButton']]],
+  ['operator_3d_1',['operator=',['../class_server.html#a94a3806d56e33c490edd381f2bbde812',1,'Server']]]
 ];

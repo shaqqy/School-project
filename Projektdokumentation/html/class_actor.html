@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.10.0"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>School-skipper_Server: Actor Class Reference</title>
+<title>School-skipper: Actor Class Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -23,9 +23,9 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">School-skipper_Server
+   <div id="projectname">School-skipper
    </div>
-   <div id="projectbrief">Handling of the messaging/Multicast handshaking</div>
+   <div id="projectbrief">A doodle jump clone</div>
   </td>
  </tr>
  </tbody>
@@ -75,7 +75,7 @@ $(function() {
   <div class="summary">
 <a href="#pub-slots">Public Slots</a> &#124;
 <a href="#pub-methods">Public Member Functions</a> &#124;
-<a href="#pro-methods">Protected Member Functions</a> &#124;
+<a href="#pub-attribs">Public Attributes</a> &#124;
 <a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="class_actor-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">Actor Class Reference</div></div>
@@ -126,10 +126,10 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a4636ffaf731f974566dd06b7ad0e2c7e" id="r_a4636ffaf731f974566dd06b7ad0e2c7e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4636ffaf731f974566dd06b7ad0e2c7e">setSpeedH</a> (double newSpeedH)</td></tr>
 <tr class="separator:a4636ffaf731f974566dd06b7ad0e2c7e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-methods" name="pro-methods"></a>
-Protected Member Functions</h2></td></tr>
-<tr class="memitem:a65464a1935da5ba12265ce3364221ed2" id="r_a65464a1935da5ba12265ce3364221ed2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a65464a1935da5ba12265ce3364221ed2">keyPressEvent</a> (QKeyEvent *event)</td></tr>
-<tr class="separator:a65464a1935da5ba12265ce3364221ed2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
+Public Attributes</h2></td></tr>
+<tr class="memitem:ab1fbb5ef6193fbae8f82feab7cab15ec" id="r_ab1fbb5ef6193fbae8f82feab7cab15ec"><td class="memItemLeft" align="right" valign="top">std::vector&lt; QPixmap * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab1fbb5ef6193fbae8f82feab7cab15ec">pixmaps</a></td></tr>
+<tr class="separator:ab1fbb5ef6193fbae8f82feab7cab15ec"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
@@ -292,31 +292,6 @@ Private Attributes</h2></td></tr>
           <td> const</td>
         </tr>
       </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a65464a1935da5ba12265ce3364221ed2" name="a65464a1935da5ba12265ce3364221ed2"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a65464a1935da5ba12265ce3364221ed2">&#9670;&#160;</a></span>keyPressEvent()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void Actor::keyPressEvent </td>
-          <td>(</td>
-          <td class="paramtype">QKeyEvent *</td>          <td class="paramname"><span class="paramname"><em>event</em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 
 </div>
@@ -498,6 +473,20 @@ Private Attributes</h2></td></tr>
 <span class="mlabels"><span class="mlabel">private</span></span>  </td>
   </tr>
 </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ab1fbb5ef6193fbae8f82feab7cab15ec" name="ab1fbb5ef6193fbae8f82feab7cab15ec"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab1fbb5ef6193fbae8f82feab7cab15ec">&#9670;&#160;</a></span>pixmaps</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt;QPixmap*&gt; Actor::pixmaps</td>
+        </tr>
+      </table>
 </div><div class="memdoc">
 
 </div>

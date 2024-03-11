@@ -51,7 +51,7 @@ double Game::calculateDistance(QPointF item1, QPointF item2) {
 /*!
  * \brief Game::move
  *
- * Handles movement of ingame entities
+ * Handles movement of ingame entities and decides when a player has lost
  */
 void Game::move() {
   ping++;
@@ -62,7 +62,7 @@ void Game::move() {
   foreach (auto const &collision, collisions) {
     if (collision->data(404) == "platform") {
       if (player->getSpeedV() > 0) {
-        player->setSpeedV(-20);
+        player->setSpeedV(-30);
       }
     } else if (collision->data(404) == "npc") {
       if (player->getSpeedV() > 0)
@@ -70,17 +70,23 @@ void Game::move() {
         disconnect(timer, &QTimer::timeout, this, &Game::move);
       if (mode == SchoolSkipper::Gamemode_Multiplayer)
         network->sendTcpMessage("Dead");
-      // TODO: Show end score and game over
     }
   }
+  // Move the doodler by it's speed
+  player->moveBy(player->getSpeedH(), player->getSpeedV());
+  //  if (ping == 3) {
+  //    player->moveBy(player->getSpeedH(), player->getSpeedV());
+  //    ping = 0;
+  //  } else {
+  //    ping++;
+  //    player->moveBy(player->getSpeedH(), 0);
+  //  }
   // Add the decay of horizontal speed
   if (player->getSpeedH() > 0) {
     player->setSpeedH(player->getSpeedH() - 1);
   } else if (player->getSpeedH() < 0) {
     player->setSpeedH(player->getSpeedH() + 1);
   }
-  // Move the doodler by it's speed
-  player->moveBy(player->getSpeedH(), player->getSpeedV());
   if (player->getY() < std::abs(max))
     max = player->getY();
   // Add gravity to the speed
@@ -89,16 +95,19 @@ void Game::move() {
   QPointF viewport_pos = getView()->mapFromScene(player->pos());
   // qDebug() << "Viewpos" << viewport_pos;
   qDebug() << "Scenepos" << player->pos();
-  if (viewport_pos.y() > 560) {
-    if (this->mode == SchoolSkipper::Gamemode_Singleplayer) {
-      timer->stop();
-      // Player fell down
-      // TODO: Show end score and game over
-    } else {
-      // Player "fell down"
-      disconnect(timer, &QTimer::timeout, this, &Game::move);
-      network->sendTcpMessage("Dead");
-      // TODO: Show end score and game over
+  if (viewport_pos.y() > 660) {
+    view->centerOn(QPointF(viewportSize->width() / 2, player->pos().y()));
+    if (player->pos().y() > 0) {
+      if (this->mode == SchoolSkipper::Gamemode_Singleplayer) {
+        timer->stop();
+        // Player fell down
+        // TODO: Show end score and game over
+      } else {
+        // Player "fell down"
+        disconnect(timer, &QTimer::timeout, this, &Game::move);
+        network->sendTcpMessage("Dead");
+        // TODO: Show end score and game over
+      }
     }
   }
   // Scroll higher if the player reached over a certain point in the screen
@@ -178,6 +187,7 @@ void Game::moveEnemy() {
  */
 void Game::startSlot() {
   QObject *sender = QObject::sender();
+  viewportSize = new QSize(view->size());
   initPlayer();
   initPlatforms();
   if (sender->objectName() == "Singleplayer") {
@@ -190,8 +200,8 @@ void Game::startSlot() {
     opponent->setOpacity(0.4);
     LOP = new QPointF();
     connect(timer, &QTimer::timeout, this, &Game::moveEnemy);
+    network->sendTcpMessage(QByteArray::fromStdString("Ready"));
   }
-  viewportSize = new QSize(view->size());
 
   //  invisibleArea = new QGraphicsRectItem(QRectF(0, -(view->size().height() /
   //  2),
@@ -201,14 +211,14 @@ void Game::startSlot() {
   //  scene->addItem(invisibleArea);
 }
 
-void Game::startFromServer(){
-    timer->setInterval(25);
-    timer->start();
+void Game::startFromServer() {
+  timer->setInterval(25);
+  timer->start();
 }
 
 void Game::initPlayer() {
   scene->addItem(player);
-  player->setPos(300, -viewportSize->height() / 2);
+  player->setPos(300, -viewportSize->height() / 2 - 200);
   player->setZValue(100);
   player->show();
   player->setSpeedV(0);
@@ -269,17 +279,17 @@ void Game::initPlatforms() {
     tmp->show();
     platforms.push_back(tmp);
   }
-   for (int i = 0; i < 15; i++) {
-     Platform *tmp = new Platform(this, platformPix);
-     scene->addItem(tmp);
-     tmp->setPos(QPointF(i * platformPix->width(), 0));
-     tmp->show();
-     platforms.push_back(tmp);
-   }
+  for (int i = 0; i < 15; i++) {
+    Platform *tmp = new Platform(this, platformPix);
+    scene->addItem(tmp);
+    tmp->setPos(QPointF(i * platformPix->width(), 0));
+    tmp->show();
+    platforms.push_back(tmp);
+  }
 }
 void Game::generateLevelSlice() {
-  if (difficulty < 20)
-    difficulty++;
+  //  if (difficulty < 20)
+  //    difficulty++;
   // Get Player Position as Point
   QPointF playerpos = player->pos();
   // Generate platforms as a multiple from a random distance the player can jump

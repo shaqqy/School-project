@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['receiver_0',['receiver',['../class_client__test.html#a38393bc5b9ac804cd4ff14e639968537',1,'Client_test']]],
-  ['running_1',['running',['../class_server.html#a4db32e1a16e0423cf619d7914fa9b8c2',1,'Server']]]
+  ['rdycounter_0',['rdyCounter',['../class_server.html#ab55ff8c66ce7d4cfe55315903c0a2938',1,'Server']]],
+  ['reconnectbutton_1',['reconnectButton',['../class_chat_frame.html#a80b93cfac260ff35935633f5b8a9d63d',1,'ChatFrame']]],
+  ['running_2',['running',['../class_server.html#a4db32e1a16e0423cf619d7914fa9b8c2',1,'Server']]]
 ];

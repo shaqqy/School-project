@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['opponentframe_0',['opponentFrame',['../class_school_skipper_client.html#a3662b192f839012503f73058a6c6e0f0',1,'SchoolSkipperClient']]]
+  ['opponent_0',['opponent',['../class_game.html#a659930ab5362dce0d7ff5556bf1bfbca',1,'Game']]]
 ];

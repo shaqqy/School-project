@@ -64,7 +64,7 @@ void Network::initTcpSocket() {
       tcpSocket->state() != QTcpSocket::BoundState) {
     connect(tcpSocket, &QTcpSocket::readyRead, this, &Network::readNewTcpData);
 
-    tcpSocket->connectToHost(QHostAddress("192.168.0.43"), 30001);
+    tcpSocket->connectToHost(QHostAddress("192.168.0.2"), 30001);
 
     if (tcpSocket->waitForConnected(2000)) {
       qDebug() << "[NET] Connected with (TCP): " << tcpSocket->peerAddress();

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['dafuq_0',['dafuq',['../class_client__test.html#af882c3171ba1a0aa9d250d870eb42a63',1,'Client_test']]]
+  ['difficulty_0',['difficulty',['../class_game.html#a536a6390d16f05d402928bd731e06ef3',1,'Game']]]
 ];

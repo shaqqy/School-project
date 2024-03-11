@@ -20,7 +20,7 @@ Server::Server(QObject *parent) : QObject(parent) {
   msg_server = new QTcpServer();
   connect(msg_server, &QTcpServer::newConnection, this,
           &Server::acceptConnection);
-  msg_server->listen(/*Socket.localAddress()*/ QHostAddress("192.168.0.43"),
+  msg_server->listen(/*Socket.localAddress()*/ QHostAddress("192.168.0.2"),
                      30001);
   Socket.disconnectFromHost();
   multicastGroup = QHostAddress(QStringLiteral("239.255.43.21"));
@@ -57,7 +57,7 @@ void Server::acceptConnection() {
                   socket->localAddress().toString();
   qDebug() << "Connected player with IP "
            << messengers.last()->peerAddress().toString();
-  player_alive.push_back(false);
+  player_alive.push_back(true);
 }
 /*!
  * \brief Server::startRead
@@ -110,6 +110,9 @@ void Server::startGame() {
     buffer = tmp.toUtf8();
     QNetworkDatagram datagram = QNetworkDatagram(buffer, multicastGroup, 30000);
     multicast->writeDatagram(datagram);
+    foreach(const auto& mg, messengers){
+      mg->write(buffer);
+    }
   }
 }
 
@@ -155,8 +158,11 @@ void Server::handleMessage() {
       // int idx = messengers.indexOf(sender);
       // player_alive[idx] = true;
       rdyCounter++;
+      qDebug() << rdyCounter;
     } else if (rdyCounter == 1) {
       startGame();
+      qDebug() << "Called startgame";
+      rdyCounter++;
     } else {
       rdyCounter = 1;
     }

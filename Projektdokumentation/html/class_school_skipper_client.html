@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.10.0"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>School-skipper_Server: SchoolSkipperClient Class Reference</title>
+<title>School-skipper: SchoolSkipperClient Class Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -23,9 +23,9 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">School-skipper_Server
+   <div id="projectname">School-skipper
    </div>
-   <div id="projectbrief">Handling of the messaging/Multicast handshaking</div>
+   <div id="projectbrief">A doodle jump clone</div>
   </td>
  </tr>
  </tbody>
@@ -76,6 +76,7 @@ $(function() {
 <a href="#pub-slots">Public Slots</a> &#124;
 <a href="#signals">Signals</a> &#124;
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pub-attribs">Public Attributes</a> &#124;
 <a href="#pro-methods">Protected Member Functions</a> &#124;
 <a href="#pri-methods">Private Member Functions</a> &#124;
 <a href="#pri-attribs">Private Attributes</a> &#124;
@@ -94,13 +95,21 @@ Inheritance diagram for SchoolSkipperClient:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-slots" name="pub-slots"></a>
 Public Slots</h2></td></tr>
-<tr class="memitem:a993d5d843e2918a84ebf0e6a7ff56d24" id="r_a993d5d843e2918a84ebf0e6a7ff56d24"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a993d5d843e2918a84ebf0e6a7ff56d24">messageReadySlot</a> ()</td></tr>
-<tr class="separator:a993d5d843e2918a84ebf0e6a7ff56d24"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad4aa1977051710c73cf432783f822025" id="r_ad4aa1977051710c73cf432783f822025"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad4aa1977051710c73cf432783f822025">handleVisibilityChangeOfChatFrame</a> (bool visible)</td></tr>
+<tr class="separator:ad4aa1977051710c73cf432783f822025"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac6c3d0764a7ba294b5df35d92ff3d968" id="r_ac6c3d0764a7ba294b5df35d92ff3d968"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac6c3d0764a7ba294b5df35d92ff3d968">expandChatFrame</a> ()</td></tr>
+<tr class="separator:ac6c3d0764a7ba294b5df35d92ff3d968"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac0ffc3e9b82d17c633abe241146f1d36" id="r_ac0ffc3e9b82d17c633abe241146f1d36"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac0ffc3e9b82d17c633abe241146f1d36">minimizeChatFrame</a> ()</td></tr>
+<tr class="separator:ac0ffc3e9b82d17c633abe241146f1d36"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af8421e7a8eee581fe7b1bcd1b9a97357" id="r_af8421e7a8eee581fe7b1bcd1b9a97357"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af8421e7a8eee581fe7b1bcd1b9a97357">keyPressEvent</a> (QKeyEvent *event) override</td></tr>
+<tr class="separator:af8421e7a8eee581fe7b1bcd1b9a97357"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a44324465813f02d63e6e5db7a3d089b2" id="r_a44324465813f02d63e6e5db7a3d089b2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a44324465813f02d63e6e5db7a3d089b2">hideStartButtons</a> ()</td></tr>
+<tr class="separator:a44324465813f02d63e6e5db7a3d089b2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="signals" name="signals"></a>
 Signals</h2></td></tr>
-<tr class="memitem:ae3cd662609b50d2160137c68a7d2a230" id="r_ae3cd662609b50d2160137c68a7d2a230"><td class="memItemLeft" align="right" valign="top">QByteArray&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae3cd662609b50d2160137c68a7d2a230">messageReadySignal</a> (QByteArray message)</td></tr>
-<tr class="separator:ae3cd662609b50d2160137c68a7d2a230"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abf2cee1a03189a11672fb04fba06d66e" id="r_abf2cee1a03189a11672fb04fba06d66e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#abf2cee1a03189a11672fb04fba06d66e">visibilityChangeOfChatFrame</a> (bool visibile)</td></tr>
+<tr class="separator:abf2cee1a03189a11672fb04fba06d66e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
@@ -108,6 +117,21 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:ae052d9fa3b4d760078b672d02f9deb88"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3d110391817ae188defed6a8c5be3c45" id="r_a3d110391817ae188defed6a8c5be3c45"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3d110391817ae188defed6a8c5be3c45">~SchoolSkipperClient</a> ()</td></tr>
 <tr class="separator:a3d110391817ae188defed6a8c5be3c45"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1ad7d5b794c39ae459882e90ed4d8852" id="r_a1ad7d5b794c39ae459882e90ed4d8852"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1ad7d5b794c39ae459882e90ed4d8852">initStartButtons</a> ()</td></tr>
+<tr class="separator:a1ad7d5b794c39ae459882e90ed4d8852"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
+Public Attributes</h2></td></tr>
+<tr class="memitem:acdf1f4e3d001e8e4bc03b9d8b16e5009" id="r_acdf1f4e3d001e8e4bc03b9d8b16e5009"><td class="memItemLeft" align="right" valign="top">const QString&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#acdf1f4e3d001e8e4bc03b9d8b16e5009">WINDOW_TITLE</a> = &quot;School Skipper&quot;</td></tr>
+<tr class="separator:acdf1f4e3d001e8e4bc03b9d8b16e5009"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0f1cce6b464bfd3427e80cd45d6cb1dc" id="r_a0f1cce6b464bfd3427e80cd45d6cb1dc"><td class="memItemLeft" align="right" valign="top">const QIcon&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0f1cce6b464bfd3427e80cd45d6cb1dc">WINDOW_ICON</a> = QIcon(&quot;:/images/images/icon.png&quot;)</td></tr>
+<tr class="separator:a0f1cce6b464bfd3427e80cd45d6cb1dc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5156bc624c51cf4e63867960fe10d5b3" id="r_a5156bc624c51cf4e63867960fe10d5b3"><td class="memItemLeft" align="right" valign="top">const QIcon&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5156bc624c51cf4e63867960fe10d5b3">CHAT_EXPAND_ICON_DEFAULT</a> = QIcon(&quot;:/images/images/chat.png&quot;)</td></tr>
+<tr class="separator:a5156bc624c51cf4e63867960fe10d5b3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a83792a9c051de08a9c65fdcfeb3dcabb" id="r_a83792a9c051de08a9c65fdcfeb3dcabb"><td class="memItemLeft" align="right" valign="top">const QIcon&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a83792a9c051de08a9c65fdcfeb3dcabb">CHAT_EXPAND_ICON_NEW_MESSAGE</a> = QIcon(&quot;:/images/images/chat_new_message.png&quot;)</td></tr>
+<tr class="separator:a83792a9c051de08a9c65fdcfeb3dcabb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae26da6095a94806d6e86dc9d204b6753" id="r_ae26da6095a94806d6e86dc9d204b6753"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_game.html">Game</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae26da6095a94806d6e86dc9d204b6753">game</a></td></tr>
+<tr class="separator:ae26da6095a94806d6e86dc9d204b6753"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-methods" name="pro-methods"></a>
 Protected Member Functions</h2></td></tr>
@@ -116,45 +140,47 @@ Protected Member Functions</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-methods" name="pri-methods"></a>
 Private Member Functions</h2></td></tr>
-<tr class="memitem:aa1d6b2d00d97ce8d0513a1d9f59049d2" id="r_aa1d6b2d00d97ce8d0513a1d9f59049d2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa1d6b2d00d97ce8d0513a1d9f59049d2">initGameFrames</a> ()</td></tr>
-<tr class="separator:aa1d6b2d00d97ce8d0513a1d9f59049d2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3245017c686a4174e3ff776bda66cf14" id="r_a3245017c686a4174e3ff776bda66cf14"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3245017c686a4174e3ff776bda66cf14">initChatWindow</a> ()</td></tr>
-<tr class="separator:a3245017c686a4174e3ff776bda66cf14"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9fb59ea65d84b13a6f50ad1c4261f2f9" id="r_a9fb59ea65d84b13a6f50ad1c4261f2f9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9fb59ea65d84b13a6f50ad1c4261f2f9">initGraphicsViewAndScene</a> ()</td></tr>
-<tr class="separator:a9fb59ea65d84b13a6f50ad1c4261f2f9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a63aa1287f17fef53f93d16387b677c32" id="r_a63aa1287f17fef53f93d16387b677c32"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a63aa1287f17fef53f93d16387b677c32">initGraphicsViews</a> ()</td></tr>
+<tr class="separator:a63aa1287f17fef53f93d16387b677c32"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a23c70ead304a8c8849ecc11a06f257bb" id="r_a23c70ead304a8c8849ecc11a06f257bb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a23c70ead304a8c8849ecc11a06f257bb">initWindowDefaultParams</a> ()</td></tr>
+<tr class="separator:a23c70ead304a8c8849ecc11a06f257bb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a563cf23fb0bed78e118d9cba197e4ec8" id="r_a563cf23fb0bed78e118d9cba197e4ec8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a563cf23fb0bed78e118d9cba197e4ec8">initFrames</a> ()</td></tr>
+<tr class="separator:a563cf23fb0bed78e118d9cba197e4ec8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a70eb693f2dea255a46656ff45324bb1f" id="r_a70eb693f2dea255a46656ff45324bb1f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a70eb693f2dea255a46656ff45324bb1f">initNetwork</a> ()</td></tr>
+<tr class="separator:a70eb693f2dea255a46656ff45324bb1f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
 <tr class="memitem:a37082172e51904a61f3fe51cee9eacdb" id="r_a37082172e51904a61f3fe51cee9eacdb"><td class="memItemLeft" align="right" valign="top">Ui::MainWindow *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a37082172e51904a61f3fe51cee9eacdb">ui</a></td></tr>
 <tr class="separator:a37082172e51904a61f3fe51cee9eacdb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afb03832b01511ed27f822d0a773af953" id="r_afb03832b01511ed27f822d0a773af953"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_custom_frame.html">CustomFrame</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afb03832b01511ed27f822d0a773af953">mainFrame</a></td></tr>
-<tr class="separator:afb03832b01511ed27f822d0a773af953"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3662b192f839012503f73058a6c6e0f0" id="r_a3662b192f839012503f73058a6c6e0f0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_custom_frame.html">CustomFrame</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3662b192f839012503f73058a6c6e0f0">opponentFrame</a></td></tr>
-<tr class="separator:a3662b192f839012503f73058a6c6e0f0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a77e1bb9c62d9c17ad4da8e79b4287d19" id="r_a77e1bb9c62d9c17ad4da8e79b4287d19"><td class="memItemLeft" align="right" valign="top">QGraphicsView *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a77e1bb9c62d9c17ad4da8e79b4287d19">graphicsViewMainFrame</a></td></tr>
-<tr class="separator:a77e1bb9c62d9c17ad4da8e79b4287d19"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8a635ec1a53a9fbe4f780f879916553a" id="r_a8a635ec1a53a9fbe4f780f879916553a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_network.html">Network</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8a635ec1a53a9fbe4f780f879916553a">networker</a></td></tr>
+<tr class="separator:a8a635ec1a53a9fbe4f780f879916553a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ade733bac1716b43a5e76c94667b404c4" id="r_ade733bac1716b43a5e76c94667b404c4"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_chat_frame.html">ChatFrame</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ade733bac1716b43a5e76c94667b404c4">chatFrame</a></td></tr>
+<tr class="separator:ade733bac1716b43a5e76c94667b404c4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2a2dea83b4831e9349dd84bcdc6acf29" id="r_a2a2dea83b4831e9349dd84bcdc6acf29"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_menu_frame.html">MenuFrame</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2a2dea83b4831e9349dd84bcdc6acf29">menuFrame</a></td></tr>
+<tr class="separator:a2a2dea83b4831e9349dd84bcdc6acf29"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4d51e6fb2ad282e6e05e7d4749f3cd1e" id="r_a4d51e6fb2ad282e6e05e7d4749f3cd1e"><td class="memItemLeft" align="right" valign="top">QPushButton *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4d51e6fb2ad282e6e05e7d4749f3cd1e">expandChatFrameButton</a></td></tr>
+<tr class="separator:a4d51e6fb2ad282e6e05e7d4749f3cd1e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac17c0bddc75b4f70b7c504f18b90c932" id="r_ac17c0bddc75b4f70b7c504f18b90c932"><td class="memItemLeft" align="right" valign="top">QPushButton *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac17c0bddc75b4f70b7c504f18b90c932">single</a></td></tr>
+<tr class="separator:ac17c0bddc75b4f70b7c504f18b90c932"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a924a41c0c7b382c1030fb03fb7005273" id="r_a924a41c0c7b382c1030fb03fb7005273"><td class="memItemLeft" align="right" valign="top">QPushButton *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a924a41c0c7b382c1030fb03fb7005273">multi</a></td></tr>
+<tr class="separator:a924a41c0c7b382c1030fb03fb7005273"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a11a55d4259ba01e8e57b6a28894c8dee" id="r_a11a55d4259ba01e8e57b6a28894c8dee"><td class="memItemLeft" align="right" valign="top">QFrame *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a11a55d4259ba01e8e57b6a28894c8dee">graphicsViewsGridFrame</a></td></tr>
+<tr class="separator:a11a55d4259ba01e8e57b6a28894c8dee"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aee2e91fe32f1fa5900438b7af68b1e92" id="r_aee2e91fe32f1fa5900438b7af68b1e92"><td class="memItemLeft" align="right" valign="top">QGridLayout *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aee2e91fe32f1fa5900438b7af68b1e92">graphicsViewsGrid</a></td></tr>
+<tr class="separator:aee2e91fe32f1fa5900438b7af68b1e92"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac26283c90568f0df8e85794aa970e3a1" id="r_ac26283c90568f0df8e85794aa970e3a1"><td class="memItemLeft" align="right" valign="top">QGraphicsScene *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac26283c90568f0df8e85794aa970e3a1">graphicsScene</a></td></tr>
 <tr class="separator:ac26283c90568f0df8e85794aa970e3a1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa41e35b707ea0945423efd057dd23edd" id="r_aa41e35b707ea0945423efd057dd23edd"><td class="memItemLeft" align="right" valign="top">QGraphicsPixmapItem *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa41e35b707ea0945423efd057dd23edd">graphicsSceneBackground</a></td></tr>
-<tr class="separator:aa41e35b707ea0945423efd057dd23edd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6d19027addc28c645a569fc8a4d2f555" id="r_a6d19027addc28c645a569fc8a4d2f555"><td class="memItemLeft" align="right" valign="top">QGraphicsView *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6d19027addc28c645a569fc8a4d2f555">graphicsViewOpponentFrame</a></td></tr>
-<tr class="separator:a6d19027addc28c645a569fc8a4d2f555"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa1e7b831482ee8794fab158114f70ac6" id="r_aa1e7b831482ee8794fab158114f70ac6"><td class="memItemLeft" align="right" valign="top">QGraphicsScene *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa1e7b831482ee8794fab158114f70ac6">graphicsSceneOpponentFrame</a></td></tr>
-<tr class="separator:aa1e7b831482ee8794fab158114f70ac6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad5ebde6ee1c8f4024920de222a57aa51" id="r_ad5ebde6ee1c8f4024920de222a57aa51"><td class="memItemLeft" align="right" valign="top">QGraphicsPixmapItem *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad5ebde6ee1c8f4024920de222a57aa51">graphicsSceneBackgroundOpponentFrame</a></td></tr>
-<tr class="separator:ad5ebde6ee1c8f4024920de222a57aa51"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5630dfd35c33a8f3f244596cfb721492" id="r_a5630dfd35c33a8f3f244596cfb721492"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_network.html">Network</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5630dfd35c33a8f3f244596cfb721492">server</a></td></tr>
-<tr class="separator:a5630dfd35c33a8f3f244596cfb721492"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7f98523a4c041857efeb0b06f2b4c740" id="r_a7f98523a4c041857efeb0b06f2b4c740"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_network.html">Network</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7f98523a4c041857efeb0b06f2b4c740">client</a></td></tr>
-<tr class="separator:a7f98523a4c041857efeb0b06f2b4c740"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a04ccabef6cf9a6c1e634aa183bf81d28" id="r_a04ccabef6cf9a6c1e634aa183bf81d28"><td class="memItemLeft" align="right" valign="top">QTextBrowser *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a04ccabef6cf9a6c1e634aa183bf81d28">chatWindow</a></td></tr>
-<tr class="separator:a04ccabef6cf9a6c1e634aa183bf81d28"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a531bbe34b774ab957084ef45ae24cdef" id="r_a531bbe34b774ab957084ef45ae24cdef"><td class="memItemLeft" align="right" valign="top">QPushButton *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a531bbe34b774ab957084ef45ae24cdef">sendButton</a></td></tr>
-<tr class="separator:a531bbe34b774ab957084ef45ae24cdef"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad81c7a058725a85dff81e9635f9ecbb2" id="r_ad81c7a058725a85dff81e9635f9ecbb2"><td class="memItemLeft" align="right" valign="top">QLineEdit *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad81c7a058725a85dff81e9635f9ecbb2">chatBox</a></td></tr>
-<tr class="separator:ad81c7a058725a85dff81e9635f9ecbb2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad451ce3b1920d6480c4617dab2c6f446" id="r_ad451ce3b1920d6480c4617dab2c6f446"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad451ce3b1920d6480c4617dab2c6f446">isMenuActive</a></td></tr>
-<tr class="separator:ad451ce3b1920d6480c4617dab2c6f446"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a96acdaa1bdf85d2fd96d7b3a269fafc5" id="r_a96acdaa1bdf85d2fd96d7b3a269fafc5"><td class="memItemLeft" align="right" valign="top">QList&lt; QGraphicsPixmapItem * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a96acdaa1bdf85d2fd96d7b3a269fafc5">graphicsSceneBackgroundsList</a></td></tr>
+<tr class="separator:a96acdaa1bdf85d2fd96d7b3a269fafc5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3823f210a31f336cdd79daf86253e67b" id="r_a3823f210a31f336cdd79daf86253e67b"><td class="memItemLeft" align="right" valign="top">QList&lt; QGraphicsView * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3823f210a31f336cdd79daf86253e67b">graphicsViewsList</a></td></tr>
+<tr class="separator:a3823f210a31f336cdd79daf86253e67b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2c87f18f2afcf84c27271d17023739d0" id="r_a2c87f18f2afcf84c27271d17023739d0"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2c87f18f2afcf84c27271d17023739d0">isGraphicsViewsInitialized</a></td></tr>
+<tr class="separator:a2c87f18f2afcf84c27271d17023739d0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6070d9db51b900c92df11f3cc964d029" id="r_a6070d9db51b900c92df11f3cc964d029"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6070d9db51b900c92df11f3cc964d029">isMenuBarInitialized</a></td></tr>
+<tr class="separator:a6070d9db51b900c92df11f3cc964d029"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8e26b05cf87d191357b28e8eacd51c6b" id="r_a8e26b05cf87d191357b28e8eacd51c6b"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8e26b05cf87d191357b28e8eacd51c6b">numberOfPlayers</a></td></tr>
+<tr class="separator:a8e26b05cf87d191357b28e8eacd51c6b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="ae052d9fa3b4d760078b672d02f9deb88" name="ae052d9fa3b4d760078b672d02f9deb88"></a>
@@ -192,8 +218,8 @@ Private Attributes</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="a3245017c686a4174e3ff776bda66cf14" name="a3245017c686a4174e3ff776bda66cf14"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3245017c686a4174e3ff776bda66cf14">&#9670;&#160;</a></span>initChatWindow()</h2>
+<a id="ac6c3d0764a7ba294b5df35d92ff3d968" name="ac6c3d0764a7ba294b5df35d92ff3d968"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac6c3d0764a7ba294b5df35d92ff3d968">&#9670;&#160;</a></span>expandChatFrame</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -202,7 +228,82 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void SchoolSkipperClient::initChatWindow </td>
+          <td class="memname">void SchoolSkipperClient::expandChatFrame </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">slot</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ad4aa1977051710c73cf432783f822025" name="ad4aa1977051710c73cf432783f822025"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad4aa1977051710c73cf432783f822025">&#9670;&#160;</a></span>handleVisibilityChangeOfChatFrame</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void SchoolSkipperClient::handleVisibilityChangeOfChatFrame </td>
+          <td>(</td>
+          <td class="paramtype">bool</td>          <td class="paramname"><span class="paramname"><em>visible</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">slot</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a44324465813f02d63e6e5db7a3d089b2" name="a44324465813f02d63e6e5db7a3d089b2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a44324465813f02d63e6e5db7a3d089b2">&#9670;&#160;</a></span>hideStartButtons</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void SchoolSkipperClient::hideStartButtons </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">slot</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a563cf23fb0bed78e118d9cba197e4ec8" name="a563cf23fb0bed78e118d9cba197e4ec8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a563cf23fb0bed78e118d9cba197e4ec8">&#9670;&#160;</a></span>initFrames()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void SchoolSkipperClient::initFrames </td>
           <td>(</td>
           <td class="paramname"><span class="paramname"></span></td><td>)</td>
           <td></td>
@@ -217,8 +318,8 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="aa1d6b2d00d97ce8d0513a1d9f59049d2" name="aa1d6b2d00d97ce8d0513a1d9f59049d2"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa1d6b2d00d97ce8d0513a1d9f59049d2">&#9670;&#160;</a></span>initGameFrames()</h2>
+<a id="a63aa1287f17fef53f93d16387b677c32" name="a63aa1287f17fef53f93d16387b677c32"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a63aa1287f17fef53f93d16387b677c32">&#9670;&#160;</a></span>initGraphicsViews()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -227,7 +328,7 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void SchoolSkipperClient::initGameFrames </td>
+          <td class="memname">void SchoolSkipperClient::initGraphicsViews </td>
           <td>(</td>
           <td class="paramname"><span class="paramname"></span></td><td>)</td>
           <td></td>
@@ -242,8 +343,8 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="a9fb59ea65d84b13a6f50ad1c4261f2f9" name="a9fb59ea65d84b13a6f50ad1c4261f2f9"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9fb59ea65d84b13a6f50ad1c4261f2f9">&#9670;&#160;</a></span>initGraphicsViewAndScene()</h2>
+<a id="a70eb693f2dea255a46656ff45324bb1f" name="a70eb693f2dea255a46656ff45324bb1f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a70eb693f2dea255a46656ff45324bb1f">&#9670;&#160;</a></span>initNetwork()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -252,7 +353,7 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void SchoolSkipperClient::initGraphicsViewAndScene </td>
+          <td class="memname">void SchoolSkipperClient::initNetwork </td>
           <td>(</td>
           <td class="paramname"><span class="paramname"></span></td><td>)</td>
           <td></td>
@@ -267,8 +368,25 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="ae3cd662609b50d2160137c68a7d2a230" name="ae3cd662609b50d2160137c68a7d2a230"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae3cd662609b50d2160137c68a7d2a230">&#9670;&#160;</a></span>messageReadySignal</h2>
+<a id="a1ad7d5b794c39ae459882e90ed4d8852" name="a1ad7d5b794c39ae459882e90ed4d8852"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1ad7d5b794c39ae459882e90ed4d8852">&#9670;&#160;</a></span>initStartButtons()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void SchoolSkipperClient::initStartButtons </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a23c70ead304a8c8849ecc11a06f257bb" name="a23c70ead304a8c8849ecc11a06f257bb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a23c70ead304a8c8849ecc11a06f257bb">&#9670;&#160;</a></span>initWindowDefaultParams()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -277,23 +395,23 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">QByteArray SchoolSkipperClient::messageReadySignal </td>
+          <td class="memname">void SchoolSkipperClient::initWindowDefaultParams </td>
           <td>(</td>
-          <td class="paramtype">QByteArray</td>          <td class="paramname"><span class="paramname"><em>message</em></span></td><td>)</td>
+          <td class="paramname"><span class="paramname"></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">signal</span></span>  </td>
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
 </div>
 </div>
-<a id="a993d5d843e2918a84ebf0e6a7ff56d24" name="a993d5d843e2918a84ebf0e6a7ff56d24"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a993d5d843e2918a84ebf0e6a7ff56d24">&#9670;&#160;</a></span>messageReadySlot</h2>
+<a id="af8421e7a8eee581fe7b1bcd1b9a97357" name="af8421e7a8eee581fe7b1bcd1b9a97357"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af8421e7a8eee581fe7b1bcd1b9a97357">&#9670;&#160;</a></span>keyPressEvent</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -302,7 +420,32 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void SchoolSkipperClient::messageReadySlot </td>
+          <td class="memname">void SchoolSkipperClient::keyPressEvent </td>
+          <td>(</td>
+          <td class="paramtype">QKeyEvent *</td>          <td class="paramname"><span class="paramname"><em>event</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">slot</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ac0ffc3e9b82d17c633abe241146f1d36" name="ac0ffc3e9b82d17c633abe241146f1d36"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac0ffc3e9b82d17c633abe241146f1d36">&#9670;&#160;</a></span>minimizeChatFrame</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void SchoolSkipperClient::minimizeChatFrame </td>
           <td>(</td>
           <td class="paramname"><span class="paramname"></span></td><td>)</td>
           <td></td>
@@ -342,9 +485,62 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
+<a id="abf2cee1a03189a11672fb04fba06d66e" name="abf2cee1a03189a11672fb04fba06d66e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abf2cee1a03189a11672fb04fba06d66e">&#9670;&#160;</a></span>visibilityChangeOfChatFrame</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void SchoolSkipperClient::visibilityChangeOfChatFrame </td>
+          <td>(</td>
+          <td class="paramtype">bool</td>          <td class="paramname"><span class="paramname"><em>visibile</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">signal</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <h2 class="groupheader">Member Data Documentation</h2>
-<a id="ad81c7a058725a85dff81e9635f9ecbb2" name="ad81c7a058725a85dff81e9635f9ecbb2"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad81c7a058725a85dff81e9635f9ecbb2">&#9670;&#160;</a></span>chatBox</h2>
+<a id="a5156bc624c51cf4e63867960fe10d5b3" name="a5156bc624c51cf4e63867960fe10d5b3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5156bc624c51cf4e63867960fe10d5b3">&#9670;&#160;</a></span>CHAT_EXPAND_ICON_DEFAULT</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const QIcon SchoolSkipperClient::CHAT_EXPAND_ICON_DEFAULT = QIcon(&quot;:/images/images/chat.png&quot;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a83792a9c051de08a9c65fdcfeb3dcabb" name="a83792a9c051de08a9c65fdcfeb3dcabb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a83792a9c051de08a9c65fdcfeb3dcabb">&#9670;&#160;</a></span>CHAT_EXPAND_ICON_NEW_MESSAGE</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const QIcon SchoolSkipperClient::CHAT_EXPAND_ICON_NEW_MESSAGE = QIcon(&quot;:/images/images/chat_new_message.png&quot;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ade733bac1716b43a5e76c94667b404c4" name="ade733bac1716b43a5e76c94667b404c4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ade733bac1716b43a5e76c94667b404c4">&#9670;&#160;</a></span>chatFrame</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -353,7 +549,7 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">QLineEdit* SchoolSkipperClient::chatBox</td>
+          <td class="memname"><a class="el" href="class_chat_frame.html">ChatFrame</a>* SchoolSkipperClient::chatFrame</td>
         </tr>
       </table>
   </td>
@@ -365,8 +561,8 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="a04ccabef6cf9a6c1e634aa183bf81d28" name="a04ccabef6cf9a6c1e634aa183bf81d28"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a04ccabef6cf9a6c1e634aa183bf81d28">&#9670;&#160;</a></span>chatWindow</h2>
+<a id="a4d51e6fb2ad282e6e05e7d4749f3cd1e" name="a4d51e6fb2ad282e6e05e7d4749f3cd1e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4d51e6fb2ad282e6e05e7d4749f3cd1e">&#9670;&#160;</a></span>expandChatFrameButton</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -375,7 +571,7 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">QTextBrowser* SchoolSkipperClient::chatWindow</td>
+          <td class="memname">QPushButton* SchoolSkipperClient::expandChatFrameButton</td>
         </tr>
       </table>
   </td>
@@ -387,24 +583,16 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="a7f98523a4c041857efeb0b06f2b4c740" name="a7f98523a4c041857efeb0b06f2b4c740"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a7f98523a4c041857efeb0b06f2b4c740">&#9670;&#160;</a></span>client</h2>
+<a id="ae26da6095a94806d6e86dc9d204b6753" name="ae26da6095a94806d6e86dc9d204b6753"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae26da6095a94806d6e86dc9d204b6753">&#9670;&#160;</a></span>game</h2>
 
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="class_network.html">Network</a>* SchoolSkipperClient::client</td>
+          <td class="memname"><a class="el" href="class_game.html">Game</a>* SchoolSkipperClient::game</td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 
 </div>
@@ -431,8 +619,8 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="aa41e35b707ea0945423efd057dd23edd" name="aa41e35b707ea0945423efd057dd23edd"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa41e35b707ea0945423efd057dd23edd">&#9670;&#160;</a></span>graphicsSceneBackground</h2>
+<a id="a96acdaa1bdf85d2fd96d7b3a269fafc5" name="a96acdaa1bdf85d2fd96d7b3a269fafc5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a96acdaa1bdf85d2fd96d7b3a269fafc5">&#9670;&#160;</a></span>graphicsSceneBackgroundsList</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -441,7 +629,7 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">QGraphicsPixmapItem* SchoolSkipperClient::graphicsSceneBackground</td>
+          <td class="memname">QList&lt;QGraphicsPixmapItem*&gt; SchoolSkipperClient::graphicsSceneBackgroundsList</td>
         </tr>
       </table>
   </td>
@@ -453,8 +641,8 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="ad5ebde6ee1c8f4024920de222a57aa51" name="ad5ebde6ee1c8f4024920de222a57aa51"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad5ebde6ee1c8f4024920de222a57aa51">&#9670;&#160;</a></span>graphicsSceneBackgroundOpponentFrame</h2>
+<a id="aee2e91fe32f1fa5900438b7af68b1e92" name="aee2e91fe32f1fa5900438b7af68b1e92"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aee2e91fe32f1fa5900438b7af68b1e92">&#9670;&#160;</a></span>graphicsViewsGrid</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -463,7 +651,7 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">QGraphicsPixmapItem* SchoolSkipperClient::graphicsSceneBackgroundOpponentFrame</td>
+          <td class="memname">QGridLayout* SchoolSkipperClient::graphicsViewsGrid</td>
         </tr>
       </table>
   </td>
@@ -475,8 +663,8 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="aa1e7b831482ee8794fab158114f70ac6" name="aa1e7b831482ee8794fab158114f70ac6"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa1e7b831482ee8794fab158114f70ac6">&#9670;&#160;</a></span>graphicsSceneOpponentFrame</h2>
+<a id="a11a55d4259ba01e8e57b6a28894c8dee" name="a11a55d4259ba01e8e57b6a28894c8dee"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a11a55d4259ba01e8e57b6a28894c8dee">&#9670;&#160;</a></span>graphicsViewsGridFrame</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -485,7 +673,7 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">QGraphicsScene* SchoolSkipperClient::graphicsSceneOpponentFrame</td>
+          <td class="memname">QFrame* SchoolSkipperClient::graphicsViewsGridFrame</td>
         </tr>
       </table>
   </td>
@@ -497,8 +685,8 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="a77e1bb9c62d9c17ad4da8e79b4287d19" name="a77e1bb9c62d9c17ad4da8e79b4287d19"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a77e1bb9c62d9c17ad4da8e79b4287d19">&#9670;&#160;</a></span>graphicsViewMainFrame</h2>
+<a id="a3823f210a31f336cdd79daf86253e67b" name="a3823f210a31f336cdd79daf86253e67b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3823f210a31f336cdd79daf86253e67b">&#9670;&#160;</a></span>graphicsViewsList</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -507,7 +695,7 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">QGraphicsView* SchoolSkipperClient::graphicsViewMainFrame</td>
+          <td class="memname">QList&lt;QGraphicsView*&gt; SchoolSkipperClient::graphicsViewsList</td>
         </tr>
       </table>
   </td>
@@ -519,8 +707,8 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="a6d19027addc28c645a569fc8a4d2f555" name="a6d19027addc28c645a569fc8a4d2f555"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6d19027addc28c645a569fc8a4d2f555">&#9670;&#160;</a></span>graphicsViewOpponentFrame</h2>
+<a id="a2c87f18f2afcf84c27271d17023739d0" name="a2c87f18f2afcf84c27271d17023739d0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2c87f18f2afcf84c27271d17023739d0">&#9670;&#160;</a></span>isGraphicsViewsInitialized</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -529,7 +717,7 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">QGraphicsView* SchoolSkipperClient::graphicsViewOpponentFrame</td>
+          <td class="memname">bool SchoolSkipperClient::isGraphicsViewsInitialized</td>
         </tr>
       </table>
   </td>
@@ -541,8 +729,8 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="ad451ce3b1920d6480c4617dab2c6f446" name="ad451ce3b1920d6480c4617dab2c6f446"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad451ce3b1920d6480c4617dab2c6f446">&#9670;&#160;</a></span>isMenuActive</h2>
+<a id="a6070d9db51b900c92df11f3cc964d029" name="a6070d9db51b900c92df11f3cc964d029"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6070d9db51b900c92df11f3cc964d029">&#9670;&#160;</a></span>isMenuBarInitialized</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -551,7 +739,7 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">bool SchoolSkipperClient::isMenuActive</td>
+          <td class="memname">bool SchoolSkipperClient::isMenuBarInitialized</td>
         </tr>
       </table>
   </td>
@@ -563,8 +751,8 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="afb03832b01511ed27f822d0a773af953" name="afb03832b01511ed27f822d0a773af953"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#afb03832b01511ed27f822d0a773af953">&#9670;&#160;</a></span>mainFrame</h2>
+<a id="a2a2dea83b4831e9349dd84bcdc6acf29" name="a2a2dea83b4831e9349dd84bcdc6acf29"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2a2dea83b4831e9349dd84bcdc6acf29">&#9670;&#160;</a></span>menuFrame</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -573,7 +761,7 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="class_custom_frame.html">CustomFrame</a>* SchoolSkipperClient::mainFrame</td>
+          <td class="memname"><a class="el" href="class_menu_frame.html">MenuFrame</a>* SchoolSkipperClient::menuFrame</td>
         </tr>
       </table>
   </td>
@@ -585,8 +773,8 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="a3662b192f839012503f73058a6c6e0f0" name="a3662b192f839012503f73058a6c6e0f0"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3662b192f839012503f73058a6c6e0f0">&#9670;&#160;</a></span>opponentFrame</h2>
+<a id="a924a41c0c7b382c1030fb03fb7005273" name="a924a41c0c7b382c1030fb03fb7005273"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a924a41c0c7b382c1030fb03fb7005273">&#9670;&#160;</a></span>multi</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -595,7 +783,7 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="class_custom_frame.html">CustomFrame</a>* SchoolSkipperClient::opponentFrame</td>
+          <td class="memname">QPushButton* SchoolSkipperClient::multi</td>
         </tr>
       </table>
   </td>
@@ -607,8 +795,8 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="a531bbe34b774ab957084ef45ae24cdef" name="a531bbe34b774ab957084ef45ae24cdef"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a531bbe34b774ab957084ef45ae24cdef">&#9670;&#160;</a></span>sendButton</h2>
+<a id="a8a635ec1a53a9fbe4f780f879916553a" name="a8a635ec1a53a9fbe4f780f879916553a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8a635ec1a53a9fbe4f780f879916553a">&#9670;&#160;</a></span>networker</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -617,7 +805,7 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">QPushButton* SchoolSkipperClient::sendButton</td>
+          <td class="memname"><a class="el" href="class_network.html">Network</a>* SchoolSkipperClient::networker</td>
         </tr>
       </table>
   </td>
@@ -629,8 +817,8 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="a5630dfd35c33a8f3f244596cfb721492" name="a5630dfd35c33a8f3f244596cfb721492"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5630dfd35c33a8f3f244596cfb721492">&#9670;&#160;</a></span>server</h2>
+<a id="a8e26b05cf87d191357b28e8eacd51c6b" name="a8e26b05cf87d191357b28e8eacd51c6b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8e26b05cf87d191357b28e8eacd51c6b">&#9670;&#160;</a></span>numberOfPlayers</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -639,7 +827,29 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="class_network.html">Network</a>* SchoolSkipperClient::server</td>
+          <td class="memname">int SchoolSkipperClient::numberOfPlayers</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ac17c0bddc75b4f70b7c504f18b90c932" name="ac17c0bddc75b4f70b7c504f18b90c932"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac17c0bddc75b4f70b7c504f18b90c932">&#9670;&#160;</a></span>single</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">QPushButton* SchoolSkipperClient::single</td>
         </tr>
       </table>
   </td>
@@ -669,6 +879,34 @@ Private Attributes</h2></td></tr>
 <span class="mlabels"><span class="mlabel">private</span></span>  </td>
   </tr>
 </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a0f1cce6b464bfd3427e80cd45d6cb1dc" name="a0f1cce6b464bfd3427e80cd45d6cb1dc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0f1cce6b464bfd3427e80cd45d6cb1dc">&#9670;&#160;</a></span>WINDOW_ICON</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const QIcon SchoolSkipperClient::WINDOW_ICON = QIcon(&quot;:/images/images/icon.png&quot;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="acdf1f4e3d001e8e4bc03b9d8b16e5009" name="acdf1f4e3d001e8e4bc03b9d8b16e5009"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acdf1f4e3d001e8e4bc03b9d8b16e5009">&#9670;&#160;</a></span>WINDOW_TITLE</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const QString SchoolSkipperClient::WINDOW_TITLE = &quot;School Skipper&quot;</td>
+        </tr>
+      </table>
 </div><div class="memdoc">
 
 </div>
