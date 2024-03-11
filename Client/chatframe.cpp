@@ -64,7 +64,7 @@ void ChatFrame::handleConnectionChange(bool connected) {
         this->connected = connected;
 
         connectedStatusLabel->setText("Connected");
-        connectedStatusLabel->setStyleSheet(connectedStatusLabel->styleSheet() + "color: green");
+        connectedStatusLabel->setStyleSheet(connectedStatusLabel->styleSheet() + "color: green;");
 
         return;
     }
@@ -72,7 +72,7 @@ void ChatFrame::handleConnectionChange(bool connected) {
     this->connected = connected;
 
     connectedStatusLabel->setText("Disconnected");
-    connectedStatusLabel->setStyleSheet(connectedStatusLabel->styleSheet() + "color: red");
+    connectedStatusLabel->setStyleSheet(connectedStatusLabel->styleSheet() + "color: red;");
 }
 
 void ChatFrame::handleReconnectChat() {

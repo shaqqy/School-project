@@ -22,6 +22,7 @@
 #include "network.h"
 #include "chatframe.h"
 #include "menuframe.h"
+#include "assets/CustomButton.h"
 
 
 QT_BEGIN_NAMESPACE

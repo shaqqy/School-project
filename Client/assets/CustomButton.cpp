@@ -1,10 +1,8 @@
 #include "CustomButton.h"
 
-CustomButton::CustomButton(QPixmap pixmap, QWidget* parent) : QPushButton(nullptr, parent) {
+CustomButton::CustomButton(QPixmap pixmap, QWidget* parent) : QPushButton(nullptr) {
     this->pixmap = pixmap;
     this->parent = parent;
-
-    //connect();
 }
 
 void CustomButton::onClick() {
