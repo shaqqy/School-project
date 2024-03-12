@@ -87,7 +87,7 @@ void Game::move() {
   // Check if the doodler went too low (loose condition)
   QPointF viewport_pos = getView()->mapFromScene(player->pos());
   // qDebug() << "Viewpos" << viewport_pos;
-  qDebug() << "Scenepos" << player->pos();
+//  qDebug() << "Scenepos" << player->pos();
   if (viewport_pos.y() > 660) {
     view->centerOn(QPointF(viewportSize->width() / 2, player->pos().y()));
     if (player->pos().y() > 0) {
@@ -119,7 +119,8 @@ void Game::move() {
     x = player->pos().x();
     y = player->pos().y();
     QString msg = QString::number(x) + "x" + QString::number(y);
-    network->sendUdpMessage(QByteArray(msg.toUtf8()));
+    msg = "Coord " + msg;
+    network->sendTcpMessage(QByteArray(msg.toUtf8()));
   }
   //    qDebug() << player->pos();
   //    emit startRepaint();

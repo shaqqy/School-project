@@ -25,7 +25,7 @@ Server::Server(QObject *parent) : QObject(parent) {
   Socket.disconnectFromHost();
   multicastGroup = QHostAddress(QStringLiteral("239.255.43.21"));
   multicast = new QUdpSocket(this);
-  multicast->bind(QHostAddress::AnyIPv4, 30000, QUdpSocket::ShareAddress);
+  multicast->bind(QHostAddress("192.168.0.2"), 30000, QUdpSocket::ShareAddress);
   multicast->joinMulticastGroup(multicastGroup);
   connect(multicast, &QAbstractSocket::readyRead, this, &Server::startRead);
   qDebug() << multicast->localAddress();
@@ -66,19 +66,21 @@ void Server::acceptConnection() {
  * information Used for debugging purposes
  */
 void Server::startRead() {
-  QByteArray buffer;
-  buffer.resize(multicast->pendingDatagramSize());
-  //    qDebug() << buffer.size();
-  QHostAddress sender;
-  quint16 senderPort;
-  multicast->readDatagram(buffer.data(), buffer.size(), &sender, &senderPort);
-  qDebug() << "Sender Address: " << sender;
-  qDebug() << "Sender Port: " << senderPort;
-  qDebug() << "Message: " << buffer;
-  if(log->open(QIODevice::ReadWrite)){
-      QTextStream stream(log);
-      stream <<sender.toString() << "," <<buffer << Qt::endl;
-  }
+//  QByteArray buffer;
+//  buffer.resize(multicast->pendingDatagramSize());
+//  //    qDebug() << buffer.size();
+//  QHostAddress sender;
+//  quint16 senderPort;
+//  multicast->readDatagram(buffer.data(), buffer.size(), &sender, &senderPort);
+//  qDebug() << "Sender Address: " << sender;
+//  qDebug() << "Sender Port: " << senderPort;
+//  qDebug() << "Message: " << buffer;
+//  if(log->open(QIODevice::ReadWrite)){
+//      QTextStream stream(log);
+//      stream <<sender.toString() << "," <<buffer << Qt::endl;
+//  }
+  QNetworkDatagram t = multicast->receiveDatagram();
+  qDebug() << t.data();
 }
 
 /*!
@@ -146,6 +148,12 @@ void Server::handleMessage() {
           stream << sender->localAddress().toString() << "," << buffer << Qt::endl;
           stream << "GAME OVER" << Qt::endl;
       }
+      foreach (auto const &mg, messengers) {
+          if (mg != sender) {
+        qDebug() << "Inside the loop message: " + buffer;
+        mg->write(buffer, buffer.length());
+          }
+      }
   } else if (msg.startsWith("Message")) {
     foreach (auto const &mg, messengers) {
       if (mg != sender) {
@@ -165,6 +173,13 @@ void Server::handleMessage() {
       rdyCounter++;
     } else {
       rdyCounter = 1;
+    }
+  }else{
+    foreach (auto const &mg, messengers) {
+      if (mg != sender) {
+        qDebug() << "Inside the loop message: " + buffer;
+        mg->write(buffer, buffer.length());
+      }
     }
   }
 }

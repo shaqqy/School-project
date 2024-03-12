@@ -48,7 +48,7 @@ SchoolSkipperClient::SchoolSkipperClient(QWidget *parent)
             &SchoolSkipperClient::reconnectTcp);
     connect(chatFrame, &ChatFrame::changeIconOfExpandButton, this,
             &SchoolSkipperClient::handleIconChangeOfExpandChatButton);
-
+    networker->initUdpSocket();
     initGraphicsViews();
     networker->initTcpSocket();
 

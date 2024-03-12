@@ -28,7 +28,9 @@ void Network::initUdpSocket() {
   /*
    *  Binding the UDP socket to the right network interface
    */
+
   udpSocket->bind(tcpSocket->localAddress(), 30000);
+  udpSocket->joinMulticastGroup(QHostAddress("239.255.43.21"));
   tcpSocket->close();
 }
 
@@ -54,7 +56,7 @@ void Network::readNewUdpData() {
 }
 
 void Network::sendUdpMessage(QByteArray message) {
-  udpSocket->writeDatagram(message, QHostAddress("192.168.0.2"), 30001);
+  udpSocket->writeDatagram(message, QHostAddress("239.255.43.21"), 30001);
 
   qDebug() << "[NET] Sent message (UDP): " << message;
 }
@@ -105,6 +107,12 @@ void Network::readNewTcpData() {
     qDebug() << "[NET] TCP message from " << tcpSocket->peerAddress() << ":"
              << tcpSocket->peerPort();
     qDebug() << "[NET] TCP message: " << message;
+  }else if(message.startsWith("Coord")){
+    message = message.split(" ").at(1);
+    auto x = message.split("x")[0].toInt();
+    auto y = message.split("x")[1].toInt();
+    LOP->setX(x);
+    LOP->setY(y);
   } else {
     message = message.split(" ").at(1);
 
